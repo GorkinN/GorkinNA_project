@@ -1,0 +1,12 @@
+/*---containers---*/
+/*---fonts---*/
+.wrapper {
+  background-color: white;
+  max-width: calc(1260/1190 * 1190px);
+  min-height: 100%;
+  box-sizing: content-box;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
