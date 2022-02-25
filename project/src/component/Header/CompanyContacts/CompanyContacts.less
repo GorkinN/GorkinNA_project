@@ -1,0 +1,60 @@
+@import "../../common.less";
+.header__company-contacts {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 48px;
+    border-bottom: 1px solid #D1D1D1;
+}
+
+.company-contacts {
+    &__info {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  
+    &__info-list {
+      display: flex;
+      flex-wrap: wrap;
+      font-family: "Open Sans", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: @base-font-size - 3px;
+      line-height: @base-line-height - 6px;
+    }
+  
+    &__info-item {
+      margin-right: 33px;
+      padding: 3px 0;
+  
+      &:nth-last-child(1) {
+        margin-right: 0;
+      }
+  
+      &_link {
+  
+        &:link,
+        &:active,
+        &:visited,
+        &:focus {
+          font-family: "Open Sans", sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: @base-font-size - 3px;
+          line-height: @base-line-height - 6px;
+          color: @secondary-font-color;
+        }
+      }
+  
+      &_long-margin {
+        margin-right: 38px;
+        padding: 3px 0;
+  
+        &:nth-last-child(1) {
+          margin-right: 0;
+        }
+      }
+    }
+  }

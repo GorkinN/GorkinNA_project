@@ -1,0 +1,32 @@
+/*---containers---*/
+/*---fonts---*/
+/*---common blocks---*/
+@import "../fonts/open-sans-v26-latin/font_open-sans.css";
+._container {
+  max-width: 1190px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+@media (max-width: 992px) {
+  ._container {
+    max-width: 900px;
+  }
+}
+@media (max-width: 767px) {
+  ._container {
+    max-width: 730px;
+  }
+}
+@media (max-width: 479px) {
+  ._container {
+    max-width: none;
+  }
+}
+.regular-text {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+}

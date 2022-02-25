@@ -1,15 +1,16 @@
 @import "../common.less";
+@import "../Text/fonts/open-sans-v26-latin/font_open-sans.css";
 .Hlink {
     font-family: "Open Sans", sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: @base-font-size - 3px;
-    line-height: @base-line-height - 6px;
+    font-size: @Href-font-size;
+    line-height: @Href-line-height;
     color: @secondary-font-color;
 }
-a:link,
-a:active,
-a:visited,
-a:focus {
+.Hlink:link,
+.Hlink:active,
+.Hlink:visited,
+.Hlink:focus {
   text-decoration: none;
 }

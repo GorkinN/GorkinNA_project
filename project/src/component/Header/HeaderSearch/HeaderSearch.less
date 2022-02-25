@@ -1,0 +1,38 @@
+@import "../../common.less";
+.header {
+    &__search {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 130px;
+      &-logo {
+        margin-right: 158px;
+      }
+    }
+  }
+  
+  /*адаптив для header__search*/
+  @media (max-width:@tablet) {
+    .header__search-logo {
+      margin-right: 60px;
+    }
+    .header__search {
+      justify-content: flex-start;
+      padding: 5px 5px;
+    }
+  }
+  @media (max-width:@phone) {
+    .header__search-logo {
+      margin-right: 10px;
+    }
+    .header__search-logo {
+      padding: 10px 0;
+    }
+  }
+  @media (max-width:@small-phone) {
+    .header__search-logo {
+      margin-right: 10px;
+    }
+  }

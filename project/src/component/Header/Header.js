@@ -1,10 +1,13 @@
 import React from 'react';
-import ".Header.css";
+import "./Header.css";
+import CompanyContacts from './CompanyContacts/CompanyContacts';
+import HeaderSearch from './HeaderSearch/HeaderSearch';
 
-const Header = ({children}) => {
+const Header = () => {
     return (
         <header className='header'>
-            {children}
+            <CompanyContacts />
+            <HeaderSearch/>
         </header>
     );
 }
