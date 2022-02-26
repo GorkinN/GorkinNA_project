@@ -1,0 +1,64 @@
+@import "../common.less";
+.section__menu {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    grid-column: span 3;
+
+    &-caption {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    &-list {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0;
+
+      &-item {
+        margin-bottom: 0;
+        margin-right: 10px;
+
+        &:nth-last-child(1) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+
+@media (max-width:@tablet) {
+  .section {
+    &__menu {
+      grid-column: span 2;
+      &-caption {
+        margin: 5px;
+      }
+      &-list {
+        margin: 5px;
+      }
+      &-button {
+        margin: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width:@small-phone) {
+  .section__menu {
+    flex-direction: column;
+    align-items: flex-start;
+    grid-column: span 1;
+
+    &-list {
+      flex-direction: column;
+      align-items: flex-start;
+
+      &-item {
+        font-size: 18px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+      }
+    }
+  }
+}

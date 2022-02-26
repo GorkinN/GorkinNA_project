@@ -1,0 +1,50 @@
+/*---containers---*/
+/*---fonts---*/
+/*---common blocks---*/
+@import "../fonts/open-sans-v26-latin/font_open-sans.css";
+@import "../fonts/poppins-v15-latin/font-poppins.css";
+._container {
+  max-width: 1190px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+@media (max-width: 992px) {
+  ._container {
+    max-width: 900px;
+  }
+}
+@media (max-width: 767px) {
+  ._container {
+    max-width: 730px;
+  }
+}
+@media (max-width: 479px) {
+  ._container {
+    max-width: none;
+  }
+}
+.caption_h1 {
+  font-family: Poppins, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+  color: #FFFFFF;
+}
+.caption_h2 {
+  font-family: Poppins, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: calc(15px + 3px);
+  line-height: calc(22px + 5px);
+  color: #151515;
+}
+.caption_h3 {
+  font-family: Poppins, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: #151515;
+}
