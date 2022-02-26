@@ -1,0 +1,205 @@
+/*---containers---*/
+/*---fonts---*/
+/*---common blocks---*/
+._container {
+  max-width: 1190px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+@media (max-width: 992px) {
+  ._container {
+    max-width: 900px;
+  }
+}
+@media (max-width: 767px) {
+  ._container {
+    max-width: 730px;
+  }
+}
+@media (max-width: 479px) {
+  ._container {
+    max-width: none;
+  }
+}
+.header__categories {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  padding: 0 45px;
+  margin: 0 auto;
+  min-height: 55px;
+  background-color: #F9F9F9;
+}
+.category-set {
+  display: none;
+  position: absolute;
+  top: 42px;
+  left: 0;
+  z-index: 50;
+}
+.category-set__item {
+  padding: 10px;
+  background: #F9F9F9;
+  border-bottom: 1px solid #D1D1D1;
+  border-left: 1px solid #D1D1D1;
+  border-right: 1px solid #D1D1D1;
+}
+.category-set__item input[type="radio"] {
+  display: none;
+}
+.category-set__item input[type="radio"]:checked + .category-set__item_checked {
+  color: #6A983C;
+  transition: 0.2s ease;
+}
+.category-set__item:hover {
+  background-color: #e0e0e0;
+}
+.category-set__item:nth-last-child(1) {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.category-set__item:nth-child(1) {
+  border-top: 1px solid #D1D1D1;
+}
+.categories-menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 100%;
+  font-family: Poppins, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: #151515;
+}
+.categories-menu__item {
+  position: relative;
+  margin-right: 54px;
+  /*border:1px solid black;*/
+  height: 100%;
+}
+.categories-menu__item:nth-last-child(1) {
+  margin-right: 0;
+}
+.categories-menu__item:after {
+  content: "";
+  position: absolute;
+  right: -14px;
+  top: 25%;
+  width: 12px;
+  height: 12px;
+  background: url("../../../img/icons/open-list-small.svg") no-repeat 50% 50%;
+}
+.sub-menu__bakery,
+.sub-menu__fruit-and-vegetables,
+.sub-menu__meat-and-fish,
+.sub-menu__drinks,
+.sub-menu__kitchen,
+.sub-menu__special-nutrition,
+.sub-menu__baby,
+.sub-menu__pharmacy {
+  position: relative;
+}
+.sub-menu__bakery:hover .sub-menu__list_bakery,
+.sub-menu__fruit-and-vegetables:hover .sub-menu__list_bakery,
+.sub-menu__meat-and-fish:hover .sub-menu__list_bakery,
+.sub-menu__drinks:hover .sub-menu__list_bakery,
+.sub-menu__kitchen:hover .sub-menu__list_bakery,
+.sub-menu__special-nutrition:hover .sub-menu__list_bakery,
+.sub-menu__baby:hover .sub-menu__list_bakery,
+.sub-menu__pharmacy:hover .sub-menu__list_bakery,
+.sub-menu__bakery:hover .sub-menu__list_fruit-and-vegetables,
+.sub-menu__fruit-and-vegetables:hover .sub-menu__list_fruit-and-vegetables,
+.sub-menu__meat-and-fish:hover .sub-menu__list_fruit-and-vegetables,
+.sub-menu__drinks:hover .sub-menu__list_fruit-and-vegetables,
+.sub-menu__kitchen:hover .sub-menu__list_fruit-and-vegetables,
+.sub-menu__special-nutrition:hover .sub-menu__list_fruit-and-vegetables,
+.sub-menu__baby:hover .sub-menu__list_fruit-and-vegetables,
+.sub-menu__pharmacy:hover .sub-menu__list_fruit-and-vegetables,
+.sub-menu__bakery:hover .sub-menu__list_meat-and-fish,
+.sub-menu__fruit-and-vegetables:hover .sub-menu__list_meat-and-fish,
+.sub-menu__meat-and-fish:hover .sub-menu__list_meat-and-fish,
+.sub-menu__drinks:hover .sub-menu__list_meat-and-fish,
+.sub-menu__kitchen:hover .sub-menu__list_meat-and-fish,
+.sub-menu__special-nutrition:hover .sub-menu__list_meat-and-fish,
+.sub-menu__baby:hover .sub-menu__list_meat-and-fish,
+.sub-menu__pharmacy:hover .sub-menu__list_meat-and-fish,
+.sub-menu__bakery:hover .sub-menu__list_drinks,
+.sub-menu__fruit-and-vegetables:hover .sub-menu__list_drinks,
+.sub-menu__meat-and-fish:hover .sub-menu__list_drinks,
+.sub-menu__drinks:hover .sub-menu__list_drinks,
+.sub-menu__kitchen:hover .sub-menu__list_drinks,
+.sub-menu__special-nutrition:hover .sub-menu__list_drinks,
+.sub-menu__baby:hover .sub-menu__list_drinks,
+.sub-menu__pharmacy:hover .sub-menu__list_drinks,
+.sub-menu__bakery:hover .sub-menu__list_kitchen,
+.sub-menu__fruit-and-vegetables:hover .sub-menu__list_kitchen,
+.sub-menu__meat-and-fish:hover .sub-menu__list_kitchen,
+.sub-menu__drinks:hover .sub-menu__list_kitchen,
+.sub-menu__kitchen:hover .sub-menu__list_kitchen,
+.sub-menu__special-nutrition:hover .sub-menu__list_kitchen,
+.sub-menu__baby:hover .sub-menu__list_kitchen,
+.sub-menu__pharmacy:hover .sub-menu__list_kitchen,
+.sub-menu__bakery:hover .sub-menu__list_special-nutrition,
+.sub-menu__fruit-and-vegetables:hover .sub-menu__list_special-nutrition,
+.sub-menu__meat-and-fish:hover .sub-menu__list_special-nutrition,
+.sub-menu__drinks:hover .sub-menu__list_special-nutrition,
+.sub-menu__kitchen:hover .sub-menu__list_special-nutrition,
+.sub-menu__special-nutrition:hover .sub-menu__list_special-nutrition,
+.sub-menu__baby:hover .sub-menu__list_special-nutrition,
+.sub-menu__pharmacy:hover .sub-menu__list_special-nutrition,
+.sub-menu__bakery:hover .sub-menu__list_baby,
+.sub-menu__fruit-and-vegetables:hover .sub-menu__list_baby,
+.sub-menu__meat-and-fish:hover .sub-menu__list_baby,
+.sub-menu__drinks:hover .sub-menu__list_baby,
+.sub-menu__kitchen:hover .sub-menu__list_baby,
+.sub-menu__special-nutrition:hover .sub-menu__list_baby,
+.sub-menu__baby:hover .sub-menu__list_baby,
+.sub-menu__pharmacy:hover .sub-menu__list_baby,
+.sub-menu__bakery:hover .sub-menu__list_pharmacy,
+.sub-menu__fruit-and-vegetables:hover .sub-menu__list_pharmacy,
+.sub-menu__meat-and-fish:hover .sub-menu__list_pharmacy,
+.sub-menu__drinks:hover .sub-menu__list_pharmacy,
+.sub-menu__kitchen:hover .sub-menu__list_pharmacy,
+.sub-menu__special-nutrition:hover .sub-menu__list_pharmacy,
+.sub-menu__baby:hover .sub-menu__list_pharmacy,
+.sub-menu__pharmacy:hover .sub-menu__list_pharmacy {
+  display: block;
+}
+.sub-menu__list_bakery,
+.sub-menu__list_fruit-and-vegetables,
+.sub-menu__list_meat-and-fish,
+.sub-menu__list_drinks,
+.sub-menu__list_kitchen,
+.sub-menu__list_special-nutrition,
+.sub-menu__list_baby,
+.sub-menu__list_pharmacy {
+  position: absolute;
+  display: none;
+  top: 22px;
+  left: 0;
+  z-index: 49;
+  background-color: #F9F9F9;
+  border: 1px solid #D1D1D1;
+  border-radius: 8px;
+}
+.sub-menu__item {
+  padding: 5px;
+  border-bottom: 1px solid #D1D1D1;
+}
+.sub-menu__item:nth-last-child(1) {
+  border-bottom: none;
+}
+.sub-menu__item input[type="radio"] {
+  display: none;
+}
+.sub-menu__item input[type="radio"]:checked + label {
+  color: #6A983C;
+}
+.sub-menu__item:hover {
+  background: #c6c6c6;
+  color: #6A983C;
+}

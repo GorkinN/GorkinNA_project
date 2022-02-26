@@ -1,11 +1,14 @@
 import React from 'react';
 import "./HeaderSearch.css";
+import logoImg from "../../../img/LogoFreshnesecom.png";
+import UserAccImg from "../../../img/icons/user-account.svg";
+import ShoppingCartImg from "../../../img/icons/shopping-cart.png";
 
 const HeaderSearch = () => {
     return (
         <div className="header__search _container">
                 <div className="header__search-logo logo">
-                    <img src='src/img/LogoFreshnesecom.png' height="18" width="177" alt="logo" />
+                    <img src={logoImg} alt="logo"/>
                 </div>
                 <div className="header__search-field search-field">
                     <div className="search-field__category-set">
@@ -59,11 +62,13 @@ const HeaderSearch = () => {
                 </div>
                 <div className="header__user-field user-field">
                     <div className="user-field__account">
-                        <a href="#"><img src="img\icons\user-account.svg" alt="login"/></a>
+                        <a href="#">
+                            <img src={UserAccImg} alt="login"/>
+                        </a>
                     </div>
                     <div className="user-field__shopping-cart shopping-cart">
                         <div className="shopping-cart__icon">
-                            <button id="shopping-cart-open-button"><img src="img/icons/shopping-cart.png" alt="shopping cart"/></button>
+                            <button id="shopping-cart-open-button"><img src={ShoppingCartImg} alt="shopping cart"/></button>
                         </div>
                         <div className="shopping-cart__counter">4</div>
                     </div>

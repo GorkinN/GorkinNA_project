@@ -1,0 +1,108 @@
+@import "../common.less";
+/*FOOTER-----------------------------------------------------------------------------------*/
+.footer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /*border:1px solid black;*/
+    box-sizing: border-box;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    width: 100%;
+    min-height: 556px;
+  
+    &__links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+  
+      &-caption {
+        margin-bottom: 16px;
+      }
+  
+      &-list-item {
+        margin-bottom: 16px;
+        font-family: "Open Sans", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: @base-font-size - 1px;
+        line-height: @base-line-height - 3px;
+        color: @secondary-font-color;
+      }
+    }
+  
+    &__product-tags {
+      &-caption {
+        margin-bottom: 16px;
+      }
+  
+      &-list {}
+    }
+  
+    &__copyright {
+      font-family: Open Sans, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: @base-font-size -1px;
+      line-height: @base-line-height - 3px;
+      color: @base-font-color;
+    }
+  }
+  
+  .product-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+  
+    &__item {
+      margin-right: 16px;
+      margin-bottom: 16px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: #F5F5F5;
+  
+      font-family: Poppins, sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: @base-font-size - 3px;
+      line-height: @base-line-height - 4px;
+      color: @base-font-color;
+  
+      &:nth-last-child(1) {
+        margin-right: 0;
+      }
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .footer__links {
+      display: grid;
+      justify-content: space-between;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+  
+      &-list-item {
+        margin-bottom: 9px;
+      }
+  
+      &-caption {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  
+  @media (max-width:1200px) {
+    .footer {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+  }
+  
+  @media (max-width:992px) {
+    .footer {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }

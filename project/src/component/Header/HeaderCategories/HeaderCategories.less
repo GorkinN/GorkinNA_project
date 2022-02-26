@@ -1,0 +1,152 @@
+@import "../../common.less";
+.header__categories {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  padding: 0 45px;
+  margin: 0 auto;
+  min-height: 55px;
+  background-color: #F9F9F9;
+}
+.category-set {
+    display: none;
+    position: absolute;
+    top: 42px;
+    left: 0;
+    z-index: 50;
+  
+    &__item {
+      padding: 10px;
+      background: #F9F9F9;
+      border-bottom: 1px solid #D1D1D1;
+      border-left: 1px solid #D1D1D1;
+      border-right: 1px solid #D1D1D1;
+  
+      & input[type="radio"] {
+        display: none;
+  
+        &:checked+.category-set__item_checked {
+          color: @secondary-font-color;
+          transition: 0.2s ease;
+        }
+      }
+  
+      &:hover {
+        background-color: darken(#F9F9F9, 10%);
+      }
+  
+      &:nth-last-child(1) {
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
+  
+      &:nth-child(1) {
+        border-top: 1px solid #D1D1D1;
+      }
+    }
+  }
+  .categories-menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 100%;
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: @base-font-size;
+    line-height: @base-line-height;
+    color: @base-font-color;
+  
+    &__item {
+      position: relative;
+      margin-right: 54px;
+      /*border:1px solid black;*/
+      height: 100%;
+  
+      &:nth-last-child(1) {
+        margin-right: 0;
+      }
+  
+      &:after {
+        content: "";
+        position: absolute;
+        right: -14px;
+        top: 25%;
+        width: 12px;
+        height: 12px;
+        background: url("../../../img/icons/open-list-small.svg") no-repeat 50% 50%;
+      }
+    }
+  }
+  
+  .sub-menu {
+  
+    &__bakery,
+    &__fruit-and-vegetables,
+    &__meat-and-fish,
+    &__drinks,
+    &__kitchen,
+    &__special-nutrition,
+    &__baby,
+    &__pharmacy {
+      position: relative;
+  
+      &:hover .sub-menu__list_ {
+  
+        &bakery,
+        &fruit-and-vegetables,
+        &meat-and-fish,
+        &drinks,
+        &kitchen,
+        &special-nutrition,
+        &baby,
+        &pharmacy {
+          display: block;
+        }
+      }
+    }
+  
+    &__list_ {
+  
+      &bakery,
+      &fruit-and-vegetables,
+      &meat-and-fish,
+      &drinks,
+      &kitchen,
+      &special-nutrition,
+      &baby,
+      &pharmacy {
+        position: absolute;
+        display: none;
+        top: 22px;
+        left: 0;
+        z-index: 49;
+        background-color: #F9F9F9;
+        border: 1px solid #D1D1D1;
+        border-radius: 8px;
+      }
+    }
+  
+    &__item {
+      padding: 5px;
+      border-bottom: 1px solid #D1D1D1;
+  
+      &:nth-last-child(1) {
+        border-bottom: none;
+      }
+  
+      & input[type="radio"] {
+        display: none;
+  
+        &:checked+label {
+          color: @secondary-font-color;
+        }
+      }
+  
+      &:hover {
+        background: darken(#F9F9F9, 20%);
+        color: @secondary-font-color;
+      }
+    }
+  }

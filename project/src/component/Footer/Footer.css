@@ -1,0 +1,113 @@
+/*---containers---*/
+/*---fonts---*/
+/*---common blocks---*/
+._container {
+  max-width: 1190px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+@media (max-width: 992px) {
+  ._container {
+    max-width: 900px;
+  }
+}
+@media (max-width: 767px) {
+  ._container {
+    max-width: 730px;
+  }
+}
+@media (max-width: 479px) {
+  ._container {
+    max-width: none;
+  }
+}
+/*FOOTER-----------------------------------------------------------------------------------*/
+.footer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /*border:1px solid black;*/
+  box-sizing: border-box;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  width: 100%;
+  min-height: 556px;
+}
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.footer__links-caption {
+  margin-bottom: 16px;
+}
+.footer__links-list-item {
+  margin-bottom: 16px;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #6A983C;
+}
+.footer__product-tags-caption {
+  margin-bottom: 16px;
+}
+.footer__copyright {
+  font-family: Open Sans, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px -1px;
+  line-height: 19px;
+  color: #151515;
+}
+.product-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+.product-tags-list__item {
+  margin-right: 16px;
+  margin-bottom: 16px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: #F5F5F5;
+  font-family: Poppins, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  color: #151515;
+}
+.product-tags-list__item:nth-last-child(1) {
+  margin-right: 0;
+}
+@media (max-width: 767px) {
+  .footer__links {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .footer__links-list-item {
+    margin-bottom: 9px;
+  }
+  .footer__links-caption {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 1200px) {
+  .footer {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+@media (max-width: 992px) {
+  .footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}

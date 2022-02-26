@@ -56,3 +56,200 @@
     margin-right: 10px;
   }
 }
+.search-field {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 16px;
+  min-width: 500px;
+  min-height: 42px;
+  background: #F9F9F9;
+  border: 1px solid #D1D1D1;
+  border-radius: 12px;
+  /*border: 1px solid forestgreen;*/
+}
+.search-field__category-set {
+  position: relative;
+  flex-grow: 1;
+  min-width: calc(106px + 48px);
+  padding: 10px 0;
+  font-family: Poppins, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 22px;
+  cursor: pointer;
+}
+.search-field__category-set:hover .category-set {
+  display: flex;
+  flex-direction: column;
+}
+.search-field__category-set::after {
+  content: "";
+  position: absolute;
+  left: calc(8px + 106px);
+  top: 25%;
+  width: 16px;
+  height: 16px;
+  background: url("../../../img/icons/open-list.svg") no-repeat 50% 80%;
+}
+.search-field__category-set:before {
+  position: absolute;
+  content: "";
+  left: 155px;
+  top: 11px;
+  box-sizing: border-box;
+  height: 20px;
+  border-right: 1px solid #D1D1D1;
+}
+.search-field__category-set_chosen {
+  position: relative;
+  max-width: 106px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.search-field__search {
+  min-width: calc(262px + 15px + 12px);
+}
+@media (max-width: 767px) {
+  .search-field {
+    min-width: 280px;
+  }
+  .search-field__search {
+    max-width: 100%;
+  }
+  .search-field__category-set:before {
+    left: 140px;
+  }
+}
+@media (max-width: 479px) {
+  .search-field {
+    min-height: 55px;
+  }
+  .search-field__category-set:before {
+    border: none;
+  }
+  .search-field__category-set {
+    padding: 3px 0;
+    border-bottom: 1px dashed #D1D1D1;
+  }
+}
+@media (max-width: 520px) {
+  .search-field {
+    padding: 8px 5px;
+  }
+}
+.category-set {
+  display: none;
+  position: absolute;
+  top: 42px;
+  left: 0;
+  z-index: 50;
+}
+.category-set__item {
+  padding: 10px;
+  background: #F9F9F9;
+  border-bottom: 1px solid #D1D1D1;
+  border-left: 1px solid #D1D1D1;
+  border-right: 1px solid #D1D1D1;
+}
+.category-set__item input[type="radio"] {
+  display: none;
+}
+.category-set__item input[type="radio"]:checked + .category-set__item_checked {
+  color: #6A983C;
+  transition: 0.2s ease;
+}
+.category-set__item:hover {
+  background-color: #e0e0e0;
+}
+.category-set__item:nth-last-child(1) {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.category-set__item:nth-child(1) {
+  border-top: 1px solid #D1D1D1;
+}
+.search {
+  max-width: 262px;
+}
+.search__search-form {
+  position: relative;
+}
+.search__input {
+  background: none;
+  border: none;
+}
+.search__input:focus ~ label {
+  opacity: 0;
+  transition: 0.2s ease;
+}
+.search__label {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #A9A9A9;
+}
+.search__label::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 5%;
+  width: 16px;
+  height: 16px;
+  background: url("../../../img/icons/search-lense.svg") no-repeat 50% 50%;
+}
+@media (max-width: 767px) {
+  .search-field__search {
+    max-width: 100%;
+  }
+}
+.user-field {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 88px;
+}
+@media (max-width: 852px) {
+  .user-field {
+    margin-left: 0;
+    padding: 10px;
+  }
+}
+.shopping-cart {
+  position: relative;
+}
+.shopping-cart__counter {
+  position: absolute;
+  bottom: -6px;
+  left: -6px;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  background: #E6704B;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-family: Poppins, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  color: #FFFFFF;
+}
+.shopping-cart__icon button {
+  background: none;
+  border: none;
+  padding: 0;
+}
