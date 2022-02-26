@@ -1,3 +1,5 @@
+@import "./component/Text/fonts/open-sans-v26-latin/font_open-sans.css";
+@import "./component/Text/fonts/poppins-v15-latin/font-poppins.css";
 body {
     position:relative;
     background-color: #E5E5E5;

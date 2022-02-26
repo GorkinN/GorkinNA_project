@@ -1,7 +1,6 @@
 /*---containers---*/
 /*---fonts---*/
 /*---common blocks---*/
-@import "../fonts/open-sans-v26-latin/font_open-sans.css";
 ._container {
   max-width: 1190px;
   margin: 0 auto;

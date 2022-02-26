@@ -1,7 +1,6 @@
 /*---containers---*/
 /*---fonts---*/
 /*---common blocks---*/
-@import "../fonts/poppins-v15-latin/font-poppins.css";
 ._container {
   max-width: 1190px;
   margin: 0 auto;
