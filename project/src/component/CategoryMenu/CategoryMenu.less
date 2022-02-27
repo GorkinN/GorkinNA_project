@@ -1,8 +1,8 @@
 @import "../common.less";
-.section__menu {
-    flex-direction: row;
+.category-menu {
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: left;
     grid-column: span 3;
 
     &-caption {
@@ -12,7 +12,8 @@
 
     &-list {
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      align-items: left;
       margin-bottom: 0;
 
       &-item {
@@ -45,7 +46,7 @@
 }
 
 @media (max-width:@small-phone) {
-  .section__menu {
+  .category-menu {
     flex-direction: column;
     align-items: flex-start;
     grid-column: span 1;

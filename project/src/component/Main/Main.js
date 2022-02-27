@@ -1,46 +1,12 @@
 import React from 'react';
+import BannerSection from '../BannerSection/BannerSection';
 import "./main.css";
 
 const Main = () => {
+    let categories = ["Bakery","Fruit and vegetables","Meat and fish","Drinks","Kitchen","Special nutrition","Baby", "Pharmacy"];
     return (
         <main className="main">
-
-            <section className="banner-section _container">
-                <div className="banner-section__box">
-
-                    <div className="banner-section__menu section__menu">
-                        <h2 className="section__menu-caption caption_h2">Category menu</h2>
-                        <ul className="section__menu-list">
-                            <li className="section__menu-list-item"><a href="#">Bakery</a></li>
-                            <li className="section__menu-list-item"><a href="#">Fruit and vegetables</a></li>
-                            <li className="section__menu-list-item"><a href="#">Meat and fish</a></li>
-                            <li className="section__menu-list-item"><a href="#">Drinks</a></li>
-                            <li className="section__menu-list-item"><a href="#">Kitchen</a></li>
-                            <li className="section__menu-list-item hidden"><a href="#">Special nutrition</a></li>
-                            <li className="section__menu-list-item hidden"><a href="#">Baby</a></li>
-                            <li className="section__menu-list-item hidden"><a href="#">Pharmacy</a></li>
-                        </ul>
-                        <button className="section__menu-button btn btn-label" data-button-name="categories">More
-                            categories</button>
-                    </div>
-
-
-                    <div className="banner-section__banner">
-                        <div className="banner-section__banner-subfocus">Banner subfocus</div>
-                        <div className="banner-section__banner-heading">Space for heading</div>
-                        <button className="banner-section__banner-button btn-label-green btn-banner">Read recepies</button>
-                    </div>
-
-
-                    <div className="banner-section__banner">
-                        <div className="banner-section__banner-subfocus">Banner subfocus</div>
-                        <div className="banner-section__banner-heading">Space for heading</div>
-                        <button className="banner-section__banner-button btn-label-green btn-banner">Read recepies</button>
-                    </div>
-
-
-                </div>
-            </section>
+            <BannerSection categories={categories}/>         
 
 
             <section className="best-selling-section _container">
