@@ -16,7 +16,7 @@
 @regular-line-height: @base-line-height - 6px;
 
 @Href-font-size:@base-font-size - 3px;
-@Href-line-height:@base-font-size - 6px;
+@Href-line-height:@base-line-height - 6px;
 
 
 /*---common blocks---*/
@@ -24,7 +24,8 @@
     max-width: @_container-width;
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 0 10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   @media (max-width: @tablet) {
     ._container {

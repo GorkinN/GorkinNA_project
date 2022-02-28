@@ -20,8 +20,9 @@ const CategoryMenu = ({categoriesMenuArray}) => {
             <ul className="category-menu-list">
                 {categoryList}
             </ul>
-            <button className="category-menu-button btn btn-label" data-button-name="categories">More
-                categories</button>
+            <button className="category-menu-button btn btn-label" data-button-name="categories">
+                More categories
+            </button>
         </div>
     );
 }

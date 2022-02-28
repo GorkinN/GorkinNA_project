@@ -1,12 +1,13 @@
 @import "../common.less";
 .category-menu {
-    flex-direction: column;
+    //flex-direction: column;
+    flex-grow:1;
     justify-content: space-between;
-    align-items: left;
+    align-items: center;
     grid-column: span 3;
+    border:1px solid black;
 
     &-caption {
-      margin-bottom: 0;
       padding-bottom: 0;
     }
 
@@ -17,10 +18,12 @@
       margin-bottom: 0;
 
       &-item {
-        margin-bottom: 0;
+        margin-bottom: 12px;
         margin-right: 10px;
+        text-decoration: underline;
 
         &:nth-last-child(1) {
+          margin-bottom: 0;
           margin-right: 0;
         }
       }

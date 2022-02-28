@@ -5,7 +5,8 @@
   max-width: 1190px;
   margin: 0 auto;
   box-sizing: border-box;
-  padding: 0 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 @media (max-width: 992px) {
   ._container {
