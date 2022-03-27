@@ -30,9 +30,9 @@ background-color: #F5F5F5;
 }
 `;
 
-const Button = ({children}) => {
+const Button = ({children, onClick}) => {
     return (
-        <StyledButton>
+        <StyledButton onClick={onClick}>
             {children}         
         </StyledButton>
     );

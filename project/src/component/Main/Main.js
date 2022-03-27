@@ -3,11 +3,19 @@ import BannerSection from '../BannerSection/BannerSection';
 import "./main.css";
 
 const Main = () => {
-    let categories = ["Bakery","Fruit and vegetables","Meat and fish","Drinks","Kitchen","Special nutrition","Baby", "Pharmacy"];
+    let categories = [
+        "Bakery",
+        "Fruit and vegetables",
+        "Meat and fish",
+        "Drinks",
+        "Kitchen",
+        "Special nutrition",
+        "Baby", 
+        "Pharmacy"
+    ];
     return (
         <main className="main">
             <BannerSection categories={categories}/>         
-
 
             <section className="best-selling-section _container">
                 <div className="section__box">
@@ -194,7 +202,7 @@ const Main = () => {
 
                     <div className="customers-reviews__content-box">
                         <button className="customers-reviews__switcher customers-reviews__switcher_left">
-                            <img src="img/buttons/review-switcher-button.png" height="52" width="34" />
+                            <img src="img/buttons/review-switcher-button.png" height="52" width="34" alt="switch"/>
                         </button>
                         <div className="customers-reviews__card-box">
 
@@ -209,7 +217,7 @@ const Main = () => {
                                     Name and Surname
                                 </cite>
                                 <picture className="customers-reviews__content-card-avatar">
-                                    <img src="img/avatars/avatar1.jpg" height="49" width="48" />
+                                    <img src="img/avatars/avatar1.jpg" height="49" width="48" alt="avatar"/>
                                 </picture>
                             </div>
 
@@ -223,7 +231,7 @@ const Main = () => {
                                     Name and Surname
                                 </cite>
                                 <picture className="customers-reviews__content-card-avatar">
-                                    <img src="img/avatars/avatar1.jpg" height="49" width="48" />
+                                    <img src="img/avatars/avatar1.jpg" height="49" width="48" alt="avatar"/>
                                 </picture>
                             </div>
 
@@ -259,7 +267,7 @@ const Main = () => {
 
                         </div>
                         <button className="customers-reviews__switcher customers-reviews__switcher_right">
-                            <img src="img/buttons/review-switcher-button.png" height="52" width="34" />
+                            <img src="img/buttons/review-switcher-button.png" height="52" width="34" alt="switcher"/>
                         </button>
                     </div>
 
@@ -386,7 +394,7 @@ const Main = () => {
                             <div className="blog-article__info-text">
                                 Author
                             </div>
-                            <time datetime="17-06-2020" className="blog-article__info-text">
+                            <time dateTime="17-06-2020" className="blog-article__info-text">
                                 17. 6. 2020
                             </time>
                         </div>
@@ -396,7 +404,7 @@ const Main = () => {
                     <div className="blog-article blog-article__medium-section">
                         <picture className="blog-article__medium-section-picture">
                             <img src="img/blog-section/blog-article__medium-section/article_medium.jpg"
-                                alt="food picture"/>
+                                alt="food"/>
                         </picture>
                         <div className="blog-article__medium-section-tag blog-article__tag">
                             Vegetable
@@ -410,7 +418,7 @@ const Main = () => {
                             <div className="blog-article__info-text">
                                 Author
                             </div>
-                            <time datetime="15-06-2020" className="blog-article__info-text">
+                            <time dateTime="15-06-2020" className="blog-article__info-text">
                                 15. 6. 2020
                             </time>
                         </div>
@@ -431,14 +439,14 @@ const Main = () => {
                                     <div className="blog-article__info-text">
                                         Author
                                     </div>
-                                    <time datetime="14-01-2020" className="blog-article__info-text">
+                                    <time dateTime="14-01-2020" className="blog-article__info-text">
                                         14. 1. 2020
                                     </time>
                                 </div>
                             </div>
                             <picture className="blog-article__small-section-picture">
                                 <img src="img/blog-section/blog-article__small-section/article__small_1.jpg"
-                                    alt="food picture"/>
+                                    alt="food"/>
                             </picture>
                         </div>
 
@@ -454,14 +462,14 @@ const Main = () => {
                                     <div className="blog-article__info-text">
                                         Author
                                     </div>
-                                    <time datetime="14-01-2020" className="blog-article__info-text">
+                                    <time dateTime="14-01-2020" className="blog-article__info-text">
                                         14. 1. 2020
                                     </time>
                                 </div>
                             </div>
                             <picture className="blog-article__small-section-picture">
                                 <img src="img/blog-section/blog-article__small-section/article__small_2.jpg"
-                                    alt="food picture"/>
+                                    alt="food"/>
                             </picture>
                         </div>
 
@@ -476,14 +484,14 @@ const Main = () => {
                                     <div className="blog-article__info-text">
                                         Author
                                     </div>
-                                    <time datetime="14-01-2020" className="blog-article__info-text">
+                                    <time dateTime="14-01-2020" className="blog-article__info-text">
                                         14. 1. 2020
                                     </time>
                                 </div>
                             </div>
                             <picture className="blog-article__small-section-picture">
                                 <img src="img/blog-section/blog-article__small-section/article__small_3.jpg"
-                                    alt="food picture"/>
+                                    alt="food"/>
                             </picture>
                         </div>
 

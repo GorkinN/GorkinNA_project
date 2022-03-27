@@ -4,7 +4,12 @@ import Heading from '../Text/Headings/Heading';
 import "./CategoryMenu.css";
 import Button from '../Button/Button.js';
 import styled from "styled-components";
-
+let CategoriesMenu = styled.div`
+    flex-grow:1;
+    justify-content: space-between;
+    align-items: center;
+    grid-column: span 3;
+`;
 let MenuCaption = styled.div`
     padding-bottom: 16px;
 `;
@@ -14,18 +19,31 @@ let MenuList= styled.ul`
     align-items: left;
     margin-bottom: auto;
 `;
-
-
-
+let ButtonContainer = styled.div`
+    margin-top:auto;
+`;
 const CategoryMenu = ({categoriesMenuArray}) => {
     let [visibleCount, setVisibleCount] = useState(5);
-    let categoryList = categoriesMenuArray.map(item =>(
-        <li className="category-menu-list-item">
-            <StyledAnchor underline href={"#"}>
-                {item}
-            </StyledAnchor>
-        </li>));
-            
+    function setShownItems() {
+        if (visibleCount==5) {setVisibleCount(categoriesMenuArray.length);}
+        else {setVisibleCount(5);}
+
+    };  
+
+    function makeCategoriesList(itemsArray, quantity) {
+        let categoriesList = [];
+        for (let i=0; i<quantity; i++) {
+            categoriesList.push(
+                <li key={itemsArray[i]} className="category-menu-list-item">
+                    <StyledAnchor underline href={"#"}>
+                        {itemsArray[i]}
+                    </StyledAnchor>
+                </li>
+            );
+        }
+        return categoriesList;        
+    };
+                 
     return (
         <div className="category-menu">
             <MenuCaption>
@@ -35,14 +53,15 @@ const CategoryMenu = ({categoriesMenuArray}) => {
             </MenuCaption>
             
             <MenuList>
-                {categoryList}
+                {makeCategoriesList(categoriesMenuArray, visibleCount)}
             </MenuList>
             
-            <Button data-button-name="categories">
-                More categories
-            </Button>
+            <ButtonContainer>
+                <Button data-button-name="categories" onClick={setShownItems}>
+                    More categories
+                </Button>
+            </ButtonContainer>
         </div>
     );
 }
-
 export default CategoryMenu;
