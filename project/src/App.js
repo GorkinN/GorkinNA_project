@@ -3,13 +3,19 @@ import Wrapper from './component/Wrapper/Wrapper';
 import Header from './component/Header/Header';
 import Footer from './component/Footer/Footer';
 import Main from './component/Main/Main';
+import GlobalFonts from "./component/Text/fonts/GlobalFonts.js";
+import {ThemeProvider} from "styled-components";
+import theme from "./component/common/themes/theme";
 function App() {
   return (
-    <Wrapper>
-      <Header/>
-      <Main></Main>
-      <Footer/>
-    </Wrapper>
+    <ThemeProvider theme={theme}>
+      <Wrapper>
+        <GlobalFonts/>
+        <Header/>
+        <Main></Main>
+        <Footer/>
+      </Wrapper>
+    </ThemeProvider>
   );
 }
 

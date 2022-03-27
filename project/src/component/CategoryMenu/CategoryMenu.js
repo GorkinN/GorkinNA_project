@@ -1,28 +1,46 @@
 import React, {useState} from 'react';
-import Hlink from "../Hlink/Hlink";
+import StyledAnchor from "../Hlink/Hlink";
 import Heading from '../Text/Headings/Heading';
 import "./CategoryMenu.css";
+import Button from '../Button/Button.js';
+import styled from "styled-components";
+
+let MenuCaption = styled.div`
+    padding-bottom: 16px;
+`;
+let MenuList= styled.ul`
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-bottom: auto;
+`;
+
+
 
 const CategoryMenu = ({categoriesMenuArray}) => {
     let [visibleCount, setVisibleCount] = useState(5);
     let categoryList = categoriesMenuArray.map(item =>(
         <li className="category-menu-list-item">
-            <Hlink refURL={"#"}>
+            <StyledAnchor underline href={"#"}>
                 {item}
-            </Hlink>
+            </StyledAnchor>
         </li>));
             
     return (
         <div className="category-menu">
-            <Heading headingTagUPPERCASE="H2" className="category-menu-caption">
-                Category menu
-            </Heading>
-            <ul className="category-menu-list">
+            <MenuCaption>
+                <Heading headingTagUPPERCASE="H2">
+                   Category menu
+                </Heading>
+            </MenuCaption>
+            
+            <MenuList>
                 {categoryList}
-            </ul>
-            <button className="category-menu-button btn btn-label" data-button-name="categories">
+            </MenuList>
+            
+            <Button data-button-name="categories">
                 More categories
-            </button>
+            </Button>
         </div>
     );
 }

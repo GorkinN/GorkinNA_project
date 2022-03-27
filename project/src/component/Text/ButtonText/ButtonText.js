@@ -1,5 +1,5 @@
 import React from 'react';
-import "./ButtonText.css";
+import styled from 'styled-components';
 
 const Buttontext = ({children}) => {
     return (

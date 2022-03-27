@@ -1,12 +1,13 @@
-import React from 'react';
-import './Hlink.css';
+import styled from "styled-components";
 
-const Hlink = ({children, refURL}) => {
-    return (
-        <a className='Hlink' href={refURL}>
-            {children}
-        </a>
-    );
-}
+let StyledAnchor=styled.a`
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: ${props => props.theme.hrefFontSize};
+line-height: ${props => props.theme.hrefLineHeight};
+color: ${props => props.theme.secondaryColor};
+text-decoration: ${props => props.underline ? "underline":"none"};
+`;
 
-export default Hlink;
+export default StyledAnchor;
