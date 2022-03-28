@@ -1,51 +1,21 @@
 @import "../common.less";
 .category-menu {
-    //flex-direction: column;
+    display:flex;
+    flex-direction: column;
     flex-grow:1;
     justify-content: space-between;
-    align-items: center;
-    grid-column: span 3;
-
-    &-caption {
-      padding-bottom: 16px;
-    }
-
     &-list {
-      display: flex;
-      flex-direction: column;
-      align-items: left;
-      margin-bottom: 0;
-
       &-item {
         margin-bottom: 12px;
         margin-right: 10px;
         text-decoration: underline;
-
         &:nth-last-child(1) {
-          margin-bottom: 0;
+          margin-bottom: 5px;
           margin-right: 0;
         }
       }
     }
   }
-
-
-@media (max-width:@tablet) {
-  .section {
-    &__menu {
-      grid-column: span 2;
-      &-caption {
-        margin: 5px;
-      }
-      &-list {
-        margin: 5px;
-      }
-      &-button {
-        margin: 5px;
-      }
-    }
-  }
-}
 
 @media (max-width:@small-phone) {
   .category-menu {

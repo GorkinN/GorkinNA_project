@@ -4,12 +4,7 @@ import Heading from '../Text/Headings/Heading';
 import "./CategoryMenu.css";
 import Button from '../Button/Button.js';
 import styled from "styled-components";
-let CategoriesMenu = styled.div`
-    flex-grow:1;
-    justify-content: space-between;
-    align-items: center;
-    grid-column: span 3;
-`;
+
 let MenuCaption = styled.div`
     padding-bottom: 16px;
 `;
@@ -25,11 +20,9 @@ let ButtonContainer = styled.div`
 const CategoryMenu = ({categoriesMenuArray}) => {
     let [visibleCount, setVisibleCount] = useState(5);
     function setShownItems() {
-        if (visibleCount==5) {setVisibleCount(categoriesMenuArray.length);}
+        if (visibleCount===5) {setVisibleCount(categoriesMenuArray.length);}
         else {setVisibleCount(5);}
-
     };  
-
     function makeCategoriesList(itemsArray, quantity) {
         let categoriesList = [];
         for (let i=0; i<quantity; i++) {
