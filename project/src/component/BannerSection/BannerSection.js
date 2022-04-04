@@ -1,6 +1,7 @@
 import React from 'react';
 import CategoryMenu from '../CategoryMenu/CategoryMenu';
 import "./BannerSection.css";
+import {Banner} from "../Banner/Banner.js";
 
 
 const BannerSection = ({categories}) => {
@@ -10,22 +11,8 @@ const BannerSection = ({categories}) => {
                     <div className="banner-section__menu section__menu">
                         <CategoryMenu categoriesMenuArray={categories}></CategoryMenu>
                     </div>
-
-
-                    <div className="banner-section__banner">
-                        <div className="banner-section__banner-subfocus">Banner subfocus</div>
-                        <div className="banner-section__banner-heading">Space for heading</div>
-                        <button className="banner-section__banner-button btn-label-green btn-banner">Read recepies</button>
-                    </div>
-
-
-                    <div className="banner-section__banner">
-                        <div className="banner-section__banner-subfocus">Banner subfocus</div>
-                        <div className="banner-section__banner-heading">Space for heading</div>
-                        <button className="banner-section__banner-button btn-label-green btn-banner">Read recepies</button>
-                    </div>
-
-
+                   <Banner subfocusText={"hello"} headingText={"azaza"}/>
+                   <Banner subfocusText={"hello"} headingText={"azaza"}/>
                 </div>
             </section>
     );

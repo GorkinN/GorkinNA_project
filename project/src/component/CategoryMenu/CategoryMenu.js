@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import StyledAnchor from "../Hlink/Hlink";
 import Heading from '../Text/Headings/Heading';
 import "./CategoryMenu.css";
-import Button from '../Button/Button.js';
+import {Button} from '../Button/Button.js';
 import styled from "styled-components";
 
 let MenuCaption = styled.div`
@@ -20,7 +20,9 @@ let ButtonContainer = styled.div`
 const CategoryMenu = ({categoriesMenuArray}) => {
     let [visibleCount, setVisibleCount] = useState(5);
     function setShownItems() {
-        if (visibleCount===5) {setVisibleCount(categoriesMenuArray.length);}
+        if (visibleCount===5) {
+            setVisibleCount(categoriesMenuArray.length);
+        }
         else {setVisibleCount(5);}
     };  
     function makeCategoriesList(itemsArray, quantity) {
@@ -40,7 +42,7 @@ const CategoryMenu = ({categoriesMenuArray}) => {
     return (
         <div className="category-menu">
             <MenuCaption>
-                <Heading headingTagUPPERCASE="H2">
+                <Heading headingTagUPPERCASE={"H2"}>
                    Category menu
                 </Heading>
             </MenuCaption>

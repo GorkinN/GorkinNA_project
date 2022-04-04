@@ -3,7 +3,8 @@ import "./Heading.css";
 //there are styles only for h1-h3 headings. Add mpore styles if you need
 const Heading = ({headingTagUPPERCASE, children}) => {
     let content = {};
-    switch (headingTagUPPERCASE) {
+    let tagName = headingTagUPPERCASE.toUpperCase();
+    switch (tagName) {
         case "H1" :
             content = <h1 className='caption_h1'>{children}</h1>;
             break;
