@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import bannerBackground from "./banner-background.png";
 import {TransparentButton} from "../Button/Button";
+import { StyleSheet, View } from 'react-native';
 let BannerContainer=styled.div`
 flex-grow: 1;
 display: flex;
@@ -32,12 +33,23 @@ let BannerHeading= styled.div`
     line-height: 33px;
     color: ${props=>props.theme.baseColor};
 `;
+let buttonForBanner = StyleSheet.create({
+    position: {
+       alignSelf: 'left',
+       marginTop: 'auto',
+       marginRight: 'auto'
+    }
+});
 export const Banner = ({subfocusText, headingText}) => {
     return (
         <BannerContainer>
             <BannerSubfocus>{subfocusText}</BannerSubfocus>
             <BannerHeading>{headingText}</BannerHeading>
-            <TransparentButton>Read recepies</TransparentButton>
+            <View style={buttonForBanner.position}>
+                <TransparentButton >
+                    Read recepies
+                </TransparentButton>
+            </View>
         </BannerContainer>
     );
 }
