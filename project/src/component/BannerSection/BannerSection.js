@@ -11,8 +11,8 @@ const BannerSection = ({categories}) => {
                     <div className="banner-section__menu section__menu">
                         <CategoryMenu categoriesMenuArray={categories}></CategoryMenu>
                     </div>
-                   <Banner subfocusText={"hello"} headingText={"azaza"}/>
-                   <Banner subfocusText={"hello"} headingText={"azaza"}/>
+                   <Banner subfocusText={"Banner subfocus"} headingText={"Space for heading"}/>
+                   <Banner subfocusText={"Banner subfocus"} headingText={"Space for heading"}/>
                 </div>
             </section>
     );

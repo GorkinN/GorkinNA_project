@@ -19,11 +19,10 @@ let ButtonContainer = styled.div`
 `;
 const CategoryMenu = ({categoriesMenuArray}) => {
     let [visibleCount, setVisibleCount] = useState(5);
-    function setShownItems() {
-        if (visibleCount===5) {
-            setVisibleCount(categoriesMenuArray.length);
-        }
-        else {setVisibleCount(5);}
+    let [buttonText, buttonTextChange] = useState('More');
+    function setShownCategories() {
+        (visibleCount===5)?setVisibleCount(categoriesMenuArray.length):setVisibleCount(5);
+        (buttonText==="More")?buttonTextChange("Less") :buttonTextChange("More");    
     };  
     function makeCategoriesList(itemsArray, quantity) {
         let categoriesList = [];
@@ -52,8 +51,8 @@ const CategoryMenu = ({categoriesMenuArray}) => {
             </MenuList>
             
             <ButtonContainer>
-                <Button data-button-name="categories" onClick={setShownItems}>
-                    More categories
+                <Button data-button-name="categories" onClick={setShownCategories}>
+                    {buttonText} categories
                 </Button>
             </ButtonContainer>
         </div>
