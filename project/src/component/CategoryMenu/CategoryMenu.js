@@ -13,7 +13,11 @@ let MenuList= styled.ul`
     flex-direction: column;
     align-items: left;
     margin-bottom: auto;
-`;
+    @media (max-width:${props=>props.theme.tablet}) {
+        flex-direction: row;
+        flex-wrap:wrap;
+    }
+  `;
 let ButtonContainer = styled.div`
     margin-top:auto;
 `;

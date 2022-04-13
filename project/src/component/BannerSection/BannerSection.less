@@ -1,94 +1,49 @@
-@import "../common.less";
-/*banner-section-----------------------------------------------------------------------------------*/
-@banner-section-height: 280px;
-
+//@import "../common.less";
 .banner-section {
   padding-top: 64px;
   padding-bottom: 64px;
-
   &__box {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
-
   &__menu {
     min-width: 266px;
   }
-
-  &__banner {
-  
-
-    &-subfocus {
-      
-    }
-
-    &-heading {
-      font-family: Poppins, sans-serif;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 22px;
-      line-height: 33px;
-      color: @base-font-color;
-    }
-
-    &-button {
-      align-self: start;
-      margin-top: auto;
-    }
-  }
 }
-
 @media (max-width:1200px) {
   .banner-section {
     padding-top: 30px;
     padding-bottom: 30px;
-
-    &__banner {
-      max-width: 380px;
-    }
-
     &__menu {
       min-width: 200px;
     }
   }
 }
-
 @media (max-width:992px) {
   .banner-section__box {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
-
   .banner-section {
     padding-top: 20px;
     padding-bottom: 20px;
-
-    &__banner {
-      max-width: none;
-    }
-
     &__menu {
       grid-column: span 2;
     }
   }
 }
-
 @media (max-width:767px) {
   .banner-section__banner {
     padding: 20px 16px 16px 16px;
   }
 }
-
 @media (max-width:650px) {
   .banner-section__box {
     grid-template-columns: 1fr;
   }
-
   .banner-section__menu {
     grid-column: span 1;
   }
 }
-
-@media (max-width:479px) {}

@@ -15,6 +15,12 @@ padding: 48px 33px 32px 33px;
 border-radius: 12px;
 background: #F4F8EC url(${bannerBackground}) no-repeat;
 background-size: cover;
+@media (max-width:${props=>props.theme.desktop}) {
+    max-width: 380px;
+}
+@media (max-width:${props=>props.theme.tablet}) {
+    max-width: none;
+}
 `;
 let BannerSubfocus = styled.div`
     margin-bottom: 8px;
@@ -35,7 +41,6 @@ let BannerHeading= styled.div`
 `;
 let buttonForBanner = StyleSheet.create({
     position: {
-       alignSelf: 'left',
        marginTop: 'auto',
        marginRight: 'auto'
     }
