@@ -21,11 +21,16 @@ let MenuList= styled.ul`
 let ButtonContainer = styled.div`
     margin-top:auto;
 `;
-const CategoryMenu = ({categoriesMenuArray}) => {
-    let [visibleCount, setVisibleCount] = useState(5);
+const CategoryMenu = ({
+    categoriesMenuArray, 
+    initialVisibleCount=5, 
+    itemsName="categories",
+    titleText="Category menu"
+}) => {
+    let [visibleCount, setVisibleCount] = useState(initialVisibleCount);
     let [buttonText, buttonTextChange] = useState('More');
     function setShownCategories() {
-        (visibleCount===5)?setVisibleCount(categoriesMenuArray.length):setVisibleCount(5);
+        (visibleCount===initialVisibleCount)?setVisibleCount(categoriesMenuArray.length):setVisibleCount(initialVisibleCount);
         (buttonText==="More")?buttonTextChange("Less") :buttonTextChange("More");    
     };  
     function makeCategoriesList(itemsArray, quantity) {
@@ -46,7 +51,7 @@ const CategoryMenu = ({categoriesMenuArray}) => {
         <div className="category-menu">
             <MenuCaption>
                 <Heading headingTagUPPERCASE={"H2"}>
-                   Category menu
+                   {titleText}
                 </Heading>
             </MenuCaption>
             
@@ -56,7 +61,7 @@ const CategoryMenu = ({categoriesMenuArray}) => {
             
             <ButtonContainer>
                 <Button data-button-name="categories" onClick={setShownCategories}>
-                    {buttonText} categories
+                    {buttonText} {itemsName}
                 </Button>
             </ButtonContainer>
         </div>

@@ -4,15 +4,19 @@ import "./BannerSection.css";
 import {Banner} from "../Banner/Banner.js";
 
 
-const BannerSection = ({categories}) => {
+const BannerSection = ({
+    categories, 
+    subfocus="Banner subfocus", 
+    heading='Space for heading'
+}) => {
     return (
         <section className="banner-section _container">
                 <div className="banner-section__box">
                     <div className="banner-section__menu section__menu">
                         <CategoryMenu categoriesMenuArray={categories}></CategoryMenu>
                     </div>
-                   <Banner subfocusText={"Banner subfocus"} headingText={"Space for heading"}/>
-                   <Banner subfocusText={"Banner subfocus"} headingText={"Space for heading"}/>
+                   <Banner subfocusText={subfocus} headingText={heading}/>
+                   <Banner subfocusText={subfocus} headingText={heading}/>
                 </div>
             </section>
     );

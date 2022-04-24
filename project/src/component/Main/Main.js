@@ -1,5 +1,6 @@
 import React from 'react';
 import BannerSection from '../BannerSection/BannerSection';
+import { ProductsSection } from '../ProductsSection/ProductsSection';
 import "./main.css";
 
 const Main = () => {
@@ -13,9 +14,20 @@ const Main = () => {
         "Baby", 
         "Pharmacy"
     ];
+    let products =[
+        'Kitchen',
+        'Meat and fish',
+        'Special nutrition',
+        'Pharmacy',
+        'Baby',
+        'Special nutrition',
+        'Baby',
+        'Pharmacy'
+    ];
     return (
         <main className="main">
-            <BannerSection categories={categories}/>         
+            <BannerSection categories={categories}/>      
+            <ProductsSection productsList={products}></ProductsSection>  
 
             <section className="best-selling-section _container">
                 <div className="section__box">
