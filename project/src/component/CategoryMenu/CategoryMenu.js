@@ -19,7 +19,10 @@ let MenuList= styled.ul`
     }
   `;
 let ButtonContainer = styled.div`
-    margin-top:auto;
+    margin-top:48px;
+    @media (max-width:${props=>props.theme.tablet}) {
+        margin-top:10px;
+    }
 `;
 const CategoryMenu = ({
     categoriesMenuArray, 
@@ -31,7 +34,7 @@ const CategoryMenu = ({
     let [buttonText, buttonTextChange] = useState('More');
     function setShownCategories() {
         (visibleCount===initialVisibleCount)?setVisibleCount(categoriesMenuArray.length):setVisibleCount(initialVisibleCount);
-        (buttonText==="More")?buttonTextChange("Less") :buttonTextChange("More");    
+        (buttonText==="More")?buttonTextChange("Less") : buttonTextChange("More");    
     };  
     function makeCategoriesList(itemsArray, quantity) {
         let categoriesList = [];

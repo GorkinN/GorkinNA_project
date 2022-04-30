@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import CategoryMenu from "../CategoryMenu/CategoryMenu";
 import {Container} from "../common/Container";
+import {ContentCard} from '../ContentCard/ContentCard';
 let ProductsSectionContainer = styled.section`
     padding-top: 64px;
     padding-bottom: 64px;
@@ -14,6 +15,9 @@ let ProductsSectionContainer = styled.section`
     padding-bottom: 20px;
   }
   `;
+let ConentCardsBox = styled.div`
+
+`;
   
   export const ProductsSection = ({productsList}) => {
       return (
