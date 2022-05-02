@@ -1,5 +1,6 @@
 let theme = {
 desktop:`1200px`,
+laptop:'1025px',
 tablet:`992px`,
 phone:`767px`,
 smallPhone:`479px`,
