@@ -4,7 +4,15 @@ import Heading from '../Text/Headings/Heading';
 import "./CategoryMenu.css";
 import {Button} from '../Button/Button.js';
 import styled from "styled-components";
-
+let CategoryMenuBox = styled.div`
+display:flex;
+flex-direction: column;
+@media (max-width:${props => props.theme.smallPhone}) {
+      flex-direction: column;
+      align-items: flex-start;
+      grid-column: span 1;
+    }
+`;
 let MenuCaption = styled.div`
     padding-bottom: 16px;
 `;
@@ -12,7 +20,6 @@ let MenuList= styled.ul`
     display: flex;
     flex-direction: column;
     align-items: left;
-    margin-bottom: auto;
     @media (max-width:${props=>props.theme.tablet}) {
         flex-direction: row;
         flex-wrap:wrap;
@@ -28,7 +35,7 @@ const CategoryMenu = ({
     categoriesMenuArray, 
     initialVisibleCount=5, 
     itemsName="categories",
-    titleText="Category menu"
+    titleText="Category menu",
 }) => {
     let [visibleCount, setVisibleCount] = useState(initialVisibleCount);
     let [buttonText, buttonTextChange] = useState('More');
@@ -51,7 +58,7 @@ const CategoryMenu = ({
     };
                  
     return (
-        <div className="category-menu">
+        <CategoryMenuBox>
             <MenuCaption>
                 <Heading headingTagUPPERCASE={"H2"}>
                    {titleText}
@@ -67,7 +74,7 @@ const CategoryMenu = ({
                     {buttonText} {itemsName}
                 </Button>
             </ButtonContainer>
-        </div>
+        </CategoryMenuBox>
     );
 }
 export default CategoryMenu;

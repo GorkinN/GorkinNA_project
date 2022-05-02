@@ -4,6 +4,8 @@ import CategoryMenu from "../CategoryMenu/CategoryMenu";
 import {Container} from "../common/Container";
 import {ContentCard} from '../ContentCard/ContentCard';
 let ProductsSectionContainer = styled.section`
+display:flex;
+justify-content:space-between;
     padding-top: 64px;
     padding-bottom: 64px;
  @media (max-width:${props=>props.theme.desktop}) {
@@ -16,7 +18,8 @@ let ProductsSectionContainer = styled.section`
   }
   `;
 let ConentCardsBox = styled.div`
-
+display:flex;
+justify-content:space-between;
 `;
   
   export const ProductsSection = ({productsList}) => {
@@ -28,6 +31,11 @@ let ConentCardsBox = styled.div`
                 itemsName={`products`}
                 titleText={`Best selling products`}
                 />
+                <ConentCardsBox>
+                  <ContentCard/>
+                  <ContentCard/>
+                  <ContentCard/>
+                </ConentCardsBox>
             </ProductsSectionContainer>
           </Container>
       );

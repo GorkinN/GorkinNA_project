@@ -26,8 +26,6 @@
 .category-menu {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  justify-content: space-between;
 }
 .category-menu-list-item {
   margin-bottom: 12px;

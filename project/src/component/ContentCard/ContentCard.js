@@ -6,11 +6,16 @@ position: relative;
 display:flex;
 flex-direction:column;
 box-sizing: border-box;
+height:323px;
+margin-left:32px;
 padding: 16px;
 border: 1px solid #D1D1D1;
 border-radius: 12px;
 @media (max-width:${props=> props.theme.tablet}) {
     padding:5px;
+}
+:first-child {
+    margin-left:0;
 }
 `;
 let CardPicture = styled.div`
@@ -58,7 +63,7 @@ align-items:center;
 let CardPriceBox = styled.div`
 display:flex;
 flex-direction:column;
-justify-content:space-between;
+justify-content:center;
 `;
 let CardPrice = styled.div`
 font-family: 'Poppins';
@@ -84,11 +89,15 @@ export const ContentCard = ({
     title="Product Title",
     description="Space for a small product description",
     price=99.99}) => {
+
+    let saleText = sale ? `-${(sale)}%` : "";
+    let prevPrice = sale ? (price*sale) : "";
+
     return (
         <Card>
             <CardPicture url={picture}>
                 <CardSale>
-                    {`-${(sale || "")}%`}
+                    {saleText}
                 </CardSale>
             </CardPicture>
             <CardTitle>
@@ -98,15 +107,15 @@ export const ContentCard = ({
                 {description}
             </CardDescription>
             <BuyingBox>
-                <div>
+                <CardPriceBox>
                     <CardPrice>
                         {`${price} USD`}
                     </CardPrice>
                     <br/>
                     <CardPriceOff>
-                        {`${price*sale}`}
+                        {prevPrice}
                     </CardPriceOff>
-                </div>
+                </CardPriceBox>
                 <TransparentButton>Buy now</TransparentButton>
 
             </BuyingBox>
