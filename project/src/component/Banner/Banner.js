@@ -18,7 +18,7 @@ background-size: cover;
 @media (max-width:${props=>props.theme.desktop}) {
     max-width: 380px;
 }
-@media (max-width:${props=>props.theme.tablet}) {
+@media (max-width:${props=>props.theme.laptop}) {
     max-width: none;
 }
 `;

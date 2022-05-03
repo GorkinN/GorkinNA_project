@@ -15,19 +15,23 @@ flex-direction: column;
 `;
 let MenuCaption = styled.div`
     padding-bottom: 16px;
+    @media (max-width:${props=>props.theme.laptop}) {
+        padding-bottom: 8px;
+    }
 `;
 let MenuList= styled.ul`
     display: flex;
+    flex-wrap:wrap;
     flex-direction: column;
     align-items: left;
-    @media (max-width:${props=>props.theme.tablet}) {
+    @media (max-width:${props=>props.theme.laptop}) {
         flex-direction: row;
         flex-wrap:wrap;
     }
   `;
 let ButtonContainer = styled.div`
     margin-top:48px;
-    @media (max-width:${props=>props.theme.tablet}) {
+    @media (max-width:${props=>props.theme.laptop}) {
         margin-top:10px;
     }
 `;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import styled from "styled-components";
 import {TransparentButton} from "../Button/Button";
 let Card = styled.div`
@@ -6,16 +7,12 @@ position: relative;
 display:flex;
 flex-direction:column;
 box-sizing: border-box;
-height:323px;
-margin-left:32px;
+min-height:323px;
 padding: 16px;
 border: 1px solid #D1D1D1;
 border-radius: 12px;
 @media (max-width:${props=> props.theme.tablet}) {
     padding:5px;
-}
-:first-child {
-    margin-left:0;
 }
 `;
 let CardPicture = styled.div`
@@ -25,6 +22,7 @@ height: 100%;
 overflow: hidden;
 margin-bottom: 16px;
 background: url('${props => props.url}') no-repeat;
+background-color:#F9F9F9;
 background-position: 50% 50%;
 background-clip:content-box;
 background-size:cover;
@@ -107,16 +105,19 @@ export const ContentCard = ({
                 {description}
             </CardDescription>
             <BuyingBox>
+
                 <CardPriceBox>
                     <CardPrice>
                         {`${price} USD`}
                     </CardPrice>
-                    <br/>
                     <CardPriceOff>
                         {prevPrice}
                     </CardPriceOff>
                 </CardPriceBox>
-                <TransparentButton>Buy now</TransparentButton>
+
+                <View>
+                    <TransparentButton>Buy now</TransparentButton>
+                </View>
 
             </BuyingBox>
         </Card>

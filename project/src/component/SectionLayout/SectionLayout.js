@@ -14,13 +14,13 @@ padding:64px 0;
 `;
 let LeftChild=styled.div`
 ${props=>props.colSpan && `grid-column:span ${props.colSpan};`}
-@media (max-width:${props => props.theme.tablet}){
+@media (max-width:${props => props.theme.laptop}){
     grid-column: 1/-1;  
 }
 `;
 let RightChild=styled.div`
 ${props=>props.colSpan && `grid-column:span ${props.colSpan};`}
-@media (max-width:${props => props.theme.tablet}){
+@media (max-width:${props => props.theme.laptop}){
     grid-column: 1/-1;  
     padding-top:10px;
 }
