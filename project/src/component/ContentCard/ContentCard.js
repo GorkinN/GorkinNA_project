@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
 import styled from "styled-components";
-import {TransparentButton} from "../Button/Button";
+import {GreenButton} from "../Button/Button";
 let Card = styled.div`
 position: relative;
 display:flex;
@@ -12,7 +11,7 @@ padding: 16px;
 border: 1px solid #D1D1D1;
 border-radius: 12px;
 @media (max-width:${props=> props.theme.tablet}) {
-    padding:5px;
+    padding:10px;
 }
 `;
 let CardPicture = styled.div`
@@ -52,16 +51,26 @@ font-weight: 400;
 font-size: 12px;
 line-height: 16px;
 color: #575757;
+margin-bottom:16px;
+@media(max-width:${props=>props.theme.tablet}){
+    margin-bottom:8px;
+}
 `;
 let BuyingBox = styled.div`
 display:flex;
 justify-content:space-between;
 align-items:center;
+@media (max-width:${props=> props.theme.tablet}) {
+    justify-content:flex-start;
+}
 `;
 let CardPriceBox = styled.div`
 display:flex;
 flex-direction:column;
 justify-content:center;
+@media (max-width:${props=> props.theme.tablet}) {
+    margin-right:26px;
+}
 `;
 let CardPrice = styled.div`
 font-family: 'Poppins';
@@ -86,39 +95,41 @@ export const ContentCard = ({
     sale=0, 
     title="Product Title",
     description="Space for a small product description",
-    price=99.99}) => {
+    price=0}) => {
 
     let saleText = sale ? `-${(sale)}%` : "";
     let prevPrice = sale ? (price*sale) : "";
+    let priceText = price===0 ? `FREE` : `${price} USD`;
 
     return (
         <Card>
+
             <CardPicture url={picture}>
                 <CardSale>
                     {saleText}
                 </CardSale>
             </CardPicture>
+
             <CardTitle>
                 {title}
             </CardTitle>
+
             <CardDescription>
                 {description}
             </CardDescription>
+
             <BuyingBox>
 
                 <CardPriceBox>
                     <CardPrice>
-                        {`${price} USD`}
+                        {priceText}
                     </CardPrice>
                     <CardPriceOff>
                         {prevPrice}
                     </CardPriceOff>
                 </CardPriceBox>
 
-                <View>
-                    <TransparentButton>Buy now</TransparentButton>
-                </View>
-
+                    <GreenButton>Buy now</GreenButton>
             </BuyingBox>
         </Card>
     );

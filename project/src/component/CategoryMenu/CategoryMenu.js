@@ -7,6 +7,10 @@ import styled from "styled-components";
 let CategoryMenuBox = styled.div`
 display:flex;
 flex-direction: column;
+width:266px;
+@media (max-width:${props => props.theme.laptop}) {
+    width:auto;
+  }
 @media (max-width:${props => props.theme.smallPhone}) {
       flex-direction: column;
       align-items: flex-start;

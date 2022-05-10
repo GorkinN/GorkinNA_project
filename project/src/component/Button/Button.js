@@ -37,7 +37,15 @@ const TransparentButtonStyled=styled(StyledButton)`
             background: url("${greenArrow}") no-repeat;
         }
 `;
-
+const GreenButtonStyled=styled(StyledButton)`
+    color:white;
+    border: 2px solid #46760A;
+    padding:6.5px 12px;
+    background:${props => props.theme.secondaryColor};
+    &:after {
+        background-image:none;
+    }
+`;
 export const Button = ({children, onClick}) => {
     return (
         <StyledButton onClick={onClick}>
@@ -52,5 +60,13 @@ export const TransparentButton = ({children, onClick}) => {
         <TransparentButtonStyled onClick={onClick}>
             {children} 
         </TransparentButtonStyled>
+    );
+}
+
+export const GreenButton = ({children})=>{
+    return (
+        <GreenButtonStyled>
+            {children}
+        </GreenButtonStyled>
     );
 }

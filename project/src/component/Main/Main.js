@@ -1,6 +1,7 @@
 import React from 'react';
 import BannerSection from '../BannerSection/BannerSection';
-import { ProductsSection } from '../ProductsSection/ProductsSection';
+import { BestSellingSection } from '../BestSellingSection/BestSellingSection';
+import { ListLayoutItem } from '../ListLayoutItem/ListLayoutItem';
 import "./main.css";
 
 const Main = () => {
@@ -27,7 +28,8 @@ const Main = () => {
     return (
         <main className="main">
             <BannerSection categories={categories}/>      
-            <ProductsSection productsList={products}></ProductsSection>  
+            <BestSellingSection productsList={products}></BestSellingSection>  
+            <ListLayoutItem></ListLayoutItem>
 
             <section className="best-selling-section _container">
                 <div className="section__box">

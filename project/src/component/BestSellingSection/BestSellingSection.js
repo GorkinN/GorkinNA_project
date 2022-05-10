@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
 import CategoryMenu from "../CategoryMenu/CategoryMenu";
-import {Container} from "../common/Container";
 import {ContentCard} from '../ContentCard/ContentCard';
 import {SectionLayout} from "../SectionLayout/SectionLayout";
 
@@ -9,17 +8,21 @@ let ContentCardsBox = styled.div`
 display:grid;
 grid-template-columns:repeat(3, 1fr);
 grid-gap:32px;
+@media (max-width:${props=>props.theme.laptop}) {
+  grid-gap:20px;
+}
 @media (max-width:${props=>props.theme.tablet}) {
   grid-template-columns:repeat(2, 1fr);
+  grid-gap:10px;
 }
-@media (max-width:${props=>props.theme.phone}) {
+@media (max-width:${props=>props.theme.smallPhone}) {
   grid-template-columns:repeat(1, 1fr);
 }
 `;
   
-  export const ProductsSection = ({productsList}) => {
+  export const BestSellingSection = ({productsList}) => {
       return (
-          <Container>
+          
             <SectionLayout
             left={
               <CategoryMenu 
@@ -36,7 +39,7 @@ grid-gap:32px;
               </ContentCardsBox>
             }>
              </SectionLayout>
-          </Container>
+          
       );
   }
   
