@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import "./Heading.css";
-//there are styles only for h1-h3 headings. Add mpore styles if you need
+//there are styles for h1-h3 headings. 
 const Heading = ({headingTagUPPERCASE, children}) => {
     let content = {};
     let tagName = headingTagUPPERCASE.toUpperCase();

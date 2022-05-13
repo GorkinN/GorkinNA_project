@@ -90,12 +90,15 @@ text-decoration-line: line-through;
 color: #A9A9A9;
 `;
 
-export const ContentCard = ({
+export const ContentCardWIde = ({
     picture="./image/vegs.jpg", 
     sale=0, 
     title="Product Title",
     description="Space for a small product description",
-    price=0}) => {
+    price=0,
+    freshness="Extra fresh",
+    delivery="Europe",
+    farm="Grocery Farm Fields"}) => {
 
     let saleText = sale ? `-${(sale)}%` : "";
     let prevPrice = sale ? (price*sale) : "";
