@@ -18,15 +18,25 @@ border-radius: 12px;
 @media (max-width:${props=> props.theme.tablet}) {
     margin-bottom:16px;
 }
+@media (max-width:${props=> props.theme.smallPhone}) {
+    flex-direction:column;
+    margin-bottom:16px;
+    padding-right:0px;
+    padding-bottom:10px;
+}
 :nth-last-child(1) {
     margin-bottom:0;
 }
 `;
 const Container = styled.div`
 display:flex;
+flex-wrap:wrap;
 flex-grow:1;
 align-items:flex-start;
 justify-content:space-between;
+@media (max-width:${props=> props.theme.smallPhone}) {
+    padding-left:10px;
+}
 `;
 const CardPictureContainerWide=styled(CardPictureContainer)`
 max-width:268px;
@@ -34,11 +44,20 @@ height:280px;
 margin-bottom:0;
 padding:0;
 box-shadow: none;
+@media (max-width:${props=> props.theme.smallPhone}) {
+    height:auto;
+    max-width:none;
+    margin-bottom:10px;
+}
 `;
 const CardInfo = styled.div`
 display:flex;
 flex-direction:column;
 margin-left:32px;
+@media (max-width:${props=> props.theme.smallPhone}) {
+    margin-left:0;
+    margin-bottom:10px;
+}
 `;
 const SecondaryInfoContainer = styled.div`
 display:grid;
@@ -50,11 +69,21 @@ grid-gap:12px 0px;
 const BuyingBox=styled.div`
 display:flex;
 flex-direction:column;
-align-self: flex-start;
 margin-left:auto;
+@media (max-width:${props=> props.theme.smallPhone}) {
+    flex-direction:row;
+    margin-left:0;
+    flex-grow:1;
+    padding:10px;
+    justify-content:space-between;
+}
 `;
 const CardPriceBox=styled.div`
-margin-bottom:20px`;
+margin-bottom:20px;
+@media (max-width:${props=> props.theme.smallPhone}) {
+    margin:0;
+}
+`;
 
 export const ContentCardWide = ({
     pictureSrc = prodPicDefault, 
