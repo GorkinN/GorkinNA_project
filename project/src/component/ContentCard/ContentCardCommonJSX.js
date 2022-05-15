@@ -75,3 +75,11 @@ line-height: 18px;
 text-decoration-line: line-through;
 color: #A9A9A9;
 `;
+export const Infotext = styled.p`
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 19px;
+color: #A9A9A9;
+`;
