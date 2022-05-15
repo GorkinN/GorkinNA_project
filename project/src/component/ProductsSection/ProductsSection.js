@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import {SectionLayout} from "../SectionLayout/SectionLayout";
 import { ContentCard } from '../ContentCard/ContentCard';
-import { ContentCardWIde } from '../ContentCard/ContentCardWIde';
+import { ContentCardWide } from '../ContentCard/ContentCardWide';
 import CategoryMenu from "../CategoryMenu/CategoryMenu";
 
 const GridLayout = styled.div`
@@ -40,9 +40,9 @@ export const ProductsSection = ({productsList}) => {
         }
         rigth={
           <ListLayout>
-              <ContentCardWIde/>
-              <ContentCardWIde/>
-              <ContentCardWIde/>
+              <ContentCardWide/>
+              <ContentCardWide/>
+              <ContentCardWide/>
           </ListLayout>
         }>
          </SectionLayout>

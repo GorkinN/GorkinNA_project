@@ -45,6 +45,9 @@ const GreenButtonStyled=styled(StyledButton)`
     &:after {
         background-image:none;
     }
+    &:active {
+        filter:saturate(180%);
+    }
 `;
 export const Button = ({children, onClick}) => {
     return (
