@@ -1,10 +1,14 @@
 import React from 'react';
+import {useState} from 'react';
 import BannerSection from '../BannerSection/BannerSection';
 import { BestSellingSection } from '../BestSellingSection/BestSellingSection';
 import { ProductsSection } from '../ProductsSection/ProductsSection';
+import { LayoutButtons } from '../common/LayoutButtons/LayoutButtons';
 import "./main.css";
 
 const Main = () => {
+    let [isGridLayout, changeLayout] = useState(true);
+    
     let categories = [
         "Bakery",
         "Fruit and vegetables",
@@ -27,6 +31,7 @@ const Main = () => {
     ];
     return (
         <main className="main">
+            <LayoutButtons isGrid={isGridLayout} onClick={changeLayout}/>
             <BannerSection categories={categories}/>      
             <BestSellingSection productsList={products}></BestSellingSection>  
             <ProductsSection productsList={products}></ProductsSection>

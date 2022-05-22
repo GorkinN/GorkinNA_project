@@ -35,7 +35,7 @@ flex-grow:1;
 align-items:flex-start;
 justify-content:space-between;
 @media (max-width:${props=> props.theme.smallPhone}) {
-    padding-left:10px;
+    padding:10px;
 }
 `;
 const CardPictureContainerWide=styled(CardPictureContainer)`
@@ -74,7 +74,6 @@ margin-left:auto;
     flex-direction:row;
     margin-left:0;
     flex-grow:1;
-    padding:10px;
     justify-content:space-between;
 }
 `;
