@@ -17,7 +17,7 @@ font-style: normal;
 font-weight: 400;
 font-size: 12px;
 line-height: 16px;
-color:${props => props.isGrid? "#A9A9A9":"#151515"};
+color:${props => props.isGrid? "#151515":"#A9A9A9"};
 margin-right:32px;
 padding:5px;
 :nth-last-child(1) {
@@ -38,12 +38,12 @@ padding:5px;
 }
 `;
 
-export const LayoutButtons = ({isGrid=true}) => {
+export const LayoutButtons = ({isGrid=true, onClick}) => {
             
     return (
-        <LayoutButtonsStyled>
-            <LayoutChangeButtonStyled isGrid={isGrid} url={gridIcon} grid>Grid</LayoutChangeButtonStyled>
-            <LayoutChangeButtonStyled isGrid={!isGrid} url={listIcon}>List</LayoutChangeButtonStyled>
+        <LayoutButtonsStyled onClick={onClick}>
+            <LayoutChangeButtonStyled isGrid={isGrid} url={gridIcon} data-layout="grid">Grid</LayoutChangeButtonStyled>
+            <LayoutChangeButtonStyled isGrid={!isGrid} url={listIcon} data-layout="list">List</LayoutChangeButtonStyled>
         </LayoutButtonsStyled>
     );
 }

@@ -7,7 +7,11 @@ import { LayoutButtons } from '../common/LayoutButtons/LayoutButtons';
 import "./main.css";
 
 const Main = () => {
-    let [isGridLayout, changeLayout] = useState(true);
+    let [isGridLayout, setLayout] = useState(true);
+    function layoutControl(e){
+        if (e.target.dataset.layout==="grid" && !isGridLayout) {setLayout(true)} 
+        else if (e.target.dataset.layout==="list" && isGridLayout) {setLayout(false)}           
+    }
     
     let categories = [
         "Bakery",
@@ -31,7 +35,7 @@ const Main = () => {
     ];
     return (
         <main className="main">
-            <LayoutButtons isGrid={isGridLayout} onClick={changeLayout}/>
+            <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>
             <BannerSection categories={categories}/>      
             <BestSellingSection productsList={products}></BestSellingSection>  
             <ProductsSection productsList={products}></ProductsSection>
