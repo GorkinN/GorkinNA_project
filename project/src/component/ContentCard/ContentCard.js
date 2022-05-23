@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {GreenButton} from "../Button/Button";
 import prodPicDefault from './image/vegs.jpg';
 import {CardPictureContainer, CardPicture, CardSale, CardTitle, CardDescription, CardPrice, CardPriceOff} from "./ContentCardCommonJSX";
-let Card = styled.div`
+let Card = styled.li`
 position: relative;
 display:flex;
 flex-direction:column;
@@ -33,15 +33,16 @@ justify-content:center;
 }
 `;
 
-export const ContentCard = ({
-    pictureSrc=prodPicDefault, 
-    sale=50, 
-    title="Product Title",
-    description="Space for a small product description",
-    price=100}) => {
-
+export const ContentCard = (product) => {
+    let {
+        salePercent:sale = 50, 
+        name: title = "Product Title",
+        description = "Space for a small product description",
+        priceUSD: price = 100} = product;
+        
+    let pictureSrc = prodPicDefault;
     let saleText = sale ? ` -${(sale)}% ` : "";
-    let prevPrice = sale ? (price/(sale/100)) : "";
+    let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
 
     return (

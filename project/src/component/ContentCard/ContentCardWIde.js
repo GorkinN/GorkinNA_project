@@ -6,7 +6,7 @@ import {CardPictureContainer, CardPicture, CardSale, CardTitle, CardDescription,
 import {RatingBox} from "../RatingBox/RatingBox";
 import prodPicDefault from './image/vegs.jpg';
 
-let CardWide = styled.div`
+let CardWide = styled.li`
 position: relative;
 display:flex;
 align-items:center;
@@ -64,6 +64,7 @@ display:grid;
 grid-template-columns:repeat(2, 1fr);
 margin-top:12px;
 grid-gap:12px 0px;
+min-width:200px;
 `;
 
 const BuyingBox=styled.div`
@@ -84,20 +85,24 @@ margin-bottom:20px;
 }
 `;
 
-export const ContentCardWide = ({
-    pictureSrc = prodPicDefault, 
-    sale = 50, 
-    title = "Product Title",
-    description = "Space for a small product description",
-    rating=5,
-    price = 100,
-    freshness = "Extra fresh",
-    delivery = "Europe",
-    farm = "Grocery Farm Fields"}) => {
-
+export const ContentCardWide = ({product}) => {
+    let {
+        salePercent:sale = 50, 
+        name: title = "Product Title",
+        description = "Space for a small product description",
+        rating=5,
+        priceUSD: price,
+        freshness = "Extra fresh",
+        deliveryArea: delivery = "Europe",
+        farm = "Grocery Farm Fields"} = product;
+        console.log("price", price)
+    let pictureSrc = prodPicDefault;
     let saleText = sale ? `-${(sale)}%` : "";
-    let prevPrice = sale ? (price/(sale/100)) : "";
+    let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
+    console.log("(sale/100)",(sale/100))
+    console.log("price/(sale/100)",price/(sale/100))
+    console.log("prevPrice", prevPrice)
 
     return (
         <CardWide>

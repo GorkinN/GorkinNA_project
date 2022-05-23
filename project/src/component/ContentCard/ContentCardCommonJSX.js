@@ -82,4 +82,5 @@ font-weight: 400;
 font-size: 14px;
 line-height: 19px;
 color: #A9A9A9;
+margin-right:5px;
 `;
