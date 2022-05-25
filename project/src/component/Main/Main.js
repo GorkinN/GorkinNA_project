@@ -5,6 +5,7 @@ import { BestSellingSection } from '../BestSellingSection/BestSellingSection';
 import { ProductsSection } from '../ProductsSection/ProductsSection';
 import { LayoutButtons } from '../common/LayoutButtons/LayoutButtons';
 import defaultPic from "../ContentCard/image/vegs.jpg";
+import { ContentCard } from '../ContentCard/ContentCard';
 import "./main.css";
 
 const Main = () => {
@@ -72,7 +73,7 @@ const Main = () => {
            
             <ProductsSection isGridLayout={isGridLayout} productsList={productsGeneralObj}></ProductsSection>
             <BannerSection categories={categories}/>      
-            <BestSellingSection productsList={products}></BestSellingSection>  
+             
 
             <section className="customers-reviews">
                 <div className="customers-reviews__box">
@@ -163,3 +164,4 @@ const Main = () => {
 }
 
 export default Main;
+//<BestSellingSection productsList={products}></BestSellingSection> 

@@ -2,9 +2,9 @@ import React from 'react';
 import styled from "styled-components";
 
 import {GreenButton} from "../Button/Button";
+import prodPicDefault from './image/vegs.jpg';
 import {CardPictureContainer, CardPicture, CardSale, CardTitle, CardDescription, Infotext, CardPrice, CardPriceOff} from "./ContentCardCommonJSX";
 import {RatingBox} from "../RatingBox/RatingBox";
-import prodPicDefault from './image/vegs.jpg';
 
 let CardWide = styled.li`
 position: relative;
@@ -66,7 +66,6 @@ margin-top:12px;
 grid-gap:12px 0px;
 min-width:200px;
 `;
-
 const BuyingBox=styled.div`
 display:flex;
 flex-direction:column;
@@ -95,15 +94,10 @@ export const ContentCardWide = ({product}) => {
         freshness = "Extra fresh",
         deliveryArea: delivery = "Europe",
         farm = "Grocery Farm Fields"} = product;
-        console.log("price", price)
     let pictureSrc = prodPicDefault;
     let saleText = sale ? `-${(sale)}%` : "";
     let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
-    console.log("(sale/100)",(sale/100))
-    console.log("price/(sale/100)",price/(sale/100))
-    console.log("prevPrice", prevPrice)
-
     return (
         <CardWide>
             <CardPictureContainerWide>

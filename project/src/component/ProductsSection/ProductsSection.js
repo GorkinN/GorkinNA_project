@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from "styled-components";
 import {SectionLayout} from "../SectionLayout/SectionLayout";
-import { ContentCard } from '../ContentCard/ContentCard';
+import { ContentCard } from '../ContentCard/ContentCard.js';
 import { ContentCardWide } from '../ContentCard/ContentCardWide';
-import CategoryMenu from "../CategoryMenu/CategoryMenu";
+//import CategoryMenu from "../CategoryMenu/CategoryMenu";
 
 const GridLayout = styled.ul`
 display:grid;
@@ -26,45 +26,28 @@ flex-direction:column;
 flex-wrap:no-wrap;
 `;
 
-
 export const ProductsSection = ({isGridLayout, productsList}) => {
-  function refineCategories(productsList){
-    let categoriesSet = new Set();
-
-  }
-
-  function showProductCards(productsArray){
+ 
+  function showProductCards(productsList){
         if (isGridLayout) {
           return (
             <GridLayout>
-              {productsArray.map((item)=>(<ContentCard product={item} key={item.id}></ContentCard>))}
+              { productsList.map((item)=>(<ContentCard product={item} key={item.id*100}/>)) }
             </GridLayout>
             );
         }
         else {
           return (
             <ListLayout>
-              {productsArray.map((item)=>(<ContentCardWide product={item} key={item.id}></ContentCardWide>))}
+              { productsList.map((item)=>(<ContentCardWide product={item} key={item.id}/>)) }
             </ListLayout>
             );
         }
   }
-  /*
-  <CategoryMenu 
-            categoriesMenuArray={productsList} 
-            itemsName={`products`}
-            titleText={`Best selling products`}
-            />
-  */ 
-
     return (
         <SectionLayout
-        left={null       
-        }
-        rigth={
-              showProductCards(productsList)
-        }>
-
+        left={null}
+        rigth={showProductCards(productsList)}>
          </SectionLayout>
     );
 }
