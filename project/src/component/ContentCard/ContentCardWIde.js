@@ -99,7 +99,7 @@ export const ContentCardWide = ({product}) => {
     let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
     return (
-        <CardWide>
+        <CardWide  id={product.id}>
             <CardPictureContainerWide>
                 <CardPicture src={pictureSrc}/>
                 <CardSale>

@@ -46,7 +46,7 @@ export const ContentCard = ({product}) => {
     let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
     return (
-        <Card>
+        <Card id={product.id}>
 
             <CardPictureContainer >
                 <CardPicture src={pictureSrc} alt="product picture"/>
