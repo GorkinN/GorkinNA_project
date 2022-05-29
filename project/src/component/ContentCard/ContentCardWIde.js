@@ -39,7 +39,7 @@ justify-content:space-between;
 }
 `;
 const CardPictureContainerWide=styled(CardPictureContainer)`
-max-width:268px;
+max-width:400px;
 height:280px;
 margin-bottom:0;
 padding:0;
@@ -91,17 +91,17 @@ export const ContentCardWide = ({product}) => {
         description = "Space for a small product description",
         rating=5,
         priceUSD: price,
+        picture,
         freshness = "Extra fresh",
         deliveryArea: delivery = "Europe",
         farm = "Grocery Farm Fields"} = product;
-    let pictureSrc = prodPicDefault;
     let saleText = sale ? `-${(sale)}%` : "";
     let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
     return (
         <CardWide  id={product.id}>
             <CardPictureContainerWide>
-                <CardPicture src={pictureSrc}/>
+                <CardPicture src={`${picture || prodPicDefault}`} alt="product picture"/>
                 <CardSale>
                     {saleText}
                 </CardSale>

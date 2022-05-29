@@ -11,7 +11,7 @@ box-shadow:0 0 4px 1px rgba(128, 128, 128, 0.1);
 `;
 export const CardPicture = styled.img`
 display:block;
-height: 100%;
+height:180px;
 width:100%;
 object-fit:cover;
 align-items:center;
@@ -21,11 +21,11 @@ export const CardSale = styled.div`
 position:absolute;
 top:12px;
 left:20px;
-padding:0 2px;
+padding:2px 5px;
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 600;
-font-size: 12px;
+font-size: 16px;
 line-height: 18px;
 background-color:white;
 border-radius:1em;

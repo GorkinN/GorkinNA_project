@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from "styled-components";
-import helo from "../../img/products/1.jpg";
 import {GreenButton} from "../Button/Button";
 import prodPicDefault from './image/vegs.jpg';
 import {CardPictureContainer, CardPicture, CardSale, CardTitle, CardDescription, CardPrice, CardPriceOff} from "./ContentCardCommonJSX";
