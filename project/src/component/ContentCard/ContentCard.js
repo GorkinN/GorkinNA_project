@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-
+import helo from "../../img/products/1.jpg";
 import {GreenButton} from "../Button/Button";
 import prodPicDefault from './image/vegs.jpg';
 import {CardPictureContainer, CardPicture, CardSale, CardTitle, CardDescription, CardPrice, CardPriceOff} from "./ContentCardCommonJSX";
@@ -35,21 +35,20 @@ justify-content:center;
 `;
 
 export const ContentCard = ({product}) => {
-    let {
+    const {
         salePercent : sale , 
         name : title = "Product Title",
         description = "Space for a small product description",
-        priceUSD: price} = product;   
-
-    let pictureSrc = prodPicDefault;
+        priceUSD: price,
+        picture} = product; 
     let saleText = sale ? `-${(sale)}%` : "";
     let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
+
     return (
         <Card id={product.id}>
-
-            <CardPictureContainer >
-                <CardPicture src={pictureSrc} alt="product picture"/>
+            <CardPictureContainer>
+                <CardPicture src={`${picture || prodPicDefault}`} alt="product picture"/>
                 <CardSale>
                     {saleText}
                 </CardSale>

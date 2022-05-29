@@ -14,6 +14,8 @@ display:block;
 height: 100%;
 width:100%;
 object-fit:cover;
+align-items:center;
+justify-content:center;
 `;
 export const CardSale = styled.div`
 position:absolute;
