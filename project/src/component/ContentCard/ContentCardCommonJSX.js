@@ -11,7 +11,7 @@ box-shadow:0 0 4px 1px rgba(128, 128, 128, 0.1);
 `;
 export const CardPicture = styled.img`
 display:block;
-height:180px;
+height:100%;
 width:100%;
 object-fit:cover;
 align-items:center;
