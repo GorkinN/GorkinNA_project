@@ -4,7 +4,7 @@ export const CardPictureContainer=styled.div`
 position:relative;
 border-radius: 12px;
 width: 100%;
-height: 100%;
+height: 200px;
 margin-bottom: 16px;
 overflow:hidden;
 box-shadow:0 0 4px 1px rgba(128, 128, 128, 0.1);
@@ -13,7 +13,7 @@ export const CardPicture = styled.img`
 display:block;
 height:100%;
 width:100%;
-object-fit:cover;
+object-fit:contain;
 align-items:center;
 justify-content:center;
 `;
