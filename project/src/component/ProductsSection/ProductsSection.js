@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {SectionLayout} from "../SectionLayout/SectionLayout";
 import { ContentCard } from '../ContentCard/ContentCard.js';
 import { ContentCardWide } from '../ContentCard/ContentCardWide';
+import { FilterForm } from '../FilterForm/FilterForm';
 //import CategoryMenu from "../CategoryMenu/CategoryMenu";
 
 const GridLayout = styled.ul`
@@ -46,7 +47,7 @@ export const ProductsSection = ({isGridLayout, productsList}) => {
   }
     return (
         <SectionLayout
-        left={null}
+        left={<FilterForm></FilterForm>}
         rigth={showProductCards(productsList)}>
          </SectionLayout>
     );

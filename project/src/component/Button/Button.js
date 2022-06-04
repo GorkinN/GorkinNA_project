@@ -37,7 +37,7 @@ const TransparentButtonStyled=styled(StyledButton)`
             background: url("${greenArrow}") no-repeat;
         }
 `;
-const GreenButtonStyled=styled(StyledButton)`
+export const GreenButtonStyled=styled(StyledButton)`
     color:white;
     border: 2px solid #46760A;
     padding:6.5px 12px;

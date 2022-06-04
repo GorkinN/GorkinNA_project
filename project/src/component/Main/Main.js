@@ -4,8 +4,6 @@ import BannerSection from '../BannerSection/BannerSection';
 import { BestSellingSection } from '../BestSellingSection/BestSellingSection';
 import { ProductsSection } from '../ProductsSection/ProductsSection';
 import { LayoutButtons } from '../common/LayoutButtons/LayoutButtons';
-import defaultPic from "../ContentCard/image/vegs.jpg";
-import { ContentCard } from '../ContentCard/ContentCard';
 import "./main.css";
 
 const Main = () => {
@@ -46,17 +44,20 @@ const Main = () => {
         if (e.target.dataset.layout==="grid" && !isGridLayout) {setLayout(true)} 
         else if (e.target.dataset.layout==="list" && isGridLayout) {setLayout(false)}           
     }
-    
-    let categories = [
-        "Bakery",
-        "Fruit and vegetables",
-        "Meat and fish",
-        "Drinks",
-        "Kitchen",
-        "Special nutrition",
-        "Baby", 
-        "Pharmacy"
-    ];
+    function formCategoriesMap(productsArray) {
+        let catArr = new Map();
+        productsArray.forEach((item)=>{
+            if (catArr.has(item.category)) {
+                let current = catArr.get(item.category);
+                catArr.set(item.category, current+1);
+            } else {
+                catArr.set(item.category, 1);
+            }
+        });
+        return catArr;
+    }
+    let categories = formCategoriesMap(productsGeneralObj);
+
     let products =[
         'Kitchen',
         'Meat and fish',
@@ -70,12 +71,15 @@ const Main = () => {
     return (
         <main className="main">
             <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>
-           
             <ProductsSection isGridLayout={isGridLayout} productsList={productsGeneralObj}></ProductsSection>
-            <BannerSection categories={categories}/>      
-             
+        </main>
+    );
+}
 
-            <section className="customers-reviews">
+export default Main;
+//<BannerSection categories={categories}/>  
+//<BestSellingSection productsList={products}></BestSellingSection> 
+ /*<section className="customers-reviews">
                 <div className="customers-reviews__box">
 
                     <div className="customers-reviews__title-box section-title _container">
@@ -158,10 +162,4 @@ const Main = () => {
 
                 </div>
             </section>
-
-        </main>
-    );
-}
-
-export default Main;
-//<BestSellingSection productsList={products}></BestSellingSection> 
+*/
