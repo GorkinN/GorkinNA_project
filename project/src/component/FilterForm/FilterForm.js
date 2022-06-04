@@ -31,11 +31,42 @@ background-color: #F5F5F5;
         filter:saturate(180%);
     }
 `;
+const InputButtonGray = styled(InputButtonGreen)`
+background:none;
+color:#A9A9A9;
+border-color:#A9A9A9;
+&:hover {
+    filter: brightness(80%);
+    transition: 0.1s ease-in-out;
+}
+&:active {
+    filter:saturate(180%);
+}
+`;
+const ButtonBox = styled.div`
+display:flex;
+justify-content:space-evenly;
+width:100%;
+margin-top:30px;
+@media(max-width:${props => props.theme.laptop}) {
+    width:30%;
+    margin-top:15px;
+}
+@media(max-width:${props => props.theme.smallPhone}) {
+    width:100%;
+}
+`;
+
 export const FilterForm = ({children}) => {
+
     return (
         <FilterFormStyled>
             {children}
-            <InputButtonGreen type="submit" name="applyFilter" value="Apply"></InputButtonGreen>
+            <ButtonBox>
+                <InputButtonGreen type="submit" name="applyFilter" value="Apply"></InputButtonGreen>
+                <InputButtonGray type="reset" name="resetFilter" value="Reset"></InputButtonGray>
+            </ButtonBox>
+            
         </FilterFormStyled>
     );
 }

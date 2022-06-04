@@ -4,6 +4,7 @@ import {SectionLayout} from "../SectionLayout/SectionLayout";
 import { ContentCard } from '../ContentCard/ContentCard.js';
 import { ContentCardWide } from '../ContentCard/ContentCardWide';
 import { FilterForm } from '../FilterForm/FilterForm';
+import { CategoryFilter } from '../FilterForm/CategoryFilter';
 //import CategoryMenu from "../CategoryMenu/CategoryMenu";
 
 const GridLayout = styled.ul`
@@ -27,9 +28,10 @@ flex-direction:column;
 flex-wrap:no-wrap;
 `;
 
-export const ProductsSection = ({isGridLayout, productsList}) => {
+export const ProductsSection = ({isGridLayout, productsList, filtersInfo}) => {
  
   function showProductCards(productsList){
+    if (productsList.length===0) {return (<p>There's no products</p>);}
         if (isGridLayout) {
           return (
             <GridLayout>
@@ -47,7 +49,13 @@ export const ProductsSection = ({isGridLayout, productsList}) => {
   }
     return (
         <SectionLayout
-        left={<FilterForm></FilterForm>}
+        left={
+        <FilterForm>
+          <CategoryFilter 
+          categoriesMap={filtersInfo.categoriesMap}></CategoryFilter>
+
+        </FilterForm>
+        }
         rigth={showProductCards(productsList)}>
          </SectionLayout>
     );

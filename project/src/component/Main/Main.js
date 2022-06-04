@@ -44,19 +44,40 @@ const Main = () => {
         if (e.target.dataset.layout==="grid" && !isGridLayout) {setLayout(true)} 
         else if (e.target.dataset.layout==="list" && isGridLayout) {setLayout(false)}           
     }
-    function formCategoriesMap(productsArray) {
-        let catArr = new Map();
+    function formFiltersInfo(productsArray) {
+        //PriceRangeFilter info
+        let minMaxPrice = {
+            min: productsArray[0].priceUSD, 
+            max:productsArray[0].priceUSD
+        }
+        //CategoriesFilter info
+        let categoriesMap = new Map();
+
         productsArray.forEach((item)=>{
-            if (catArr.has(item.category)) {
-                let current = catArr.get(item.category);
-                catArr.set(item.category, current+1);
+            //PriceRangeFilter info
+            if (minMaxPrice.min > item.priceUSD) {minMaxPrice.min = item.priceUSD}             
+            if (minMaxPrice.max < item.priceUSD) {minMaxPrice.max = item.priceUSD}             
+            //CategoriesFilter info
+            if (categoriesMap.has(item.category)) {
+                let current = categoriesMap.get(item.category);
+                categoriesMap.set(item.category, current+1);
             } else {
-                catArr.set(item.category, 1);
+                categoriesMap.set(item.category, 1);
             }
         });
-        return catArr;
+        
+        //PriceRangeFilter -> integer
+        minMaxPrice.min = Math.floor(minMaxPrice.min);
+        minMaxPrice.max = Math.ceil(minMaxPrice.max);
+
+        return {categoriesMap:categoriesMap, minMaxPrice: minMaxPrice};
     }
-    let categories = formCategoriesMap(productsGeneralObj);
+    
+    let filtersInfo = formFiltersInfo(productsGeneralObj);
+    console.log("filtersInfo.categoriesMap: ",filtersInfo.categoriesMap)
+    console.log("filtersInfo.minMaxPrice: ",filtersInfo.minMaxPrice)
+
+ 
 
     let products =[
         'Kitchen',
@@ -71,7 +92,10 @@ const Main = () => {
     return (
         <main className="main">
             <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>
-            <ProductsSection isGridLayout={isGridLayout} productsList={productsGeneralObj}></ProductsSection>
+            <ProductsSection 
+            isGridLayout={isGridLayout} 
+            productsList={productsGeneralObj}
+            filtersInfo={filtersInfo}></ProductsSection>
         </main>
     );
 }
