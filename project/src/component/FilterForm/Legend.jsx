@@ -6,4 +6,5 @@ font-weight: 600;
 font-size: 18px;
 line-height: 27px;
 color: #151515;
+margin-bottom:16px;
 `;
