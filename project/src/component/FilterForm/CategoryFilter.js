@@ -23,32 +23,37 @@ margin-right:5px;
     content:"";
     position:absolute;
     top:50%;
-    left:-5px;
+    left:-10px;
     transform:translate(-50%, -50%);
-    width:12px;
-    height:12px;
-    border-radius:50%;
-    background-color:#6A983C;
+    width:15px;
+    height:15px;
+    border-radius:5px;
+    border: 2px solid #6A983C;
     transition: 0.3s ease-in-out;
 }
+
 :after {
     content:"";
     position:absolute;
     top:50%;
-    left:-5px;
+    left:-10px;
     transform:translate(-50%, -50%);
     width:10px;
     height:10px;
-    border-radius:50%;
-    background-color:white;
     transition: 0.3s ease-in-out;
 }
 `;
 const Checkbox=styled.input`
 display:none;
 :checked ~ label:after {
-    background-color:#6A983C;
+    width:5px;
+    transform:rotate(220deg) translate(110%, 30%);
+    border-top: 3px solid white;
+    border-left:3px solid white;
     transition: 0.3s ease-in-out;
+}
+:checked ~ label:before {
+    background-color:#6A983C;
 }
 `;
 const LabelContainer = styled.div`
@@ -74,12 +79,10 @@ export const CategoryFilter = ({categoriesMap}) => {
    let categoriesFilterArr = [];
 
    for (let entry of categoriesMap.entries()) {
-       console.log("entry.key",entry[0])
     categoriesFilterArr.push(
         <LabelContainer key={entry[0]}>
             <Checkbox type="checkbox" id={entry[0]}/>
             <CheckBoxLabel for={entry[0]}>{entry[0]}</CheckBoxLabel>
-             
             <QuantityTag>{entry[1]}</QuantityTag>
         </LabelContainer>
     );
