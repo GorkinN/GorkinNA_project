@@ -4,7 +4,8 @@ import {SectionLayout} from "../SectionLayout/SectionLayout";
 import { ContentCard } from '../ContentCard/ContentCard.js';
 import { ContentCardWide } from '../ContentCard/ContentCardWide';
 import { FilterForm } from '../FilterForm/FilterForm';
-import { CategoryFilter } from '../FilterForm/CategoryFilter';
+import { CategoryFilter } from '../CategoryFilter/CategoryFilter';
+import { RatingFilter } from '../RatingFilter/RatingFilter';
 //import CategoryMenu from "../CategoryMenu/CategoryMenu";
 
 const GridLayout = styled.ul`
@@ -52,7 +53,10 @@ export const ProductsSection = ({isGridLayout, productsList, filtersInfo}) => {
         left={
         <FilterForm>
           <CategoryFilter 
-          categoriesMap={filtersInfo.categoriesMap}></CategoryFilter>
+              categoriesMap={filtersInfo.categoriesMap}>
+          </CategoryFilter>
+          <RatingFilter></RatingFilter>
+
 
         </FilterForm>
         }
