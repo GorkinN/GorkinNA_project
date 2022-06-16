@@ -72,23 +72,8 @@ const Main = () => {
 
         return {categoriesMap:categoriesMap, minMaxPrice: minMaxPrice};
     }
-    
     let filtersInfo = formFiltersInfo(productsGeneralObj);
-    console.log("filtersInfo.categoriesMap: ",filtersInfo.categoriesMap)
-    console.log("filtersInfo.minMaxPrice: ",filtersInfo.minMaxPrice)
-
- 
-
-    let products =[
-        'Kitchen',
-        'Meat and fish',
-        'Special nutrition',
-        'Pharmacy',
-        'Baby',
-        'Special nutrition',
-        'Baby',
-        'Pharmacy'
-    ];
+  
     return (
         <main className="main">
             <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>

@@ -6,6 +6,7 @@ import { ContentCardWide } from '../ContentCard/ContentCardWide';
 import { FilterForm } from '../FilterForm/FilterForm';
 import { CategoryFilter } from '../CategoryFilter/CategoryFilter';
 import { RatingFilter } from '../RatingFilter/RatingFilter';
+import { PriceFilter } from '../PriceFilter/PriceFilter';
 //import CategoryMenu from "../CategoryMenu/CategoryMenu";
 
 const GridLayout = styled.ul`
@@ -56,6 +57,7 @@ export const ProductsSection = ({isGridLayout, productsList, filtersInfo}) => {
               categoriesMap={filtersInfo.categoriesMap}>
           </CategoryFilter>
           <RatingFilter></RatingFilter>
+          <PriceFilter></PriceFilter>
 
 
         </FilterForm>
