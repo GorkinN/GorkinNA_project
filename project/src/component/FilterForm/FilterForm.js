@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
+import { CategoryFilter } from '../CategoryFilter/CategoryFilter';
+import { RatingFilter } from '../RatingFilter/RatingFilter';
+import { PriceFilter } from '../PriceFilter/PriceFilter';
 
 const FilterFormStyled = styled.form`
 display:flex;
@@ -57,13 +60,16 @@ margin-top:30px;
 }
 `;
 
-export const FilterForm = ({children}) => {
-
+export const FilterForm = ({filtersInfo, productsGeneralObj}) => {
+    
     return (
         <FilterFormStyled>
-            {children}
+            <CategoryFilter categoriesMap={filtersInfo.categoriesMap}/>
+            <RatingFilter/>
+            <PriceFilter/>
+
             <ButtonBox>
-                <InputButtonGreen type="submit" name="applyFilter" value="Apply"></InputButtonGreen>
+                <InputButtonGreen type="submit" name="applyFilter" value="Apply" id="applyFilter"></InputButtonGreen>
                 <InputButtonGray type="reset" name="resetFilter" value="Reset"></InputButtonGray>
             </ButtonBox>
             

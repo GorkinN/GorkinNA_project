@@ -1,4 +1,5 @@
 import React from 'react';
+import {useState} from 'react';
 import styled from "styled-components";
 import {SectionLayout} from "../SectionLayout/SectionLayout";
 import { ContentCard } from '../ContentCard/ContentCard.js';
@@ -30,8 +31,8 @@ flex-direction:column;
 flex-wrap:no-wrap;
 `;
 
-export const ProductsSection = ({isGridLayout, productsList, filtersInfo}) => {
- 
+export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
+  let [productsCardsList, setProductsCardList] = useState(productsGeneralObj); 
   function showProductCards(productsList){
     if (productsList.length===0) {return (<p>There's no products</p>);}
         if (isGridLayout) {
@@ -49,20 +50,43 @@ export const ProductsSection = ({isGridLayout, productsList, filtersInfo}) => {
             );
         }
   }
+  function formFiltersInfo(productsArray) {
+    //PriceRangeFilter info
+    let minMaxPrice = {
+        min: productsArray[0].priceUSD, 
+        max:productsArray[0].priceUSD
+    }
+    //CategoriesFilter info
+    let categoriesMap = new Map();
+
+    productsArray.forEach((item)=>{
+        //PriceRangeFilter info
+        if (minMaxPrice.min > item.priceUSD) {minMaxPrice.min = item.priceUSD}             
+        if (minMaxPrice.max < item.priceUSD) {minMaxPrice.max = item.priceUSD}             
+        //CategoriesFilter info
+        if (categoriesMap.has(item.category)) {
+            let current = categoriesMap.get(item.category);
+            categoriesMap.set(item.category, current+1);
+        } else {
+            categoriesMap.set(item.category, 1);
+        }
+    });
+    
+    //PriceRangeFilter -> integer
+    minMaxPrice.min = Math.floor(minMaxPrice.min);
+    minMaxPrice.max = Math.ceil(minMaxPrice.max);
+
+    return {categoriesMap:categoriesMap, minMaxPrice: minMaxPrice};
+}
+let filtersInfo = formFiltersInfo(productsGeneralObj);
     return (
         <SectionLayout
         left={
-        <FilterForm>
-          <CategoryFilter 
-              categoriesMap={filtersInfo.categoriesMap}>
-          </CategoryFilter>
-          <RatingFilter></RatingFilter>
-          <PriceFilter></PriceFilter>
-
-
+        <FilterForm filtersInfo={filtersInfo} productsGeneralObj={productsGeneralObj}>
+         
         </FilterForm>
         }
-        rigth={showProductCards(productsList)}>
+        rigth={showProductCards(productsCardsList)}>
          </SectionLayout>
     );
 }
