@@ -27,7 +27,7 @@ transform:rotate(180deg) translate(0, 10px);
 const MaxInputRange = styled(InputRange)`
 transform: translate(0, 10px);
 `;
-const NubmerInputBox = styled.div`
+const NumberInputBox = styled.div`
 display:flex;
 justify-content:space-between;`;
 
@@ -43,40 +43,64 @@ text-indent:21px;
 padding:10px 0px;
 border:1px solid #D1D1D1;
 border-radius:12px;
-background: #F9F9F9;
+background: #f9f9f9;
 width:110px;
 `;
 const NumberInputLabel = styled.label`
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 600;
-font-size: 12px;
+font-size: 14px;
 line-height: 18px;
 color: #151515;
 `;
 
-
-
-export const PriceFilter = ({min, max}) => {
-    if (!min) {min=0}
-    if (!max) {max=120}
+export const PriceFilter = ({minmax}) => {
+    let min = minmax.min;
+    let max = minmax.max;
+    function validatePriceValue(event){
+        let value = event.target.value;
+        if (value<0) {event.target.value=min}
+        if (value>max) {event.target.value=max}
+    }
 
     return (
         <Fieldset>
         <Legend>Price</Legend>
         <PriceFilterContainer>
-            <RangeInputContainer>
-                <MinInputRange type="range" defaultValue={0}></MinInputRange>
-                <MaxInputRange type="range" defaultValue={20}></MaxInputRange>
-            </RangeInputContainer>
+            <NumberInputBox>
 
-            <NubmerInputBox>
-                <NumberInput type="number" defaultValue={0} id="minPriceNumberInput"></NumberInput>
-                <NumberInput type="number" defaultValue={100} id="maxPriceNumberInput"></NumberInput>
-            </NubmerInputBox>
+                <NumberInputLabel for="minPriceNumberInput">
+                    min
+                    <NumberInput 
+                        type="number" 
+                        name="minPriceNumberInput" 
+                        id="minPriceNumberInput" 
+                        defaultValue={min} 
+                        onChange={(e)=>(validatePriceValue(e))}
+                    />
+                </NumberInputLabel>
+
+                <NumberInputLabel for="maxPriceNumberInput">
+                    max
+                    <NumberInput 
+                        type="number" 
+                        name="maxPriceNumberInput" 
+                        id="maxPriceNumberInput" 
+                        defaultValue={max} 
+                        onChange={(e)=>(validatePriceValue(e))}
+                    />
+                </NumberInputLabel>
+                
+            </NumberInputBox>
         </PriceFilterContainer>
-        
             
     </Fieldset>
     );
 }
+/*      
+<RangeInputContainer>
+            <MinInputRange type="range" defaultValue={0}></MinInputRange>
+            <MaxInputRange type="range" defaultValue={20}></MaxInputRange>
+        </RangeInputContainer>
+*/

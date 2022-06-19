@@ -94,14 +94,24 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
     
     let chosenCategoriesArr = collectCheckboxFilterData(`categoryFilterCheckbox`);
     let chosenRatingArr = collectCheckboxFilterData(`ratingCheckBox`);
-    
+
+    let minPrice = document.querySelector("input[name='minPriceNumberInput']").value;
+    console.log("minPrice", minPrice);
+    let maxPrice = document.querySelector("input[name='maxPriceNumberInput']").value;
+    console.log("maxPrice", maxPrice);
+
     function filterFunc (obj, searchingProp, chosenCategoriesArr){
       if (chosenCategoriesArr.length===0) {return true;}
       return chosenCategoriesArr.includes(String(obj[searchingProp]));               
     }
 
     let filteredProductsArr = productsGeneralObj.filter((item)=>{ 
-      let isFitsFilters = (filterFunc(item, "category", chosenCategoriesArr) && filterFunc(item, "rating", chosenRatingArr));
+      let isFitsFilters = (
+        filterFunc(item, "category", chosenCategoriesArr) && 
+        filterFunc(item, "rating", chosenRatingArr) &&
+        item.priceUSD>=minPrice &&
+        item.priceUSD<=maxPrice);
+        
       if (isFitsFilters)
        {return true;} 
        return false;

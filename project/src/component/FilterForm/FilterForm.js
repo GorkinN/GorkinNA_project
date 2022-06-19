@@ -66,7 +66,7 @@ export const FilterForm = ({filtersInfo, onSubmitFunction}) => {
         <FilterFormStyled onSubmit={ (e) => (onSubmitFunction(e))}>
             <CategoryFilter categoriesMap={filtersInfo.categoriesMap}/>
             <RatingFilter/>
-            <PriceFilter/>
+            <PriceFilter minmax={filtersInfo.minMaxPrice}/>
 
             <ButtonBox>
                 <InputButtonGreen 
