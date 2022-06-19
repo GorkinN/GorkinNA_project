@@ -5,9 +5,9 @@ import {SectionLayout} from "../SectionLayout/SectionLayout";
 import { ContentCard } from '../ContentCard/ContentCard.js';
 import { ContentCardWide } from '../ContentCard/ContentCardWide';
 import { FilterForm } from '../FilterForm/FilterForm';
-import { CategoryFilter } from '../CategoryFilter/CategoryFilter';
-import { RatingFilter } from '../RatingFilter/RatingFilter';
-import { PriceFilter } from '../PriceFilter/PriceFilter';
+//import { CategoryFilter } from '../CategoryFilter/CategoryFilter';
+//import { RatingFilter } from '../RatingFilter/RatingFilter';
+//import { PriceFilter } from '../PriceFilter/PriceFilter';
 //import CategoryMenu from "../CategoryMenu/CategoryMenu";
 
 const GridLayout = styled.ul`
@@ -50,6 +50,7 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
             );
         }
   }
+
   function formFiltersInfo(productsArray) {
     //PriceRangeFilter info
     let minMaxPrice = {
@@ -77,14 +78,43 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
     minMaxPrice.max = Math.ceil(minMaxPrice.max);
 
     return {categoriesMap:categoriesMap, minMaxPrice: minMaxPrice};
-}
-let filtersInfo = formFiltersInfo(productsGeneralObj);
+  }
+  let filtersInfo = formFiltersInfo(productsGeneralObj);
+
+  function collectCheckboxFilterData (inputName) {
+    let selectedCheckboxes = document.querySelectorAll(`input[name='${inputName}']`);
+    let conditionsArr =[];
+    for (let item of selectedCheckboxes) {
+        if (item.checked===true) {conditionsArr.push(item.value)}            
+    }
+    return conditionsArr;
+  };
+  function onSubmitFilter(e){
+    e.preventDefault();
+    
+    let chosenCategoriesArr = collectCheckboxFilterData(`categoryFilterCheckbox`);
+    let chosenRatingArr = collectCheckboxFilterData(`ratingCheckBox`);
+    
+    function filterFunc (obj, searchingProp, chosenCategoriesArr){
+      if (chosenCategoriesArr.length===0) {return true;}
+      return chosenCategoriesArr.includes(String(obj[searchingProp]));               
+    }
+
+    let filteredProductsArr = productsGeneralObj.filter((item)=>{ 
+      let isFitsFilters = (filterFunc(item, "category", chosenCategoriesArr) && filterFunc(item, "rating", chosenRatingArr));
+      if (isFitsFilters)
+       {return true;} 
+       return false;
+    });
+    setProductsCardList(filteredProductsArr);
+  };
     return (
         <SectionLayout
         left={
           <FilterForm 
           filtersInfo={filtersInfo} 
           productsGeneralObj={productsGeneralObj}
+          onSubmitFunction={onSubmitFilter}
           />
         }
         rigth={showProductCards(productsCardsList)}>

@@ -60,26 +60,10 @@ margin-top:30px;
 }
 `;
 
-export const FilterForm = ({filtersInfo, productsGeneralObj}) => {
-    let collectFilterData = (inputName) => {
-        let selectedCheckboxes = document.querySelectorAll(`input[name='${inputName}']`);
-        let conditionsArr =[];
-        for (let item of selectedCheckboxes) {
-            if (item.checked==true) {conditionsArr.push(item.value)}            
-        }
-        console.log(`conditionsArr ${inputName}`, conditionsArr);
-        return conditionsArr;
-    };
+export const FilterForm = ({filtersInfo, onSubmitFunction}) => {
     
-
-    function onSubmitFilter(e){
-        e.preventDefault();
-        console.log("event prevented");
-        collectFilterData(`categoryFilterCheckbox`);
-        collectFilterData(`ratingCheckBox`);
-    };
     return (
-        <FilterFormStyled onSubmit={ (e) => (onSubmitFilter(e))}>
+        <FilterFormStyled onSubmit={ (e) => (onSubmitFunction(e))}>
             <CategoryFilter categoriesMap={filtersInfo.categoriesMap}/>
             <RatingFilter/>
             <PriceFilter/>
