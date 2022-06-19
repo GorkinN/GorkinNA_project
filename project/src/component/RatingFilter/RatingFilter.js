@@ -9,36 +9,36 @@ export const RatingFilter = () => {
     <Fieldset>
         <Legend>Rating</Legend>
         <LabelContainer>
-            <Checkbox type="checkbox" id={5}/>
-            <CheckBoxLabel for={5}>
+            <Checkbox type="checkbox" name="ratingCheckBox" id="rate_5" value={5}/>
+            <CheckBoxLabel for="rate_5">
                 <RatingBox rate={5} isGolden={true}></RatingBox>
             </CheckBoxLabel>
         </LabelContainer>
 
         <LabelContainer>
-            <Checkbox type="checkbox" id={4}/>
-            <CheckBoxLabel for={4}>
+            <Checkbox type="checkbox" name="ratingCheckBox"  id="rate_4" value={4}/>
+            <CheckBoxLabel for="rate_4">
                 <RatingBox rate={4} isGolden={true}></RatingBox>
             </CheckBoxLabel>
         </LabelContainer>
 
         <LabelContainer>
-            <Checkbox type="checkbox" id={3}/>
-            <CheckBoxLabel for={3}>
+            <Checkbox type="checkbox" name="ratingCheckBox"  id="rate_3" value={3}/>
+            <CheckBoxLabel for="rate_3">
                 <RatingBox rate={3} isGolden={true}></RatingBox>
             </CheckBoxLabel>
         </LabelContainer>
 
         <LabelContainer>
-            <Checkbox type="checkbox" id={2}/>
-            <CheckBoxLabel for={2}>
+            <Checkbox type="checkbox" name="ratingCheckBox"  id="rate_2" value={2}/>
+            <CheckBoxLabel for="rate_2">
                 <RatingBox rate={2} isGolden={true}></RatingBox>
             </CheckBoxLabel>
         </LabelContainer>
 
         <LabelContainer>
-            <Checkbox type="checkbox" id={1}/>
-            <CheckBoxLabel for={1}>
+            <Checkbox type="checkbox" name="ratingCheckBox" id="rate_1" value={1}/>
+            <CheckBoxLabel for="rate_1">
                 <RatingBox rate={1} isGolden={true}></RatingBox>
             </CheckBoxLabel>
         </LabelContainer>

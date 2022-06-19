@@ -61,16 +61,41 @@ margin-top:30px;
 `;
 
 export const FilterForm = ({filtersInfo, productsGeneralObj}) => {
+    let collectFilterData = (inputName) => {
+        let selectedCheckboxes = document.querySelectorAll(`input[name='${inputName}']`);
+        let conditionsArr =[];
+        for (let item of selectedCheckboxes) {
+            if (item.checked==true) {conditionsArr.push(item.value)}            
+        }
+        console.log(`conditionsArr ${inputName}`, conditionsArr);
+        return conditionsArr;
+    };
     
+
+    function onSubmitFilter(e){
+        e.preventDefault();
+        console.log("event prevented");
+        collectFilterData(`categoryFilterCheckbox`);
+        collectFilterData(`ratingCheckBox`);
+    };
     return (
-        <FilterFormStyled>
+        <FilterFormStyled onSubmit={ (e) => (onSubmitFilter(e))}>
             <CategoryFilter categoriesMap={filtersInfo.categoriesMap}/>
             <RatingFilter/>
             <PriceFilter/>
 
             <ButtonBox>
-                <InputButtonGreen type="submit" name="applyFilter" value="Apply" id="applyFilter"></InputButtonGreen>
-                <InputButtonGray type="reset" name="resetFilter" value="Reset"></InputButtonGray>
+                <InputButtonGreen 
+                type="submit" 
+                name="applyFilter" 
+                value="Apply" 
+                id="applyFilter" 
+                 />
+                
+                <InputButtonGray 
+                type="reset" 
+                name="resetFilter" 
+                value="Reset"/>
             </ButtonBox>
             
         </FilterFormStyled>

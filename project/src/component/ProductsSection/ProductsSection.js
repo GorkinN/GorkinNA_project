@@ -82,9 +82,10 @@ let filtersInfo = formFiltersInfo(productsGeneralObj);
     return (
         <SectionLayout
         left={
-        <FilterForm filtersInfo={filtersInfo} productsGeneralObj={productsGeneralObj}>
-         
-        </FilterForm>
+          <FilterForm 
+          filtersInfo={filtersInfo} 
+          productsGeneralObj={productsGeneralObj}
+          />
         }
         rigth={showProductCards(productsCardsList)}>
          </SectionLayout>
