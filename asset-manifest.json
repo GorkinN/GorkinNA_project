@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/GorkinNA_project/static/css/main.113d2ede.css",
-    "main.js": "/GorkinNA_project/static/js/main.be60bf73.js",
+    "main.js": "/GorkinNA_project/static/js/main.ea0ca210.js",
     "static/media/article_big.jpg": "/GorkinNA_project/static/media/article_big.1508688149903cc6a713.jpg",
     "static/media/banner-background.png": "/GorkinNA_project/static/media/banner-background.db5f915c653e0bae1fda.png",
     "static/media/open-sans-v26-latin-regular.svg": "/GorkinNA_project/static/media/open-sans-v26-latin-regular.a9aff17ee65c2d3dd7a9.svg",
@@ -37,10 +37,10 @@
     "static/media/arrow-green.svg": "/GorkinNA_project/static/media/arrow-green.0537ade0685e4778a7a6cc2cec3bd61f.svg",
     "static/media/open-list.svg": "/GorkinNA_project/static/media/open-list.7b808e52d2e3cac5f31f.svg",
     "main.113d2ede.css.map": "/GorkinNA_project/static/css/main.113d2ede.css.map",
-    "main.be60bf73.js.map": "/GorkinNA_project/static/js/main.be60bf73.js.map"
+    "main.ea0ca210.js.map": "/GorkinNA_project/static/js/main.ea0ca210.js.map"
   },
   "entrypoints": [
     "static/css/main.113d2ede.css",
-    "static/js/main.be60bf73.js"
+    "static/js/main.ea0ca210.js"
   ]
 }
