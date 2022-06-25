@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
 import { Legend } from '../FilterComponents/Legend';
-import {LabelContainer} from '../FilterComponents/CheckBox';
 import { Fieldset } from '../FilterComponents/Fieldset';
 const PriceFilterContainer = styled.div`
 display:flex;
