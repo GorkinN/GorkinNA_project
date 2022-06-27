@@ -5,10 +5,6 @@ import {SectionLayout} from "../SectionLayout/SectionLayout";
 import { ContentCard } from '../ContentCard/ContentCard.js';
 import { ContentCardWide } from '../ContentCard/ContentCardWide';
 import { FilterForm } from '../FilterForm/FilterForm';
-//import { CategoryFilter } from '../CategoryFilter/CategoryFilter';
-//import { RatingFilter } from '../RatingFilter/RatingFilter';
-//import { PriceFilter } from '../PriceFilter/PriceFilter';
-//import CategoryMenu from "../CategoryMenu/CategoryMenu";
 
 const GridLayout = styled.ul`
 display:grid;

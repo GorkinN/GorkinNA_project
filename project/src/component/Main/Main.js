@@ -1,10 +1,9 @@
 import React from 'react';
 import {useState} from 'react';
-import BannerSection from '../BannerSection/BannerSection';
-import { BestSellingSection } from '../BestSellingSection/BestSellingSection';
 import { ProductsSection } from '../ProductsSection/ProductsSection';
 import { LayoutButtons } from '../common/LayoutButtons/LayoutButtons';
 import "./main.css";
+import { ShoppingCart } from '../ShoppingCart/ShoppingCart';
 
 const Main = () => {
     //going to fetch productsGeneralObj
@@ -48,6 +47,7 @@ const Main = () => {
   
     return (
         <main className="main">
+            <ShoppingCart/>
             <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>
             <ProductsSection 
             isGridLayout={isGridLayout} 
