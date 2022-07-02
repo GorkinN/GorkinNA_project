@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import "./HeaderSearch.css";
 import logoImg from "../../../img/LogoFreshnesecom.png";
 import UserAccImg from "../../../img/icons/user-account.svg";
 import ShoppingCartImg from "../../../img/icons/shopping-cart.png";
+import { ShoppingCartContext } from '../../Context/ShoppingCartContext';
 
 const HeaderSearch = () => {
+    const shoppingCartContext = useContext(ShoppingCartContext);
+    
     return (
-        <div className="header__search _container">
+<div className="header__search _container">
                 <div className="header__search-logo logo">
                     <img src={logoImg} alt="logo"/>
                 </div>
@@ -68,12 +71,17 @@ const HeaderSearch = () => {
                     </div>
                     <div className="user-field__shopping-cart shopping-cart">
                         <div className="shopping-cart__icon">
-                            <button id="shopping-cart-open-button"><img src={ShoppingCartImg} alt="shopping cart"/></button>
+                            <button 
+                            id="shopping-cart-open-button" 
+                            onClick={()=>shoppingCartContext.toggleVisibility()}>
+                                <img src={ShoppingCartImg} alt="shopping cart"/>
+                            </button>
                         </div>
                         <div className="shopping-cart__counter">4</div>
                     </div>
                 </div>
             </div>
+        
     );
 }
 
