@@ -6,7 +6,7 @@ import ShoppingCartImg from "../../../img/icons/shopping-cart.png";
 import { ShoppingCartContext } from '../../Context/ShoppingCartContext';
 
 const HeaderSearch = () => {
-    const shoppingCartContext = useContext(ShoppingCartContext);
+    const {setShoppingCartVisibility} = useContext(ShoppingCartContext);
     
     return (
 <div className="header__search _container">
@@ -72,10 +72,12 @@ const HeaderSearch = () => {
                     <div className="user-field__shopping-cart shopping-cart">
                         <div className="shopping-cart__icon">
                             <button 
-                            id="shopping-cart-open-button" 
-                            onClick={()=>shoppingCartContext.toggleVisibility()}>
-                                <img src={ShoppingCartImg} alt="shopping cart"/>
-                            </button>
+                                    id="shopping-cart-open-button" 
+                                    onClick={()=>{setShoppingCartVisibility(prev => !prev)}}>
+                                    <img src={ShoppingCartImg} alt="shopping cart"/>
+                                    </button>
+                                
+                            
                         </div>
                         <div className="shopping-cart__counter">4</div>
                     </div>

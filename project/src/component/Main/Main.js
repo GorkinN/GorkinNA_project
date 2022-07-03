@@ -1,11 +1,15 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import { ProductsSection } from '../ProductsSection/ProductsSection';
 import { LayoutButtons } from '../common/LayoutButtons/LayoutButtons';
 import "./main.css";
 import { ShoppingCart } from '../ShoppingCart/ShoppingCart';
+import { ShoppingCartContext } from '../Context/ShoppingCartContext';
 
 const Main = () => {
+    let {isShoppingCartVisible} = useContext(ShoppingCartContext);
+    console.log("isShoppingCartVisible", isShoppingCartVisible);
+
     //going to fetch productsGeneralObj
     let productsGeneralObj = [
         {id:1,name:"Duck",description:"Tasty Duck",priceUSD:10.00,salePercent:10,measure:"kg",category:"Meat",rating:1,freshness:"Extra fresh",farm:"Gravity Falls",deliveryArea:"Europe",isBestSelling:true, picture:`./img/1.jpg`},
@@ -47,7 +51,8 @@ const Main = () => {
   
     return (
         <main className="main">
-            <ShoppingCart/>
+           {isShoppingCartVisible && <ShoppingCart/>}
+
             <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>
             <ProductsSection 
             isGridLayout={isGridLayout} 

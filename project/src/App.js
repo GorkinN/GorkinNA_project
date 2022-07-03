@@ -1,5 +1,5 @@
 import './App.css';
-import React, {Provider} from 'react';
+import React, {useState} from 'react';
 import Wrapper from './component/Wrapper/Wrapper';
 import Header from './component/Header/Header';
 import Footer from './component/Footer/Footer';
@@ -11,15 +11,16 @@ import { ShoppingCartContext, shoppingCartContextValue } from './component/Conte
 
 
 function App() {
+  const [isShoppingCartVisible, setShoppingCartVisibility] = useState(false)
   return (
     <ThemeProvider theme={theme}>
-    <ShoppingCartContext.Provider value={shoppingCartContextValue}>
-      <Wrapper>
-        <GlobalFonts/>
-        <Header/>
-        <Main/>
-        <Footer/>
-      </Wrapper>
+    <ShoppingCartContext.Provider value={{isShoppingCartVisible, setShoppingCartVisibility}}>
+        <Wrapper>
+          <GlobalFonts/>
+          <Header/>
+          <Main/>
+          <Footer/>
+        </Wrapper>
     </ShoppingCartContext.Provider>
     </ThemeProvider>
   );

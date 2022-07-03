@@ -32,11 +32,12 @@ justify-content:space-between;`;
 const CloseButton = styled.button`
 `;
 
-export const ModalWrapper = ({children, title}) => {
+export const ModalWrapper = ({children, title, customOnCloseModal}) => {
     let [isVisible, setVisibility] = useState(true);
     function hideModal (e) {
         if (e.target.dataset.isvisible==="closeModal") {
             setVisibility(false);
+            if (customOnCloseModal != undefined) {customOnCloseModal()}
         }
     }
 
