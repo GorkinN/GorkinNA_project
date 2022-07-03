@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import styled from "styled-components";
 import { ModalWrapper } from '../ModalWrapper/ModalWrapper';
 import { ShoppingCartContext } from '../Context/ShoppingCartContext';
+import { ContentCardShoppingCart } from '../ContentCard/ContentCardShoppingCart';
 
 const ProductsList = styled.ul`
 margin:10px 0;
@@ -15,14 +16,21 @@ padding-bottom:16px;
 border-bottom:1px solid #F9F9F9;
 `;
 
-export const ShoppingCart = () => {
+export const ShoppingCart = ({productsArray}) => {
     let {setShoppingCartVisibility} =useContext(ShoppingCartContext);
-        
+
+    function showShoppingCartProducts (productsArray) {
+        if (productsArray.length===0) {return <ProductListItem>Shopping cart is empty</ProductListItem>}
+        return ( productsArray.map(product => (<ContentCardShoppingCart key={product.id} product={product}/>)) );
+    }  
+
     return (
-        <ModalWrapper customOnCloseModal={()=>(setShoppingCartVisibility((prev)=>(!prev)))}>
+        <ModalWrapper 
+        title="Shopping cart" 
+        customOnCloseModal={()=>(setShoppingCartVisibility((prev)=>(!prev)))}
+        top={2}>
                 <ProductsList>
-                    <ProductListItem>1</ProductListItem>
-                    <ProductListItem>2</ProductListItem>
+                    {showShoppingCartProducts(productsArray)}
                 </ProductsList>
         </ModalWrapper>
     );

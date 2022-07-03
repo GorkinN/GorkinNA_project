@@ -49,7 +49,7 @@ background-position:50% 30%;
 background-size:110%;
 color: ${props => props.theme.secondaryColor};
 `;
-export const ContentCard = ({product}) => {
+export const ContentCardShoppingCart = ({product}) => {
     const {
         salePercent : sale , 
         name : title = "Product Title",
@@ -57,7 +57,6 @@ export const ContentCard = ({product}) => {
         priceUSD: price,
         picture,
         rating} = product; 
-        
     let saleText = sale ? `-${(sale)}%` : "";
     let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;

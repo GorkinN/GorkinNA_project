@@ -8,7 +8,6 @@ import { ShoppingCartContext } from '../Context/ShoppingCartContext';
 
 const Main = () => {
     let {isShoppingCartVisible} = useContext(ShoppingCartContext);
-    console.log("isShoppingCartVisible", isShoppingCartVisible);
 
     //going to fetch productsGeneralObj
     let productsGeneralObj = [
@@ -51,7 +50,7 @@ const Main = () => {
   
     return (
         <main className="main">
-           {isShoppingCartVisible && <ShoppingCart/>}
+           {isShoppingCartVisible && <ShoppingCart productsArray={productsGeneralObj}/>}
 
             <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>
             <ProductsSection 
