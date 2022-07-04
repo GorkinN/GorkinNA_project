@@ -25,7 +25,15 @@ padding:20px;
 background:white;
 border: 1px solid #D1D1D1;
 border-radius:12px;
-min-width:300px;
+min-width:600px;
+@media (max-width:${props =>props.theme.phone}) {
+    min-width:0;
+    width:380px;
+}
+@media (max-width:${props =>props.theme.smallPhone}) {
+    min-width:0;
+    width:280px;
+}
 max-height:${props => props.top? (90 - props.top) : 50}%;
 overflow-y: scroll;
 overflow:auto;
@@ -42,7 +50,7 @@ scrollbar-color: blue orange;
     border: 2px solid #D1D1D1; 
 }
 `;
-const TopBox = styled.div`
+const HeaderBox = styled.header`
 display:flex;
 justify-content:space-between;
 `;
@@ -92,10 +100,10 @@ export const ModalWrapper = ({children, title, customOnCloseModal, top, left}) =
         isVisible? (
         <ModalBackground data-isvisible="closeModal" onClick={(e)=>hideModal(e)}>
             <ModalSection top={top} left={left}>
-                <TopBox>
+                <HeaderBox>
                     <Heading headingTagUPPERCASE={"H2"}>{title}</Heading>
                     <CloseButton name="closeModalButton" data-isvisible="closeModal">Close</CloseButton>
-                </TopBox>
+                </HeaderBox>
                 {children}
             </ModalSection>
         </ModalBackground>

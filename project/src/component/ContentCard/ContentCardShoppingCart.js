@@ -1,102 +1,162 @@
 import React from 'react';
 import styled from "styled-components";
+
 import {GreenButton} from "../Button/Button";
 import prodPicDefault from './image/vegs.jpg';
-import {CardPictureContainer, CardPicture, CardSale, CardTitle, CardDescription, CardPrice, CardPriceOff} from "./ContentCardCommonJSX";
-import starGoldenFilled from "../RatingBox/starGoldenFilled.svg";
+import {CardPictureContainer, CardPicture, CardSale, CardTitle, CardDescription, Infotext, CardPrice, CardPriceOff} from "./ContentCardCommonJSX";
+import {RatingBox} from "../RatingBox/RatingBox";
 
-let Card = styled.li`
+let CardWide = styled.li`
 position: relative;
 display:flex;
-flex-direction:column;
+align-items:center;
 box-sizing: border-box;
-min-height:323px;
-padding: 16px;
+margin-bottom:32px;
+padding-right:32px;
 border: 1px solid #D1D1D1;
 border-radius: 12px;
 @media (max-width:${props=> props.theme.tablet}) {
+    margin-bottom:16px;
+}
+@media (max-width:${props=> props.theme.smallPhone}) {
+    flex-direction:column;
+    margin-bottom:16px;
+    padding-right:0px;
+    padding-bottom:10px;
+}
+:nth-last-child(1) {
+    margin-bottom:0;
+}
+`;
+const Container = styled.div`
+display:flex;
+flex-wrap:wrap;
+flex-grow:1;
+align-items:flex-start;
+justify-content:space-between;
+@media (max-width:${props=> props.theme.smallPhone}) {
     padding:10px;
 }
 `;
-let BuyingBox = styled.div`
-display:flex;
-justify-content:space-between;
-align-items:center;
-@media (max-width:${props=> props.theme.tablet}) {
-    justify-content:flex-start;
+const CardPictureContainerWide=styled(CardPictureContainer)`
+max-width:400px;
+height:280px;
+margin-bottom:0;
+padding:0;
+box-shadow: none;
+@media (max-width:${props=> props.theme.smallPhone}) {
+    height:auto;
+    max-width:none;
+    margin-bottom:10px;
 }
 `;
-let CardPriceBox = styled.div`
+const CardInfo = styled.div`
 display:flex;
 flex-direction:column;
-justify-content:center;
-@media (max-width:${props=> props.theme.tablet}) {
-    margin-right:26px;
+margin-left:32px;
+@media (max-width:${props=> props.theme.smallPhone}) {
+    margin-left:0;
+    margin-bottom:10px;
 }
 `;
-let RatingContainer=styled.div`
-position:absolute;
-top:0px;
-right:5px;
-padding:15px 15px;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 18px;
-background: url('${starGoldenFilled}') no-repeat;
-background-position:50% 30%;
-background-size:110%;
-color: ${props => props.theme.secondaryColor};
+const SecondaryInfoContainer = styled.div`
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+margin-top:12px;
+grid-gap:12px 0px;
+min-width:200px;
 `;
+const BuyingBox=styled.div`
+display:flex;
+flex-direction:column;
+margin-left:auto;
+@media (max-width:${props=> props.theme.smallPhone}) {
+    flex-direction:row;
+    margin-left:0;
+    flex-grow:1;
+    justify-content:space-between;
+}
+`;
+const CardPriceBox=styled.div`
+margin-bottom:20px;
+@media (max-width:${props=> props.theme.smallPhone}) {
+    margin:0;
+}
+`;
+
 export const ContentCardShoppingCart = ({product}) => {
-    const {
-        salePercent : sale , 
-        name : title = "Product Title",
+    let {
+        salePercent:sale = 50, 
+        name: title = "Product Title",
         description = "Space for a small product description",
+        rating=5,
         priceUSD: price,
         picture,
-        rating} = product; 
+        freshness = "Extra fresh",
+        deliveryArea: delivery = "Europe",
+        farm = "Grocery Farm Fields"} = product;
     let saleText = sale ? `-${(sale)}%` : "";
     let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
-
     return (
-        <Card id={product.id}>
-            
-            <CardPictureContainer>
+        <CardWide  id={product.id}>
+            <CardPictureContainerWide>
                 <CardPicture src={`${picture || prodPicDefault}`} alt="product picture"/>
                 <CardSale>
                     {saleText}
                 </CardSale>
-                <RatingContainer>
-                    {rating}
-                </RatingContainer>
-            </CardPictureContainer>
+            </CardPictureContainerWide>
+            <Container>
+                <CardInfo>
+                    <CardTitle>
+                        {title}
+                    </CardTitle>
 
-            <CardTitle>
-                {title}
-            </CardTitle>
+                    <CardDescription>
+                        {description}
+                    </CardDescription>
 
-            <CardDescription>
-                {description}
-            </CardDescription>
+                    <RatingBox rate={rating}/>
+                    
+                    <SecondaryInfoContainer>
+                        {freshness && (
+                            <>
+                            <Infotext>Freshness:</Infotext>
+                            <Infotext>{freshness}</Infotext>
+                            </>
+                        )}
+                        {delivery && (
+                            <>
+                            <Infotext>Delivery:</Infotext>
+                            <Infotext>{delivery}</Infotext>
+                            </>
+                                
+                        )}
+                        {farm && (
+                            <>
+                            <Infotext>Farm:</Infotext>
+                            <Infotext>{farm}</Infotext>
+                            </>
+                        )} 
+                    </SecondaryInfoContainer>
 
-            <BuyingBox>
+                </CardInfo>
 
-                <CardPriceBox>
-                    <CardPrice>
-                        {priceText}
-                    </CardPrice>
-                    <CardPriceOff>
-                        {prevPrice}
-                    </CardPriceOff>
-                </CardPriceBox>
+                <BuyingBox>
+                    <CardPriceBox>
+                        <CardPrice>
+                            {priceText}
+                        </CardPrice>
+                        <CardPriceOff>
+                            {prevPrice}
+                        </CardPriceOff>
+                    </CardPriceBox>
 
                     <GreenButton>Buy now</GreenButton>
-            </BuyingBox>
-        </Card>
+                </BuyingBox>
+            </Container>
+            
+
+        </CardWide>
     );
 }
-
-
