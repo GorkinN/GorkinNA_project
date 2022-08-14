@@ -9,26 +9,13 @@ justify-content:space-between;
 min-height:100px;
 max-width:90%;
 `;
-
-const RangeInputContainer = styled.div`
-position:relative;
-display:flex;
-justyfy-content:flex-start;`;
-const InputRange = styled.input`
-position:absolute;
-top:0;
-left:0;
-width:100%;
-`;
-const MinInputRange = styled(InputRange)`
-transform:rotate(180deg) translate(0, 10px);
-`;
-const MaxInputRange = styled(InputRange)`
-transform: translate(0, 10px);
-`;
 const NumberInputBox = styled.div`
 display:flex;
-justify-content:space-between;`;
+justify-content:space-between;
+@media (max-width:${props => props.theme.laptop}) {
+    flex-direction: column;
+};
+`;
 
 const NumberInput = styled.input`
 position:relative;
@@ -52,6 +39,9 @@ font-weight: 600;
 font-size: 14px;
 line-height: 18px;
 color: #151515;
+:nth-last-child(1) {
+    margin-top:10px;
+}
 `;
 
 export const PriceFilter = ({minmax}) => {

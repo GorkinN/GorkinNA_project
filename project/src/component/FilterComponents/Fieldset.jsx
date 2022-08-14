@@ -7,4 +7,12 @@ margin-top: 20px;
 :nth-child(1) {
     margin-top:0;
 }
+@media (max-width:${props => props.theme.laptop}) {
+    max-width:30%;
+    margin-top: 0;
+}
+@media (max-width:${props => props.theme.smallPhone}) {
+    max-width:none;
+    margin-top: 20px;
+}
 `;
