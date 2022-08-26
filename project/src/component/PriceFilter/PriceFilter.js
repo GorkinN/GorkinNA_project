@@ -39,9 +39,12 @@ font-weight: 600;
 font-size: 14px;
 line-height: 18px;
 color: #151515;
-:nth-last-child(1) {
-    margin-top:10px;
+@media (max-width:${props => props.theme.laptop}) {
+    :nth-last-child(1) {
+        margin-top:10px;
+    }
 }
+
 `;
 
 export const PriceFilter = ({minmax}) => {

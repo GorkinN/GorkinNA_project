@@ -14,7 +14,45 @@ const HeaderSearch = () => {
                     <img src={logoImg} alt="logo"/>
                 </div>
                 <div className="header__search-field search-field">
-                    <div className="search-field__category-set">
+                    <div className="search-field__search search">
+                        <form className="search__search-form" action="" method="get">
+                            <input className="search__input" type="search" name="product-search-field"
+                                id="product-search-field"/>
+                            <label className="search__label" for="product-search-field">
+                                Enter product name to search for
+                            </label>
+                        </form>
+                    </div>
+                </div>
+
+                <div className="header__user-field user-field">
+
+                    <div className="user-field__account">
+                        <a href="#">
+                            <img src={UserAccImg} alt="login"/>
+                        </a>
+                    </div>
+
+                    <div className="user-field__shopping-cart shopping-cart">
+                        <div className="shopping-cart__icon">
+                            <button 
+                                id="shopping-cart-open-button" 
+                                onClick={()=>{setShoppingCartVisibility(prev => !prev)}}>
+                                <img src={ShoppingCartImg} alt="shopping cart"/>
+                            </button>
+                        </div>
+                        <div className="shopping-cart__counter">4</div>
+                    </div>
+
+                </div>
+            </div>
+        
+    );
+}
+
+export default HeaderSearch;
+/*
+ <div className="search-field__category-set">
                         <p className="search-field__category-set_chosen">
                             <span>All categories</span>
                         </p>
@@ -53,38 +91,4 @@ const HeaderSearch = () => {
                             </label>
                         </form>
                     </div>
-                    <div className="search-field__search search">
-                        <form className="search__search-form" action="" method="get">
-                            <input className="search__input" type="search" name="product-search-field"
-                                id="product-search-field"/>
-                            <label className="search__label" for="product-search-field">
-                                Search Products, categories...
-                            </label>
-                        </form>
-                    </div>
-                </div>
-                <div className="header__user-field user-field">
-                    <div className="user-field__account">
-                        <a href="#">
-                            <img src={UserAccImg} alt="login"/>
-                        </a>
-                    </div>
-                    <div className="user-field__shopping-cart shopping-cart">
-                        <div className="shopping-cart__icon">
-                            <button 
-                                    id="shopping-cart-open-button" 
-                                    onClick={()=>{setShoppingCartVisibility(prev => !prev)}}>
-                                    <img src={ShoppingCartImg} alt="shopping cart"/>
-                                    </button>
-                                
-                            
-                        </div>
-                        <div className="shopping-cart__counter">4</div>
-                    </div>
-                </div>
-            </div>
-        
-    );
-}
-
-export default HeaderSearch;
+*/

@@ -6,12 +6,12 @@ import "./main.css";
 import { ShoppingCart } from '../ShoppingCart/ShoppingCart';
 import { ShoppingCartContext } from '../Context/ShoppingCartContext';
 
-const Main = () => {
+const Main = (addToShoppingCard) => {
+    
     let {isShoppingCartVisible} = useContext(ShoppingCartContext);
 
     //going to fetch productsGeneralObj
     let productsGeneralObj = [
-        
         {id:6,name:"Tomato",description:"Tasty Tomato",priceUSD:1.45,salePercent:21,measure:"kg",category:"Vegetables",rating:1,freshness:"Rotten",farm:"Albuquerque",deliveryArea:"Any",isBestSelling:false,picture:`./img/6.jpg`},
         {id:7,name:"Carrot",description:"Tasty Carrot",priceUSD:1.68,salePercent:22,measure:"kg",category:"Vegetables",rating:2,freshness:"Fresh",farm:"Antananarivu",deliveryArea:"Europe",isBestSelling:true,picture:`./img/7.jpg`},
         {id:8,name:"Cucumber",description:"Tasty Cucumber",priceUSD:2.32,salePercent:10,measure:"kg",category:"Vegetables",rating:3,freshness:"Test youself",farm:"Osaka",deliveryArea:"Brasil",isBestSelling:false,picture:`./img/8.png`},
@@ -50,7 +50,7 @@ const Main = () => {
 
   
     return (
-        <main className="main">
+        <main className="main" onClick={(e)=>addToCart(e)}>
            {isShoppingCartVisible && <ShoppingCart productsArray={productsGeneralObj}/>}
 
             <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>

@@ -94,7 +94,7 @@ export const ContentCard = ({product}) => {
                     </CardPriceOff>
                 </CardPriceBox>
 
-                    <GreenButton>Buy now</GreenButton>
+                    <GreenButton name="Buy-button" data-productID={product.id}>Buy now</GreenButton>
             </BuyingBox>
         </Card>
     );
