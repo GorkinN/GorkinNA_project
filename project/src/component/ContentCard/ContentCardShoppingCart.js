@@ -1,12 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
-
-import {GreenButton} from "../Button/Button";
 import prodPicDefault from './image/vegs.jpg';
-import {CardPictureContainer, CardPicture, CardSale, CardTitle, CardDescription, Infotext, CardPrice, CardPriceOff} from "./ContentCardCommonJSX";
-import {RatingBox} from "../RatingBox/RatingBox";
+import trashcan from "../common/trash-can.png";
+import {CardPictureContainer, CardPicture, CardSale, CardTitle, CardDescription, CardPrice, CardPriceOff} from "./ContentCardCommonJSX";
 
-let CardWide = styled.li`
+let ShoppingCartCard = styled.li`
 position: relative;
 display:flex;
 align-items:center;
@@ -30,16 +28,15 @@ border-radius: 12px;
 `;
 const Container = styled.div`
 display:flex;
-flex-wrap:wrap;
-flex-grow:1;
-align-items:flex-start;
-justify-content:space-between;
+align-self:flex-start;
+flex-direction:column;
+padding:10px;
 @media (max-width:${props=> props.theme.smallPhone}) {
-    padding:10px;
+   
 }
 `;
 const CardPictureContainerWide=styled(CardPictureContainer)`
-max-width:400px;
+max-width:350px;
 height:280px;
 margin-bottom:0;
 padding:0;
@@ -55,94 +52,134 @@ display:flex;
 flex-direction:column;
 margin-left:32px;
 @media (max-width:${props=> props.theme.smallPhone}) {
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
     margin-left:0;
     margin-bottom:10px;
 }
 `;
-const SecondaryInfoContainer = styled.div`
-display:grid;
-grid-template-columns:repeat(2, 1fr);
-margin-top:12px;
-grid-gap:12px 0px;
-min-width:200px;
-`;
-const BuyingBox=styled.div`
-display:flex;
-flex-direction:column;
-margin-left:auto;
-@media (max-width:${props=> props.theme.smallPhone}) {
-    flex-direction:row;
-    margin-left:0;
-    flex-grow:1;
-    justify-content:space-between;
-}
-`;
 const CardPriceBox=styled.div`
-margin-bottom:20px;
+margin:5px 0;
 @media (max-width:${props=> props.theme.smallPhone}) {
     margin:0;
+    margin-left:15px;
 }
 `;
-
+const NumberInput = styled.input`
+position:relative;
+display:block;
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+color: black;
+text-indent:21px;
+padding:10px 0px;
+border:1px solid #D1D1D1;
+border-radius:12px;
+background: #f9f9f9;
+width:110px;
+`;
+const NumberInputLabel = styled.label`
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 17px;
+line-height: 26px;
+color: #151515;
+@media (max-width:${props => props.theme.laptop}) {
+    :nth-last-child(1) {
+        margin-top:10px;
+    }
+}
+`;
+const TrashcanButton=styled.button`
+display:block;
+position:relative;
+transition:0.1s ease-in-out;
+width:30px;
+height:30px;
+margin:15px;
+margin-left:0;
+border:none;
+border-radius:12px;
+background:none;
+background-image: url(${trashcan});
+background-size: contain;
+background-repeat:no-repeat;
+background-position:50% 50%;
+:hover {
+    box-shadow: 
+    0 0 3px 5px pink,
+    inset 0 0 5px 1px red;
+    ::after {
+        content:"delete";
+        position:absolute;
+        top:25%;
+        left:115%;
+        @media (max-width:${props=> props.theme.smallPhone}) {
+            top:110%;
+            left:-10%;
+        }
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        color:#A9A9A9;
+    }
+}
+`;
+const TotalValue = styled.p`
+margin-top:10px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 22px;
+color: ${props =>props.theme.baseColor};
+@media (max-width:${props => props.theme.smallPhone}) {
+    width:80%;
+}
+`;
 export const ContentCardShoppingCart = ({product}) => {
     let {
         salePercent:sale = 50, 
         name: title = "Product Title",
         description = "Space for a small product description",
-        rating=5,
         priceUSD: price,
         picture,
-        freshness = "Extra fresh",
-        deliveryArea: delivery = "Europe",
-        farm = "Grocery Farm Fields"} = product;
+        } = product;
     let saleText = sale ? `-${(sale)}%` : "";
     let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
+    let [quantity, setQuantity] = useState(1);
+    function changeQuantity (event){
+        if (event.target.value<1) {event.target.value=1}
+        setQuantity(event.target.value);
+    }
     return (
-        <CardWide  id={product.id}>
+        <ShoppingCartCard  id={product.id}>
             <CardPictureContainerWide>
                 <CardPicture src={`${picture || prodPicDefault}`} alt="product picture"/>
                 <CardSale>
                     {saleText}
                 </CardSale>
             </CardPictureContainerWide>
+
             <Container>
                 <CardInfo>
-                    <CardTitle>
-                        {title}
-                    </CardTitle>
+                    <div>
+                        <CardTitle bigLetters>
+                            {title}
+                        </CardTitle>
 
-                    <CardDescription>
-                        {description}
-                    </CardDescription>
+                        <CardDescription>
+                            {description}
+                        </CardDescription>
+                    </div>
 
-                    <RatingBox rate={rating}/>
-                    
-                    <SecondaryInfoContainer>
-                        {freshness && (
-                            <>
-                            <Infotext>Freshness:</Infotext>
-                            <Infotext>{freshness}</Infotext>
-                            </>
-                        )}
-                        {delivery && (
-                            <>
-                            <Infotext>Delivery:</Infotext>
-                            <Infotext>{delivery}</Infotext>
-                            </>
-                                
-                        )}
-                        {farm && (
-                            <>
-                            <Infotext>Farm:</Infotext>
-                            <Infotext>{farm}</Infotext>
-                            </>
-                        )} 
-                    </SecondaryInfoContainer>
-
-                </CardInfo>
-
-                <BuyingBox>
                     <CardPriceBox>
                         <CardPrice>
                             {priceText}
@@ -151,12 +188,32 @@ export const ContentCardShoppingCart = ({product}) => {
                             {prevPrice}
                         </CardPriceOff>
                     </CardPriceBox>
+                    
+                    <NumberInputLabel for="quantityInput">
+                        Set quantity
+                        <NumberInput 
+                            type="number" 
+                            name="quantityInput" 
+                            id={product.id*1111} 
+                            defaultValue={1} 
+                            min={1}
+                            onChange={(e)=>(changeQuantity(e))}
+                        />
+                    </NumberInputLabel>
+                    <TotalValue>
+                        Total: {Math.ceil(quantity*price*100)/100} USD
+                    </TotalValue>
 
-                    <GreenButton>Buy now</GreenButton>
-                </BuyingBox>
+                    <TrashcanButton 
+                    name="delete-item" 
+                    data-productid={product.id}
+                    />
+
+                </CardInfo>
+
             </Container>
             
 
-        </CardWide>
+        </ShoppingCartCard>
     );
 }

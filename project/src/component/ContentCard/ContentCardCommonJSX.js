@@ -35,8 +35,8 @@ color: ${props => props.theme.secondaryColor};
 export const CardTitle = styled.div`
 font-family: 'Poppins';
 font-style: normal;
-font-weight: 500;
-font-size: 15px;
+font-weight: ${props => props.bigLetters ? 600 : 500};
+font-size: ${props => props.bigLetters ? 18 : 15}px;
 line-height: 22px;
 color: ${props =>props.theme.baseColor};
 `;

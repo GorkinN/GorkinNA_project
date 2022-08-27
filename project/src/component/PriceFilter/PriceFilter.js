@@ -44,7 +44,6 @@ color: #151515;
         margin-top:10px;
     }
 }
-
 `;
 
 export const PriceFilter = ({minmax}) => {

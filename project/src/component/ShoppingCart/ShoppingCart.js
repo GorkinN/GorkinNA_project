@@ -6,7 +6,8 @@ import { ContentCardShoppingCart } from '../ContentCard/ContentCardShoppingCart'
 
 const ProductsList = styled.ul`
 margin:10px 0;
-padding:0;`;
+padding:0;
+`;
 const ProductListItem = styled.li`
 margin-bottom:16px;
 padding-bottom:16px;
