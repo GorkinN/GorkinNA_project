@@ -12,24 +12,14 @@ import { ShoppingCartContext} from './component/Context/ShoppingCartContext';
 
 function App() {
   const [isShoppingCartVisible, setShoppingCartVisibility] = useState(false);
-  let shoppingCartItemsIDs = new Set();
-
-  function addToShoppingCard(event) {
-    console.log("click");
-    console.log(event.target);
-    if (event.target.name==="Buy-button")    {
-      console.log('event.target.product-id: ',event.target.dataset.productID);
-      shoppingCartItemsIDs.add(event.target.dataset.productID);
-      console.log("shoppingCartItemsIDs", shoppingCartItemsIDs)
-    } 
-  }
+  
   return (
     <ThemeProvider theme={theme}>
     <ShoppingCartContext.Provider value={{isShoppingCartVisible, setShoppingCartVisibility}}>
         <Wrapper onClick={()=>(console.log("hahahha"))}>
           <GlobalFonts/>
           <Header/>
-          <Main addToShoppingCard={()=>addToShoppingCard()}/>
+          <Main/>
           <Footer/>
         </Wrapper>
     </ShoppingCartContext.Provider>

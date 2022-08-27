@@ -6,9 +6,19 @@ import "./main.css";
 import { ShoppingCart } from '../ShoppingCart/ShoppingCart';
 import { ShoppingCartContext } from '../Context/ShoppingCartContext';
 
-const Main = (addToShoppingCard) => {
-    
+const Main = () => {
+    //shopping cart controls START
     let {isShoppingCartVisible} = useContext(ShoppingCartContext);
+
+    function addToShoppingCard(event) {
+      if (event.target.name==="Buy-button")    {
+        setCartProductsIds((prevState)=>{
+            return new Set(prevState).add(event.target.id/111)});
+      } 
+    }
+
+    let [cartProductsIds, setCartProductsIds] = useState(new Set());
+    //shopping cart controls END
 
     //going to fetch productsGeneralObj
     let productsGeneralObj = [
@@ -50,11 +60,17 @@ const Main = (addToShoppingCard) => {
 
   
     return (
-        <main className="main" onClick={(e)=>addToCart(e)}>
-           {isShoppingCartVisible && <ShoppingCart productsArray={productsGeneralObj}/>}
+        <main className="main" onClick={(event)=>addToShoppingCard(event)}>
+           {isShoppingCartVisible && 
+           <ShoppingCart 
+           productsArray={productsGeneralObj}
+           productsGeneralObj={productsGeneralObj}
+           idSet={cartProductsIds}
+           />}
 
             <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>
             <ProductsSection 
+            
             isGridLayout={isGridLayout} 
             productsGeneralObj={productsGeneralObj}
             ></ProductsSection>

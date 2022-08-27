@@ -16,8 +16,14 @@ padding-bottom:16px;
 border-bottom:1px solid #F9F9F9;
 `;
 
-export const ShoppingCart = ({productsArray}) => {
-    let {setShoppingCartVisibility} =useContext(ShoppingCartContext);
+export const ShoppingCart = ({productsGeneralObj, idSet}) => {
+    let {setShoppingCartVisibility} = useContext(ShoppingCartContext);
+
+    function formShoopingCartProductsArr (productsGeneralObj, idSet) {
+        return productsGeneralObj.filter((item)=>(idSet.has(item.id)));
+    }
+
+    let productsArray = formShoopingCartProductsArr(productsGeneralObj, idSet);
 
     function showShoppingCartProducts (productsArray) {
         if (productsArray.length===0) {return <ProductListItem>Shopping cart is empty</ProductListItem>}
