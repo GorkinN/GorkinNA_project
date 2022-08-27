@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/GorkinNA_project/static/css/main.98c6093d.css",
-    "main.js": "/GorkinNA_project/static/js/main.f0416fb8.js",
+    "main.css": "/GorkinNA_project/static/css/main.1efb9cff.css",
+    "main.js": "/GorkinNA_project/static/js/main.467699d3.js",
     "static/media/article_big.jpg": "/GorkinNA_project/static/media/article_big.1508688149903cc6a713.jpg",
     "static/media/open-sans-v26-latin-regular.svg": "/GorkinNA_project/static/media/open-sans-v26-latin-regular.a9aff17ee65c2d3dd7a9.svg",
     "static/media/poppins-v15-latin-500.svg": "/GorkinNA_project/static/media/poppins-v15-latin-500.138d54dda216e46d9830.svg",
@@ -35,11 +35,11 @@
     "static/media/arrow-black.svg": "/GorkinNA_project/static/media/arrow-black.c87e478a419ea00b9af3156ec23abaf2.svg",
     "static/media/arrow-green.svg": "/GorkinNA_project/static/media/arrow-green.0537ade0685e4778a7a6cc2cec3bd61f.svg",
     "static/media/open-list.svg": "/GorkinNA_project/static/media/open-list.7b808e52d2e3cac5f31f.svg",
-    "main.98c6093d.css.map": "/GorkinNA_project/static/css/main.98c6093d.css.map",
-    "main.f0416fb8.js.map": "/GorkinNA_project/static/js/main.f0416fb8.js.map"
+    "main.1efb9cff.css.map": "/GorkinNA_project/static/css/main.1efb9cff.css.map",
+    "main.467699d3.js.map": "/GorkinNA_project/static/js/main.467699d3.js.map"
   },
   "entrypoints": [
-    "static/css/main.98c6093d.css",
-    "static/js/main.f0416fb8.js"
+    "static/css/main.1efb9cff.css",
+    "static/js/main.467699d3.js"
   ]
 }
