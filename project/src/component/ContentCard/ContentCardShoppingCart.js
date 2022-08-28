@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import styled from "styled-components";
 import prodPicDefault from './image/vegs.jpg';
 import trashcan from "../common/trash-can.png";
 import {CardPictureContainer, CardPicture, CardSale, CardTitle, CardDescription, CardPrice, CardPriceOff} from "./ContentCardCommonJSX";
+import {ShoppingCartProductsContext} from "../Context/ShoppingCartContext";
 
 let ShoppingCartCard = styled.li`
 position: relative;
@@ -154,11 +155,22 @@ export const ContentCardShoppingCart = ({product}) => {
     let saleText = sale ? `-${(sale)}%` : "";
     let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
+
+    let {cartProductsIds, setCartProductsIds} =useContext(ShoppingCartProductsContext);
+
     let [quantity, setQuantity] = useState(1);
     function changeQuantity (event){
         if (event.target.value<1) {event.target.value=1}
+
         setQuantity(event.target.value);
+        setCartProductsIds((prevState)=>{
+            prevState.set(+product.id, +event.target.value);
+            let newMap = new Map(prevState)
+            return new Map(newMap);
+        });
+
     }
+
     return (
         <ShoppingCartCard  id={product.id}>
             <CardPictureContainerWide>
@@ -195,7 +207,7 @@ export const ContentCardShoppingCart = ({product}) => {
                             type="number" 
                             name="quantityInput" 
                             id={product.id*1111} 
-                            defaultValue={1} 
+                            defaultValue={cartProductsIds.get(+product.id)} 
                             min={1}
                             onChange={(e)=>(changeQuantity(e))}
                         />
@@ -206,7 +218,7 @@ export const ContentCardShoppingCart = ({product}) => {
 
                     <TrashcanButton 
                     name="delete-item" 
-                    data-productid={product.id}
+                    data-productid={+product.id}
                     />
 
                 </CardInfo>

@@ -3,8 +3,10 @@ import {useState, useContext} from 'react';
 import { ProductsSection } from '../ProductsSection/ProductsSection';
 import { LayoutButtons } from '../common/LayoutButtons/LayoutButtons';
 import "./main.css";
+
 import { ShoppingCart } from '../ShoppingCart/ShoppingCart';
 import { ShoppingCartContext } from '../Context/ShoppingCartContext';
+import { ShoppingCartProductsContext } from '../Context/ShoppingCartContext';
 
 const Main = () => {
     //shopping cart START
@@ -14,10 +16,12 @@ const Main = () => {
       if (event.target.name==="Buy-button")    {
         let id = event.target.dataset.productid;
         setCartProductsIds((prevState)=>{
-            return new Set(prevState).add(+id)});
+            return new Map(prevState).set(+id, 1)});
       } 
     }
-    let [cartProductsIds, setCartProductsIds] = useState(new Set());
+    let [cartProductsIds, setCartProductsIds] = useState(new Map());
+    console.log("cartProductsIds",cartProductsIds)
+
     //shopping cart END
 
     //going to fetch productsGeneralObj
@@ -61,12 +65,13 @@ const Main = () => {
   
     return (
         <main className="main" onClick={(event)=>addToShoppingCart(event)}>
-           {isShoppingCartVisible && 
-           <ShoppingCart 
-           productsGeneralObj={productsGeneralObj}
-           idSet={cartProductsIds}
-           returnCartSet={{setCartProductsIds}}
-           />}
+            <ShoppingCartProductsContext.Provider value={{cartProductsIds, setCartProductsIds}}>
+            {isShoppingCartVisible && 
+                <ShoppingCart 
+                productsGeneralObj={productsGeneralObj}
+                />}
+            </ShoppingCartProductsContext.Provider>
+           
 
             <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>
             <ProductsSection 

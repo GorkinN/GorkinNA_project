@@ -1,8 +1,9 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext} from 'react';
 import styled from "styled-components";
 import { ModalWrapper } from '../ModalWrapper/ModalWrapper';
 import { ShoppingCartContext } from '../Context/ShoppingCartContext';
 import { ContentCardShoppingCart } from '../ContentCard/ContentCardShoppingCart';
+import { ShoppingCartProductsContext } from '../Context/ShoppingCartContext';
 
 const ProductsList = styled.ul`
 margin:10px 0;
@@ -17,16 +18,16 @@ padding-bottom:16px;
 border-bottom:1px solid #F9F9F9;
 `;
 
-export const ShoppingCart = ({productsGeneralObj, idSet, returnCartSet}) => {
+export const ShoppingCart = ({productsGeneralObj}) => {
     let {setShoppingCartVisibility} = useContext(ShoppingCartContext);
-    let [productIdSet, setProductIdSet] = useState(new Set(idSet));
+    let {cartProductsIds, setCartProductsIds} = useContext(ShoppingCartProductsContext);
 
     function removeFromShoppingCart(event) {
         if (event.target.name==="delete-item")    {
             let id = event.target.dataset.productid;
-            setProductIdSet((prevState)=>{
+            setCartProductsIds((prevState)=>{
                 prevState.delete(+id)
-                return new Set(prevState)});
+                return new Map(prevState)});
         } 
     }
 
@@ -34,7 +35,7 @@ export const ShoppingCart = ({productsGeneralObj, idSet, returnCartSet}) => {
     function formShoopingCartProductsArr (productsGeneralObj, setOfIds) {
         return productsGeneralObj.filter((item)=>(setOfIds.has(item.id)));
     }
-    let productsArray = formShoopingCartProductsArr(productsGeneralObj, productIdSet);
+    let productsArray = formShoopingCartProductsArr(productsGeneralObj, cartProductsIds);
 
     function showShoppingCartProducts (productsArray) {
         if (productsArray.length===0) {return <ProductListItem>Shopping cart is empty</ProductListItem>}
