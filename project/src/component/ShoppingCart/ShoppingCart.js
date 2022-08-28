@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import styled from "styled-components";
 import { ModalWrapper } from '../ModalWrapper/ModalWrapper';
 import { ShoppingCartContext } from '../Context/ShoppingCartContext';
@@ -17,14 +17,24 @@ padding-bottom:16px;
 border-bottom:1px solid #F9F9F9;
 `;
 
-export const ShoppingCart = ({productsGeneralObj, idSet}) => {
+export const ShoppingCart = ({productsGeneralObj, idSet, returnCartSet}) => {
     let {setShoppingCartVisibility} = useContext(ShoppingCartContext);
+    let [productIdSet, setProductIdSet] = useState(new Set(idSet));
 
-    function formShoopingCartProductsArr (productsGeneralObj, idSet) {
-        return productsGeneralObj.filter((item)=>(idSet.has(item.id)));
+    function removeFromShoppingCart(event) {
+        if (event.target.name==="delete-item")    {
+            let id = event.target.dataset.productid;
+            setProductIdSet((prevState)=>{
+                prevState.delete(+id)
+                return new Set(prevState)});
+        } 
     }
 
-    let productsArray = formShoopingCartProductsArr(productsGeneralObj, idSet);
+
+    function formShoopingCartProductsArr (productsGeneralObj, setOfIds) {
+        return productsGeneralObj.filter((item)=>(setOfIds.has(item.id)));
+    }
+    let productsArray = formShoopingCartProductsArr(productsGeneralObj, productIdSet);
 
     function showShoppingCartProducts (productsArray) {
         if (productsArray.length===0) {return <ProductListItem>Shopping cart is empty</ProductListItem>}
@@ -36,7 +46,7 @@ export const ShoppingCart = ({productsGeneralObj, idSet}) => {
         title="Shopping cart" 
         customOnCloseModal={()=>(setShoppingCartVisibility((prev)=>(!prev)))}
         top={2}>
-                <ProductsList>
+                <ProductsList onClick={(event=>(removeFromShoppingCart(event)))}>
                     {showShoppingCartProducts(productsArray)}
                 </ProductsList>
         </ModalWrapper>

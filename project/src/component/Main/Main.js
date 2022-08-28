@@ -7,29 +7,18 @@ import { ShoppingCart } from '../ShoppingCart/ShoppingCart';
 import { ShoppingCartContext } from '../Context/ShoppingCartContext';
 
 const Main = () => {
-    //shopping cart controls START
+    //shopping cart START
     let {isShoppingCartVisible} = useContext(ShoppingCartContext);
 
     function addToShoppingCart(event) {
       if (event.target.name==="Buy-button")    {
+        let id = event.target.dataset.productid;
         setCartProductsIds((prevState)=>{
-            return new Set(prevState).add(event.target.id/111)});
+            return new Set(prevState).add(+id)});
       } 
     }
-    function removeFromShoppingCart(event) {
-        console.log("prevstate, ", cartProductsIds);
-        if (event.target.name==="delete-item")    {
-            console.log("id",event.target.dataset.productid)  
-            setCartProductsIds((prevState)=>{
-                return new Set(prevState).delete(event.target.dataset.productid)});
-        } 
-        
-        console.log("state, ", cartProductsIds);
-        console.log("***")
-      }
-
     let [cartProductsIds, setCartProductsIds] = useState(new Set());
-    //shopping cart controls END
+    //shopping cart END
 
     //going to fetch productsGeneralObj
     let productsGeneralObj = [
@@ -74,10 +63,9 @@ const Main = () => {
         <main className="main" onClick={(event)=>addToShoppingCart(event)}>
            {isShoppingCartVisible && 
            <ShoppingCart 
-           productsArray={productsGeneralObj}
            productsGeneralObj={productsGeneralObj}
            idSet={cartProductsIds}
-           onClick={(e)=>(removeFromShoppingCart(e))}
+           returnCartSet={{setCartProductsIds}}
            />}
 
             <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>

@@ -152,7 +152,7 @@ export const ContentCardWide = ({product}) => {
                         </CardPriceOff>
                     </CardPriceBox>
 
-                    <GreenButton name="Buy-button" id={product.id*111}>Buy now</GreenButton>
+                    <GreenButton name="Buy-button" productid={product.id}>Buy now</GreenButton>
                 </BuyingBox>
             </Container>
             
