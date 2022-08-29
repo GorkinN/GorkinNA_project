@@ -11,16 +11,16 @@ import { ShoppingCartProductsContext } from '../Context/ShoppingCartContext';
 const Main = () => {
     //shopping cart START
     let {isShoppingCartVisible} = useContext(ShoppingCartContext);
+    let {setCartProductsIds} = useContext(ShoppingCartProductsContext);
 
     function addToShoppingCart(event) {
       if (event.target.name==="Buy-button")    {
         let id = event.target.dataset.productid;
+
         setCartProductsIds((prevState)=>{
             return new Map(prevState).set(+id, 1)});
       } 
     }
-    let [cartProductsIds, setCartProductsIds] = useState(new Map());
-
     //shopping cart END
 
     //going to fetch productsGeneralObj
@@ -64,12 +64,10 @@ const Main = () => {
   
     return (
         <main className="main" onClick={(event)=>addToShoppingCart(event)}>
-            <ShoppingCartProductsContext.Provider value={{cartProductsIds, setCartProductsIds}}>
             {isShoppingCartVisible && 
                 <ShoppingCart 
                 productsGeneralObj={productsGeneralObj}
                 />}
-            </ShoppingCartProductsContext.Provider>
            
 
             <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>

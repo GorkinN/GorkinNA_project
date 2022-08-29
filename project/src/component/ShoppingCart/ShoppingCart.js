@@ -5,6 +5,7 @@ import { ShoppingCartContext } from '../Context/ShoppingCartContext';
 import { ContentCardShoppingCart } from '../ContentCard/ContentCardShoppingCart';
 import { ShoppingCartProductsContext } from '../Context/ShoppingCartContext';
 import {GreenButtonStyled} from "../Button/Button.js";
+import { mapReplacer } from '../common/CommonFunctions';
 
 const ProductsList = styled.ul`
 margin:10px 0;
@@ -72,18 +73,6 @@ export const ShoppingCart = ({productsGeneralObj}) => {
         setTotalSum(countTotalSum(productsGeneralObj, cartProductsIds));
     }, [productsGeneralObj, cartProductsIds]);
     //TotalSum content END
-
-    //form JSON from Map
-    function mapReplacer (key, value) {
-        if (value instanceof Map) {
-            return {
-                dataType: "Map",
-                value: Array.from(value.entries())
-            };
-            } else {
-                return value;
-            }
-    }
 
     return (
         <ModalWrapper 

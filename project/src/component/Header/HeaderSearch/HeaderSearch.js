@@ -4,9 +4,11 @@ import logoImg from "../../../img/LogoFreshnesecom.png";
 import UserAccImg from "../../../img/icons/user-account.svg";
 import ShoppingCartImg from "../../../img/icons/shopping-cart.png";
 import { ShoppingCartContext } from '../../Context/ShoppingCartContext';
+import { ShoppingCartProductsContext } from '../../Context/ShoppingCartContext';
 
 const HeaderSearch = () => {
     const {setShoppingCartVisibility} = useContext(ShoppingCartContext);
+    const {cartProductsIds} = useContext(ShoppingCartProductsContext)
     
     return (
 <div className="header__search _container">
@@ -41,7 +43,7 @@ const HeaderSearch = () => {
                                 <img src={ShoppingCartImg} alt="shopping cart"/>
                             </button>
                         </div>
-                        <div className="shopping-cart__counter">4</div>
+                        <div className="shopping-cart__counter">{cartProductsIds.size}</div>
                     </div>
 
                 </div>
