@@ -83,7 +83,8 @@ export const ShoppingCart = ({productsGeneralObj}) => {
                     {showShoppingCartProducts(productsArray)}
                 </ProductsList>
 
-        {cartProductsIds.size === 0? null : null}
+        {cartProductsIds.size === 0? null : 
+        <>
         <TotalSum>
             Total: {totalSum} USD
         </TotalSum>
@@ -91,6 +92,8 @@ export const ShoppingCart = ({productsGeneralObj}) => {
         <BuyCartButton productid={0} onClick={()=>(console.log("JSON:", JSON.stringify(cartProductsIds, mapReplacer)))}>
             Buy products
         </BuyCartButton>
+        </>}
+       
 
         </ModalWrapper>
     );
