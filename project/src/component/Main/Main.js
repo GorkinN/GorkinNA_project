@@ -20,7 +20,6 @@ const Main = () => {
       } 
     }
     let [cartProductsIds, setCartProductsIds] = useState(new Map());
-    console.log("cartProductsIds",cartProductsIds)
 
     //shopping cart END
 

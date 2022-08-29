@@ -158,7 +158,7 @@ export const ContentCardShoppingCart = ({product}) => {
 
     let {cartProductsIds, setCartProductsIds} =useContext(ShoppingCartProductsContext);
 
-    let [quantity, setQuantity] = useState(1);
+    let [quantity, setQuantity] = useState(cartProductsIds.get(product.id));
     function changeQuantity (event){
         if (event.target.value<1) {event.target.value=1}
 

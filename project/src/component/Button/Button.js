@@ -66,9 +66,9 @@ export const TransparentButton = ({children, onClick}) => {
     );
 }
 
-export const GreenButton = ({children, name, productid})=>{
+export const GreenButton = ({children, name, productid, onClick})=>{
     return (
-        <GreenButtonStyled name={name} data-productid={+productid}>
+        <GreenButtonStyled name={name} data-productid={+productid} onClick={onClick}>
             {children}
         </GreenButtonStyled>
     );
