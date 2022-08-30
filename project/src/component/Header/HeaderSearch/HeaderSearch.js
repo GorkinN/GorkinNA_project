@@ -5,10 +5,13 @@ import UserAccImg from "../../../img/icons/user-account.svg";
 import ShoppingCartImg from "../../../img/icons/shopping-cart.png";
 import { ShoppingCartContext } from '../../Context/ShoppingCartContext';
 import { ShoppingCartProductsContext } from '../../Context/ShoppingCartContext';
+import { SearchbarContext } from '../../Context/SearchbarContext';
 
 const HeaderSearch = () => {
     const {setShoppingCartVisibility} = useContext(ShoppingCartContext);
-    const {cartProductsIds} = useContext(ShoppingCartProductsContext)
+    const {cartProductsIds} = useContext(ShoppingCartProductsContext);
+    const {searchText, setSearchText} = useContext(SearchbarContext);
+    
     
     return (
 <div className="header__search _container">
@@ -17,11 +20,19 @@ const HeaderSearch = () => {
                 </div>
                 <div className="header__search-field search-field">
                     <div className="search-field__search search">
-                        <form className="search__search-form" action="" method="get">
-                            <input className="search__input" type="search" name="product-search-field"
-                                id="product-search-field"/>
-                            <label className="search__label" for="product-search-field">
-                                Enter product name to search for
+                        <form className="search__search-form" onSubmit={(e)=>(e.preventDefault())}>
+                            <input 
+                            className="search__input" 
+                            type="search" 
+                            name="product-search-field"
+                            id="product-search-field"
+                            onChange={ (e)=>{
+                                setSearchText(e.target.value)
+                            } }
+                            defaultValue=""
+                            />
+                            <label className="search__label" htmlFor='product-search-field'>
+                                {searchText? "" : "Enter product name to search for"}
                             </label>
                         </form>
                     </div>
@@ -30,9 +41,9 @@ const HeaderSearch = () => {
                 <div className="header__user-field user-field">
 
                     <div className="user-field__account">
-                        <a href="#">
+                        <div>
                             <img src={UserAccImg} alt="login"/>
-                        </a>
+                        </div>
                     </div>
 
                     <div className="user-field__shopping-cart shopping-cart">

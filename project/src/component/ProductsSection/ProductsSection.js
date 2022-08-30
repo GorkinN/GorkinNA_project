@@ -1,10 +1,11 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import styled from "styled-components";
 import {SectionLayout} from "../SectionLayout/SectionLayout";
 import { ContentCard } from '../ContentCard/ContentCard.js';
 import { ContentCardWide } from '../ContentCard/ContentCardWide';
 import { FilterForm } from '../FilterForm/FilterForm';
+import { SearchbarContext } from '../Context/SearchbarContext';
 
 const GridLayout = styled.ul`
 display:grid;
@@ -29,6 +30,27 @@ flex-wrap:no-wrap;
 
 export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
   let [productsCardsList, setProductsCardList] = useState(productsGeneralObj); 
+  //filter for searchbar
+  let {searchText} = useContext(SearchbarContext);
+  useEffect( ()=>{
+
+    function formFilterSearchbarProducts (searchText){
+      let filteredArr=productsGeneralObj;
+      if (searchText) {
+        let searchTextUppercase = searchText.toUpperCase();
+
+        filteredArr = productsGeneralObj.filter((item) => {
+          let name = item.name.toUpperCase();
+          return ~name.indexOf(searchTextUppercase);        
+        })
+      }
+      return filteredArr;
+    } 
+
+    setProductsCardList(formFilterSearchbarProducts(searchText))
+   } , [searchText, productsGeneralObj] )
+   
+  
   function showProductCards(productsList){
     if (productsList.length===0) {return (<p>There's no products</p>);}
         if (isGridLayout) {
@@ -92,9 +114,7 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
     let chosenRatingArr = collectCheckboxFilterData(`ratingCheckBox`);
 
     let minPrice = document.querySelector("input[name='minPriceNumberInput']").value;
-    console.log("minPrice", minPrice);
     let maxPrice = document.querySelector("input[name='maxPriceNumberInput']").value;
-    console.log("maxPrice", maxPrice);
 
     function filterFunc (obj, searchingProp, chosenCategoriesArr){
       if (chosenCategoriesArr.length===0) {return true;}

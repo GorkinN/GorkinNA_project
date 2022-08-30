@@ -201,7 +201,7 @@ export const ContentCardShoppingCart = ({product}) => {
                         </CardPriceOff>
                     </CardPriceBox>
                     
-                    <NumberInputLabel for="quantityInput">
+                    <NumberInputLabel htmlFor="quantityInput">
                         Set quantity
                         <NumberInput 
                             type="number" 

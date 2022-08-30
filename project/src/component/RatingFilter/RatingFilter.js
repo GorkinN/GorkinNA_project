@@ -10,35 +10,35 @@ export const RatingFilter = () => {
         <Legend>Rating</Legend>
         <LabelContainer>
             <Checkbox type="checkbox" name="ratingCheckBox" id="rate_5" value={5}/>
-            <CheckBoxLabel for="rate_5">
+            <CheckBoxLabel htmlFor="rate_5">
                 <RatingBox rate={5} isGolden={true}></RatingBox>
             </CheckBoxLabel>
         </LabelContainer>
 
         <LabelContainer>
             <Checkbox type="checkbox" name="ratingCheckBox"  id="rate_4" value={4}/>
-            <CheckBoxLabel for="rate_4">
+            <CheckBoxLabel htmlFor="rate_4">
                 <RatingBox rate={4} isGolden={true}></RatingBox>
             </CheckBoxLabel>
         </LabelContainer>
 
         <LabelContainer>
             <Checkbox type="checkbox" name="ratingCheckBox"  id="rate_3" value={3}/>
-            <CheckBoxLabel for="rate_3">
+            <CheckBoxLabel htmlFor="rate_3">
                 <RatingBox rate={3} isGolden={true}></RatingBox>
             </CheckBoxLabel>
         </LabelContainer>
 
         <LabelContainer>
             <Checkbox type="checkbox" name="ratingCheckBox"  id="rate_2" value={2}/>
-            <CheckBoxLabel for="rate_2">
+            <CheckBoxLabel htmlFor="rate_2">
                 <RatingBox rate={2} isGolden={true}></RatingBox>
             </CheckBoxLabel>
         </LabelContainer>
 
         <LabelContainer>
             <Checkbox type="checkbox" name="ratingCheckBox" id="rate_1" value={1}/>
-            <CheckBoxLabel for="rate_1">
+            <CheckBoxLabel htmlFor="rate_1">
                 <RatingBox rate={1} isGolden={true}></RatingBox>
             </CheckBoxLabel>
         </LabelContainer>

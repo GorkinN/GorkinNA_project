@@ -9,21 +9,28 @@ import {ThemeProvider} from "styled-components";
 import theme from "./component/common/themes/theme";
 import { ShoppingCartContext} from './component/Context/ShoppingCartContext';
 import { ShoppingCartProductsContext } from './component/Context/ShoppingCartContext';
+import {SearchbarContext} from './component/Context/SearchbarContext';
+
 
 
 
 function App() {
   const [isShoppingCartVisible, setShoppingCartVisibility] = useState(false);
   let [cartProductsIds, setCartProductsIds] = useState(new Map());
+  let [searchText, setSearchText] = useState("");
   
   return (
     <ThemeProvider theme={theme}>
     <ShoppingCartContext.Provider value={{isShoppingCartVisible, setShoppingCartVisibility}}>
     <ShoppingCartProductsContext.Provider value={{cartProductsIds, setCartProductsIds}}>
-        <Wrapper onClick={()=>(console.log("hahahha"))}>
+        <Wrapper>
           <GlobalFonts/>
-          <Header/>
-          <Main/>
+          
+          <SearchbarContext.Provider value={{searchText, setSearchText}}>
+            <Header/>
+            <Main/>
+          </SearchbarContext.Provider>
+
           <Footer/>
         </Wrapper>
       </ShoppingCartProductsContext.Provider>

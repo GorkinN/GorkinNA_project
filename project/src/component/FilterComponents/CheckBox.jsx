@@ -4,7 +4,7 @@ export const CheckBoxLabel = styled.label`
 position:relative;
 font-family: 'Open Sans';
 font-style: normal;
-font-weight: 900;
+font-weight: 600;
 font-size: 14px;
 line-height: 19px;
 color: #151515;
@@ -36,6 +36,7 @@ margin-right:5px;
     height:10px;
     transition: 0.1s ease-in-out;
 }
+
 `;
 export const Checkbox=styled.input`
 display:none;
@@ -48,6 +49,9 @@ display:none;
 }
 :checked ~ label:before {
     background-color:#6A983C;
+}
+:checked ~ label {
+    color:${props => props.theme.secondaryColor};
 }
 `;
 export const LabelContainer = styled.div`

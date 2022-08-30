@@ -25,7 +25,7 @@ export const CategoryFilter = ({categoriesMap}) => {
     categoriesFilterArr.push(
         <LabelContainer key={entry[0]}>
             <Checkbox type="checkbox" name="categoryFilterCheckbox" id={entry[0]} value={entry[0]}/>
-            <CheckBoxLabel for={entry[0]}>{entry[0]}</CheckBoxLabel>
+            <CheckBoxLabel htmlFor={entry[0]}>{entry[0]}</CheckBoxLabel>
             <QuantityTag>{entry[1]}</QuantityTag>
         </LabelContainer>
     );

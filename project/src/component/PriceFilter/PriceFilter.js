@@ -61,7 +61,7 @@ export const PriceFilter = ({minmax}) => {
         <PriceFilterContainer>
             <NumberInputBox>
 
-                <NumberInputLabel for="minPriceNumberInput">
+                <NumberInputLabel htmlFor="minPriceNumberInput">
                     min
                     <NumberInput 
                         type="number" 
@@ -72,7 +72,7 @@ export const PriceFilter = ({minmax}) => {
                     />
                 </NumberInputLabel>
 
-                <NumberInputLabel for="maxPriceNumberInput">
+                <NumberInputLabel htmlFor="maxPriceNumberInput">
                     max
                     <NumberInput 
                         type="number" 
