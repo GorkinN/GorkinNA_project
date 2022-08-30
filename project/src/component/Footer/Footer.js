@@ -1,4 +1,5 @@
 import React from 'react';
+import Href from "../Hlink/Hlink";
 import "./Footer.css";
 
 const Footer = () => {
@@ -8,38 +9,38 @@ const Footer = () => {
                 <div className="footer__get-in-touch">
                     <h2 className="footer__links-caption caption_h2">Get in touch</h2>
                     <ul className="footer__links-list">
-                        <li className="footer__links-list-item"><a href="#">About Us</a></li>
-                        <li className="footer__links-list-item"><a href="#">Careers</a></li>
-                        <li className="footer__links-list-item"><a href="#">Press Releases</a></li>
-                        <li className="footer__links-list-item"><a href="#">Blog</a></li>
+                        <li className="footer__links-list-item"><Href href="#">About Us</Href></li>
+                        <li className="footer__links-list-item"><Href href="#">Careers</Href></li>
+                        <li className="footer__links-list-item"><Href href="#">Press Releases</Href></li>
+                        <li className="footer__links-list-item"><Href href="#">Blog</Href></li>
                     </ul>
                 </div>
                 <div className="footer__connections">
                     <h2 className="footer__links-caption caption_h2">Connections</h2>
                     <ul className="footer__links-list">
-                        <li className="footer__links-list-item"><a href="#">Facebook</a></li>
-                        <li className="footer__links-list-item"><a href="#">Twitter</a></li>
-                        <li className="footer__links-list-item"><a href="#">Instagram</a></li>
-                        <li className="footer__links-list-item"><a href="#">Youtube</a></li>
-                        <li className="footer__links-list-item"><a href="#">LinkedIn</a></li>
+                        <li className="footer__links-list-item"><Href href="#">Facebook</Href></li>
+                        <li className="footer__links-list-item"><Href href="#">Twitter</Href></li>
+                        <li className="footer__links-list-item"><Href href="#">Instagram</Href></li>
+                        <li className="footer__links-list-item"><Href href="#">Youtube</Href></li>
+                        <li className="footer__links-list-item"><Href href="#">LinkedIn</Href></li>
                     </ul>
                 </div>
                 <div className="footer__earnings">
                     <h2 className="footer__links-caption caption_h2">Earnings</h2>
                     <ul className="footer__links-list">
-                        <li className="footer__links-list-item"><a href="#">Become an Affiliate</a></li>
-                        <li className="footer__links-list-item"><a href="#">Advertise your product</a></li>
-                        <li className="footer__links-list-item"><a href="#">Sell on Market</a></li>
+                        <li className="footer__links-list-item"><Href href="#">Become an Affiliate</Href></li>
+                        <li className="footer__links-list-item"><Href href="#">Advertise your product</Href></li>
+                        <li className="footer__links-list-item"><Href href="#">Sell on Market</Href></li>
                     </ul>
                 </div>
                 <div className="footer__account">
                     <h2 className="footer__links-caption caption_h2">Account</h2>
                     <ul className="footer__links-list">
-                        <li className="footer__links-list-item"><a href="#">Your account</a></li>
-                        <li className="footer__links-list-item"><a href="#">Returns Centre</a></li>
-                        <li className="footer__links-list-item"><a href="#">100 % purchase protection</a></li>
-                        <li className="footer__links-list-item"><a href="#">Chat with us</a></li>
-                        <li className="footer__links-list-item"><a href="#">Help</a></li>
+                        <li className="footer__links-list-item"><Href href="#">Your account</Href></li>
+                        <li className="footer__links-list-item"><Href href="#">Returns Centre</Href></li>
+                        <li className="footer__links-list-item"><Href href="#">100% purchase protection</Href></li>
+                        <li className="footer__links-list-item"><Href href="#">Chat with us</Href></li>
+                        <li className="footer__links-list-item"><Href href="#">Help</Href></li>
                     </ul>
                 </div>
             </div>
@@ -68,7 +69,6 @@ const Footer = () => {
                 </ul>
 
             </div>
-            <div className="footer__copyright">Copyright © 2020 petrbilek.com</div>
 
         </footer>
     );

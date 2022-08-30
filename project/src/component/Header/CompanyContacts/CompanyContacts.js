@@ -9,7 +9,7 @@ const Companycontacts = () => {
                 <div className="company-contacts__info">
                     <ul className="company-contacts__info-list">
                         <li className="company-contacts__info-item">
-                            <Hlink refURL={"#"} className="company-contacts__info-item_link">
+                            <Hlink href={"#"}>
                                 Chat with us
                             </Hlink>
                         </li>
@@ -24,17 +24,17 @@ const Companycontacts = () => {
                 <div>
                     <ul className="company-contacts__info-list">
                         <li className="company-contacts__info-item_long-margin">
-                            <Hlink refURL={"#"} className="company-contacts__info-item_link">
+                            <Hlink href={"#"}>
                                 Blog
                             </Hlink>
                         </li>
                         <li className="company-contacts__info-item_long-margin">
-                            <Hlink refURL={"#"} className="company-contacts__info-item_link">
+                            <Hlink href={"#"}>
                                 About Us
                             </Hlink>
                         </li>
                         <li className="company-contacts__info-item_long-margin">
-                            <Hlink refURL={"#"} className="company-contacts__info-item_link">
+                            <Hlink href={"#"}>
                                 Careers
                             </Hlink>
                         </li>
