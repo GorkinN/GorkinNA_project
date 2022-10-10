@@ -19,3 +19,4 @@ export function getCoords(elem){
         bottom:coords.bottom + window.pageYOffset,
     };
 }
+
