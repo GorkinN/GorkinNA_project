@@ -41,7 +41,7 @@
   }
   .header__search {
     justify-content: flex-start;
-    padding: 5px 5px;
+    padding: 15px 15px;
   }
 }
 @media (max-width: 767px) {
@@ -127,17 +127,16 @@
   }
 }
 @media (max-width: 479px) {
+  .search-field {
+    width: 100%;
+    vertical-align: center;
+  }
   .search-field__category-set:before {
     border: none;
   }
   .search-field__category-set {
     padding: 3px 0;
     border-bottom: 1px dashed #D1D1D1;
-  }
-}
-@media (max-width: 520px) {
-  .search-field {
-    padding: 8px 5px;
   }
 }
 .category-set {
@@ -189,8 +188,6 @@
   transition: 0.2s ease;
 }
 .search__label {
-  position: absolute;
-  top: 0;
   width: 100%;
   font-family: "Open Sans", sans-serif;
   font-style: normal;

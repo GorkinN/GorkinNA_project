@@ -1,0 +1,37 @@
+/*---containers---*/
+/*---fonts---*/
+/*---common blocks---*/
+._container {
+  max-width: 1190px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+@media (max-width: 992px) {
+  ._container {
+    max-width: 900px;
+  }
+}
+@media (max-width: 767px) {
+  ._container {
+    max-width: 730px;
+  }
+}
+@media (max-width: 479px) {
+  ._container {
+    max-width: none;
+  }
+}
+.currency-text {
+  margin-left: auto;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+}
+@media (max-width: 992px) {
+  .currency-text {
+    margin-left: 10px;
+    margin-right: auto;
+  }
+}

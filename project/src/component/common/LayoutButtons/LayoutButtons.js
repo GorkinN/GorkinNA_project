@@ -36,6 +36,9 @@ padding:5px;
     border-radius:3px;
     box-shadow:${props => props.isGrid ? ` 0 0 3px 1px #6A983C` : "none"};
 }
+@media (max-width:${props => props.theme.phone}) {
+    margin-top:15px;
+}
 `;
 
 export const LayoutButtons = ({isGrid=true, onClick}) => {
