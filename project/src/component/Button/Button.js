@@ -29,6 +29,17 @@ background-color: #F5F5F5;
         filter: brightness(90%);
         transition: 0.1s ease-in-out;
     }
+    &:disabled {
+        background:gray;
+        background-shadow:none;
+        border-color:gray;
+    }
+    &:hover:disabled {
+        filter: brightness(100%);
+    }
+    &:active:disabled {
+        filter:saturate(100%);
+    }
 `;
 const TransparentButtonStyled=styled(StyledButton)`
     border: 2px solid #92C064;
@@ -48,6 +59,7 @@ export const GreenButtonStyled=styled(StyledButton)`
     &:active {
         filter:saturate(180%);
     }
+
 `;
 export const Button = ({children, onClick}) => {
     return (
@@ -56,7 +68,6 @@ export const Button = ({children, onClick}) => {
         </StyledButton>
     );
 }
-
 
 export const TransparentButton = ({children, onClick}) => {
     return (

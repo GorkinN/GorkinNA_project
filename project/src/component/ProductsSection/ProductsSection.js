@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState, useContext, useEffect} from 'react';
+import {useState, useContext, useLayoutEffect} from 'react';
 import styled from "styled-components";
 import {SectionLayout} from "../SectionLayout/SectionLayout";
 import { ContentCard } from '../ContentCard/ContentCard.js';
@@ -32,7 +32,7 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
   let [productsCardsList, setProductsCardList] = useState(productsGeneralObj); 
   //filter for searchbar
   let {searchText} = useContext(SearchbarContext);
-  useEffect( ()=>{
+  useLayoutEffect( ()=>{
 
     function formFilterSearchbarProducts (searchText){
       let filteredArr=productsGeneralObj;

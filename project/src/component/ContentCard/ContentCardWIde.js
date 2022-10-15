@@ -98,6 +98,7 @@ export const ContentCardWide = ({product}) => {
     let saleText = sale ? `-${(sale)}%` : "";
     let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
+
     return (
         <CardWide  id={product.id}>
             <CardPictureContainerWide>
@@ -152,7 +153,11 @@ export const ContentCardWide = ({product}) => {
                         </CardPriceOff>
                     </CardPriceBox>
 
-                    <GreenButton name="Buy-button" productid={product.id}>Buy now</GreenButton>
+                    <GreenButton 
+                    name="Buy-button" 
+                    productid={product.id}
+                    onClick={console.log("click")}
+                    >Buy now</GreenButton>
                 </BuyingBox>
             </Container>
             

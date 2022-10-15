@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import {GreenButton} from "../Button/Button";
 import prodPicDefault from './image/vegs.jpg';
@@ -61,6 +61,12 @@ export const ContentCard = ({product}) => {
     let saleText = sale ? `-${(sale)}%` : "";
     let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
+    
+    let [buttontext, setButtontext] = useState("Buy now");
+
+
+       
+
 
     return (
         <Card id={product.id}>
@@ -96,8 +102,12 @@ export const ContentCard = ({product}) => {
 
                     <GreenButton 
                     name="Buy-button" 
+                    onClick={(e)=>{
+                        setButtontext("in cart");
+                        e.target.disabled=true;
+                    }}
                     productid={product.id}>
-                        Buy now
+                        {buttontext}
                     </GreenButton>
             </BuyingBox>
         </Card>
