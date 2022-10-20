@@ -12,8 +12,7 @@ const HeaderSearch = () => {
     const {setShoppingCartVisibility} = useContext(ShoppingCartContext);
     const {cartProductsIds} = useContext(ShoppingCartProductsContext);
     const {searchText, setSearchText} = useContext(SearchbarContext);
-    
-    
+    console.log("headerSearch render")
     
     return (
 <div className="header__search _container">
@@ -42,11 +41,7 @@ const HeaderSearch = () => {
                 <Currency/>
                 <div className="header__user-field user-field">
 
-                    <div className="user-field__account">
-                        <div>
-                            <img src={UserAccImg} alt="login"/>
-                        </div>
-                    </div>
+                    
 
                     <div className="user-field__shopping-cart shopping-cart">
                         <div className="shopping-cart__icon">
@@ -66,6 +61,13 @@ const HeaderSearch = () => {
 }
 
 export default HeaderSearch;
+/*
+<div className="user-field__account">
+                        <div>
+                            <img src={UserAccImg} alt="login"/>
+                        </div>
+                    </div>
+*/
 /*
  <div className="search-field__category-set">
                         <p className="search-field__category-set_chosen">

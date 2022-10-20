@@ -6,6 +6,7 @@ import { ContentCard } from '../ContentCard/ContentCard.js';
 import { ContentCardWide } from '../ContentCard/ContentCardWide';
 import { FilterForm } from '../FilterForm/FilterForm';
 import { SearchbarContext } from '../Context/SearchbarContext';
+import { ShoppingCartProductsContext } from '../Context/ShoppingCartContext';
 
 const GridLayout = styled.ul`
 display:grid;
@@ -30,10 +31,10 @@ flex-wrap:no-wrap;
 
 export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
   let [productsCardsList, setProductsCardList] = useState(productsGeneralObj); 
+  console.log("ProductsSection render")
   //filter for searchbar
   let {searchText} = useContext(SearchbarContext);
   useLayoutEffect( ()=>{
-
     function formFilterSearchbarProducts (searchText){
       let filteredArr=productsGeneralObj;
       if (searchText) {
@@ -46,27 +47,31 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
       }
       return filteredArr;
     } 
-
     setProductsCardList(formFilterSearchbarProducts(searchText))
    } , [searchText, productsGeneralObj] )
    
-  
+  let {cartProductsIds} = useContext(ShoppingCartProductsContext);
+  function isInCart (item) {
+    if (cartProductsIds.has(item.id)) {return true;}
+    return false;
+  }
+
   function showProductCards(productsList){
-    if (productsList.length===0) {return (<p>There's no products</p>);}
-        if (isGridLayout) {
-          return (
-            <GridLayout>
-              { productsList.map((item)=>(<ContentCard product={item} key={item.id*100}/>)) }
-            </GridLayout>
-            );
-        }
-        else {
-          return (
-            <ListLayout>
-              { productsList.map((item)=>(<ContentCardWide product={item} key={item.id}/>)) }
-            </ListLayout>
-            );
-        }
+  if (productsList.length===0) {return (<p>There's no products</p>);}
+      if (isGridLayout) {
+        return (
+          <GridLayout>
+            { productsList.map((item)=>(<ContentCard product={item} key={item.id*100} isInCart={isInCart(item)}/>)) }
+          </GridLayout>
+          );
+      }
+      else {
+        return (
+          <ListLayout>
+            { productsList.map((item)=>(<ContentCardWide product={item} key={item.id}  isInCart={isInCart(item)}/>)) }
+          </ListLayout>
+          );
+      }
   }
 
   function formFiltersInfo(productsArray) {

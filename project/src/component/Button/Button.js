@@ -52,6 +52,7 @@ export const GreenButtonStyled=styled(StyledButton)`
     color:white;
     border: 2px solid #46760A;
     padding:6.5px 12px;
+    min-width:93px;
     background:${props => props.theme.secondaryColor};
     &:after {
         background-image:none;
@@ -61,25 +62,25 @@ export const GreenButtonStyled=styled(StyledButton)`
     }
 
 `;
-export const Button = ({children, onClick}) => {
+export const Button = ({children, onClick, disabled}) => {
     return (
-        <StyledButton onClick={onClick}>
+        <StyledButton onClick={onClick} disabled={disabled}>
             {children}         
         </StyledButton>
     );
 }
 
-export const TransparentButton = ({children, onClick}) => {
+export const TransparentButton = ({children, onClick, disabled}) => {
     return (
-        <TransparentButtonStyled onClick={onClick}>
+        <TransparentButtonStyled onClick={onClick} disabled={disabled}>
             {children} 
         </TransparentButtonStyled>
     );
 }
 
-export const GreenButton = ({children, name, productid, onClick})=>{
+export const GreenButton = ({children, name, productid, onClick, disabled})=>{
     return (
-        <GreenButtonStyled name={name} data-productid={+productid} onClick={onClick}>
+        <GreenButtonStyled name={name} data-productid={+productid} onClick={onClick} disabled={disabled}>
             {children}
         </GreenButtonStyled>
     );

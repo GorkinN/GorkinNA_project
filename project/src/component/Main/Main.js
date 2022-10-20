@@ -9,6 +9,7 @@ import { ShoppingCartContext } from '../Context/ShoppingCartContext';
 import { ShoppingCartProductsContext } from '../Context/ShoppingCartContext';
 
 const Main = () => {
+    console.log("main render")
     //shopping cart START
     let {isShoppingCartVisible} = useContext(ShoppingCartContext);
     let {setCartProductsIds} = useContext(ShoppingCartProductsContext);

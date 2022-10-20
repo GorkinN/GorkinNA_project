@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
 import {GreenButton} from "../Button/Button";
 import prodPicDefault from './image/vegs.jpg';
@@ -49,7 +49,7 @@ background-position:50% 30%;
 background-size:110%;
 color: ${props => props.theme.secondaryColor};
 `;
-export const ContentCard = ({product}) => {
+export const ContentCard = ({product, isInCart}) => {
     const {
         salePercent : sale , 
         name : title = "Product Title",
@@ -63,10 +63,15 @@ export const ContentCard = ({product}) => {
     let priceText = price===0 ? `FREE` : `${price} USD`;
     
     let [buttontext, setButtontext] = useState("Buy now");
-
-
-       
-
+    let [buttonDisableStatus, setButtonDisableStatus] = useState(false);
+    console.log("isInCart", product.id, isInCart)
+    useEffect(()=>{
+        if (isInCart) {
+            setButtontext("in cart");
+            setButtonDisableStatus(true);
+        }
+    },[isInCart]);
+   
 
     return (
         <Card id={product.id}>
@@ -102,9 +107,10 @@ export const ContentCard = ({product}) => {
 
                     <GreenButton 
                     name="Buy-button" 
-                    onClick={(e)=>{
+                    disabled ={buttonDisableStatus}
+                    onClick={()=>{
                         setButtontext("in cart");
-                        e.target.disabled=true;
+                        setButtonDisableStatus(true);
                     }}
                     productid={product.id}>
                         {buttontext}

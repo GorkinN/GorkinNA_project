@@ -15,7 +15,7 @@ function App() {
   const [isShoppingCartVisible, setShoppingCartVisibility] = useState(false);
   let [cartProductsIds, setCartProductsIds] = useState(new Map());
   let [searchText, setSearchText] = useState("");
-   
+   console.log("app render")
   return (
     <ThemeProvider theme={theme}>
     <ShoppingCartContext.Provider value={{isShoppingCartVisible, setShoppingCartVisibility}}>

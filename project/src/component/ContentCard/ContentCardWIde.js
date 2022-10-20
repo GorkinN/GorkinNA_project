@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
 
 import {GreenButton} from "../Button/Button";
@@ -84,7 +84,7 @@ margin-bottom:20px;
 }
 `;
 
-export const ContentCardWide = ({product}) => {
+export const ContentCardWide = ({product, isInCart}) => {
     let {
         salePercent:sale = 50, 
         name: title = "Product Title",
@@ -98,7 +98,14 @@ export const ContentCardWide = ({product}) => {
     let saleText = sale ? `-${(sale)}%` : "";
     let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
-
+    let [buttontext, setButtontext] = useState("Buy now");
+    let [buttonDisableStatus, setButtonDisableStatus] = useState(false);
+    useEffect(()=>{
+        if (isInCart) {
+            setButtontext("in cart");
+            setButtonDisableStatus(true);
+        }
+    },[isInCart]);
     return (
         <CardWide  id={product.id}>
             <CardPictureContainerWide>
@@ -156,8 +163,13 @@ export const ContentCardWide = ({product}) => {
                     <GreenButton 
                     name="Buy-button" 
                     productid={product.id}
-                    onClick={console.log("click")}
-                    >Buy now</GreenButton>
+                    disabled ={buttonDisableStatus}
+                    onClick={()=>{
+                        setButtontext("in cart");
+                        setButtonDisableStatus(true);
+                    }}>
+                        {buttontext}
+                    </GreenButton>
                 </BuyingBox>
             </Container>
             
