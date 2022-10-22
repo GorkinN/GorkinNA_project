@@ -104,6 +104,10 @@ export const ContentCardWide = ({product, isInCart}) => {
         if (isInCart) {
             setButtontext("in cart");
             setButtonDisableStatus(true);
+        } else {
+            setButtonDisableStatus(false);
+            setButtontext("Buy now");
+
         }
     },[isInCart]);
     return (

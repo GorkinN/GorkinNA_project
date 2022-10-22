@@ -64,11 +64,14 @@ export const ContentCard = ({product, isInCart}) => {
     
     let [buttontext, setButtontext] = useState("Buy now");
     let [buttonDisableStatus, setButtonDisableStatus] = useState(false);
-    console.log("isInCart", product.id, isInCart)
     useEffect(()=>{
         if (isInCart) {
             setButtontext("in cart");
             setButtonDisableStatus(true);
+        } else {
+            setButtonDisableStatus(false);
+            setButtontext("Buy now");
+
         }
     },[isInCart]);
    

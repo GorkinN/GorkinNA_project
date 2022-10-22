@@ -1,39 +1,23 @@
 import React from 'react';
-import {useState, useContext, useLayoutEffect} from 'react';
-import styled from "styled-components";
+import {useState, useContext, useLayoutEffect, useMemo, useEffect} from 'react';
 import {SectionLayout} from "../SectionLayout/SectionLayout";
 import { ContentCard } from '../ContentCard/ContentCard.js';
 import { ContentCardWide } from '../ContentCard/ContentCardWide';
 import { FilterForm } from '../FilterForm/FilterForm';
 import { SearchbarContext } from '../Context/SearchbarContext';
 import { ShoppingCartProductsContext } from '../Context/ShoppingCartContext';
-
-const GridLayout = styled.ul`
-display:grid;
-grid-template-columns:repeat(3, 1fr);
-grid-gap:32px;
-@media (max-width:${props=>props.theme.laptop}) {
-  grid-gap:20px;
-}
-@media (max-width:${props=>props.theme.tablet}) {
-  grid-template-columns:repeat(2, 1fr);
-  grid-gap:10px;
-}
-@media (max-width:${props=>props.theme.smallPhone}) {
-  grid-template-columns:repeat(1, 1fr);
-}
-`;
-const ListLayout = styled.ul`
-display:flex;
-flex-direction:column;
-flex-wrap:no-wrap;
-`;
+import { GridLayout } from './GridLayout';
+import { ListLayout } from './ListLayout';
 
 export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
   let [productsCardsList, setProductsCardList] = useState(productsGeneralObj); 
   console.log("ProductsSection render")
+  let {cartProductsIds} = useContext(ShoppingCartProductsContext);
+  //FILTERS
+
   //filter for searchbar
   let {searchText} = useContext(SearchbarContext);
+
   useLayoutEffect( ()=>{
     function formFilterSearchbarProducts (searchText){
       let filteredArr=productsGeneralObj;
@@ -49,32 +33,10 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
     } 
     setProductsCardList(formFilterSearchbarProducts(searchText))
    } , [searchText, productsGeneralObj] )
-   
-  let {cartProductsIds} = useContext(ShoppingCartProductsContext);
-  function isInCart (item) {
-    if (cartProductsIds.has(item.id)) {return true;}
-    return false;
-  }
+  //END filter for searchbar
 
-  function showProductCards(productsList){
-  if (productsList.length===0) {return (<p>There's no products</p>);}
-      if (isGridLayout) {
-        return (
-          <GridLayout>
-            { productsList.map((item)=>(<ContentCard product={item} key={item.id*100} isInCart={isInCart(item)}/>)) }
-          </GridLayout>
-          );
-      }
-      else {
-        return (
-          <ListLayout>
-            { productsList.map((item)=>(<ContentCardWide product={item} key={item.id}  isInCart={isInCart(item)}/>)) }
-          </ListLayout>
-          );
-      }
-  }
-
-  function formFiltersInfo(productsArray) {
+   //filter for checkboxes and price range
+   function formFiltersInfo(productsArray) {
     //PriceRangeFilter info
     let minMaxPrice = {
         min: productsArray[0].priceUSD, 
@@ -139,16 +101,45 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
     });
     setProductsCardList(filteredProductsArr);
   };
+   //END filter for checkboxes and price range
+  //END FILTERS
+   
+  //Products render func
+  function isInCart (idsMap, item) {
+    if (idsMap.has(item.id)) {return true;}
+    return false;
+  }
+
+  function showProductCards(productsList){
+  if (productsList.length===0) {return (<p>There's no products</p>);}
+      if (isGridLayout) {
+        return (
+          <GridLayout>
+            { productsList.map((item)=>(<ContentCard product={item} key={item.id*100} isInCart={isInCart(cartProductsIds, item)}/>)) }
+          </GridLayout>
+          );
+      }
+      else {
+        return (
+          <ListLayout>
+            { productsList.map((item)=>(<ContentCardWide product={item} key={item.id}  isInCart={isInCart(cartProductsIds, item)}/>)) }
+          </ListLayout>
+          );
+      }
+  }
+const products = useMemo(()=>(showProductCards(productsCardsList)), [productsCardsList]);
+//END Products render func
+  
     return (
-        <SectionLayout
-        left={
-          <FilterForm 
-          filtersInfo={filtersInfo} 
-          productsGeneralObj={productsGeneralObj}
-          onSubmitFunction={onSubmitFilter}
-          />
-        }
-        rigth={showProductCards(productsCardsList)}>
+      <SectionLayout
+          left={
+            <FilterForm 
+            filtersInfo={filtersInfo} 
+            productsGeneralObj={productsGeneralObj}
+            onSubmitFunction={onSubmitFilter}
+            />
+          }
+          rigth={products}>
          </SectionLayout>
     );
 }
