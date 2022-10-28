@@ -46,9 +46,13 @@ const HeaderSearch = () => {
                     <div className="user-field__shopping-cart shopping-cart">
                         <div className="shopping-cart__icon">
                             <button 
+                                
                                 id="shopping-cart-open-button" 
                                 onClick={()=>{setShoppingCartVisibility(prev => !prev)}}>
-                                <img src={ShoppingCartImg} alt="shopping cart"/>
+                                <img 
+                                className="shoppingCartOpenButton"
+                                src={ShoppingCartImg} 
+                                alt="shopping cart"/>
                             </button>
                         </div>
                         <div className="shopping-cart__counter">{cartProductsIds.size}</div>
