@@ -40,9 +40,6 @@ const HeaderSearch = () => {
                 </div>
                 <Currency/>
                 <div className="header__user-field user-field">
-
-                    
-
                     <div className="user-field__shopping-cart shopping-cart">
                         <div className="shopping-cart__icon">
                             <button 
@@ -57,7 +54,6 @@ const HeaderSearch = () => {
                         </div>
                         <div className="shopping-cart__counter">{cartProductsIds.size}</div>
                     </div>
-
                 </div>
             </div>
         

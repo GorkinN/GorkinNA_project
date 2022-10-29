@@ -69,8 +69,6 @@ const Main = () => {
                 <ShoppingCart 
                 productsGeneralObj={productsGeneralObj}
                 />}
-           
-
             <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>
             <ProductsSection 
             

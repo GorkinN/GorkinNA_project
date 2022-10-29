@@ -4,10 +4,7 @@ import {Container} from "../common/Container";
 let SectionLayoutBox = styled.section`
 display:grid;
 grid-template-columns: repeat(4, 1fr);
-padding:64px 0;
-@media (max-width:${props => props.theme.laptop}){
-    padding:32px 0;
-}
+padding:32px 0;
 @media (max-width:${props => props.theme.tablet}){
     padding:16px 0;
 }

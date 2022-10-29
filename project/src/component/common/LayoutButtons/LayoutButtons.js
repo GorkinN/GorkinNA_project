@@ -6,6 +6,8 @@ import { Container } from "../Container";
  const LayoutButtonsStyled = styled(Container)`
  display:flex;
  justify-content:flex-end;
+ align-items: center;
+ min-height:40px;
 `;
 
 const LayoutChangeButtonStyled = styled.button`
@@ -26,7 +28,7 @@ padding:5px;
 :before {
     position:absolute;
     content:"";
-    top:10%;
+    top:15%;
     left:-16px;
     display:block;
     width:16px;
@@ -37,7 +39,7 @@ padding:5px;
     box-shadow:${props => props.isGrid ? ` 0 0 3px 1px #6A983C` : "none"};
 }
 @media (max-width:${props => props.theme.phone}) {
-    margin-top:15px;
+    margin-top:5px;
 }
 `;
 
