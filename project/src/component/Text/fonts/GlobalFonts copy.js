@@ -8,6 +8,9 @@ export default createGlobalStyle`
     src: url('./fonts/open-sans-v26-latin/open-sans-v26-latin-regular.eot'); /* IE9 Compat Modes */
     src: local(''),
     url('./fonts/open-sans-v26-latin/open-sans-v26-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('./fonts/open-sans-v26-latin/open-sans-v26-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('./fonts/open-sans-v26-latin/open-sans-v26-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('./fonts/open-sans-v26-latin/open-sans-v26-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
     url('./fonts/open-sans-v26-latin/open-sans-v26-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
 }
 
@@ -18,6 +21,9 @@ export default createGlobalStyle`
     src: url('./fonts/poppins-v15-latin/poppins-v15-latin-500.eot'); /* IE9 Compat Modes */
     src: local(''),
     url('./fonts/poppins-v15-latin/poppins-v15-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('./fonts/poppins-v15-latin/poppins-v15-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+    url('./fonts/poppins-v15-latin/poppins-v15-latin-500.woff') format('woff'), /* Modern Browsers */
+    url('./fonts/poppins-v15-latin/poppins-v15-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
     url('./fonts/poppins-v15-latin/poppins-v15-latin-500.svg#Poppins') format('svg'); /* Legacy iOS */
 }
 @font-face {
@@ -27,6 +33,9 @@ export default createGlobalStyle`
     src: url('./fonts/poppins-v15-latin/poppins-v15-latin-600.eot'); /* IE9 Compat Modes */
     src: local(''),
     url('./fonts/poppins-v15-latin/poppins-v15-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('./fonts/poppins-v15-latin/poppins-v15-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+    url('./fonts/poppins-v15-latin/poppins-v15-latin-600.woff') format('woff'), /* Modern Browsers */
+    url('./fonts/poppins-v15-latin/poppins-v15-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
     url('./fonts/poppins-v15-latin/poppins-v15-latin-600.svg#Poppins') format('svg'); /* Legacy iOS */
 }
 @font-face {
@@ -36,6 +45,9 @@ export default createGlobalStyle`
     src: url('./fonts/poppins-v15-latin/poppins-v15-latin-700.eot'); /* IE9 Compat Modes */
     src: local(''),
     url('./fonts/poppins-v15-latin/poppins-v15-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('./fonts/poppins-v15-latin/poppins-v15-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+    url('./fonts/poppins-v15-latin/poppins-v15-latin-700.woff') format('woff'), /* Modern Browsers */
+    url('./fonts/poppins-v15-latin/poppins-v15-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
     url('./fonts/poppins-v15-latin/poppins-v15-latin-700.svg#Poppins') format('svg'); /* Legacy iOS */
 }
 
