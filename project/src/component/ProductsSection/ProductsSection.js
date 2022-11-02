@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState, useContext, useLayoutEffect, useMemo, useEffect} from 'react';
+import {useState, useContext, useLayoutEffect, useMemo} from 'react';
 import {SectionLayout} from "../SectionLayout/SectionLayout";
 import { ContentCard } from '../ContentCard/ContentCard.js';
 import { ContentCardWide } from '../ContentCard/ContentCardWide';
@@ -10,8 +10,19 @@ import { GridLayout } from './GridLayout';
 import { ListLayout } from './ListLayout';
 
 export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
-  let [productsCardsList, setProductsCardList] = useState(productsGeneralObj); 
   console.log("ProductsSection render")
+  let [productsCardsList, setProductsCardList] = useState(productsGeneralObj); 
+  let [filteredIds, setFilteredIds] = useState(new Set(productsGeneralObj.map(item=>item.id)));
+  
+  function compareFilteredIds(filteredIdsSet, filteredIdsToCompareArr) {
+    let comparedArr = filteredIdsToCompareArr.map(item => {
+      if (filteredIdsSet.has(item)) {
+        return item;
+      }
+    });
+    return comparedArr;
+  }
+  
   let {cartProductsIds} = useContext(ShoppingCartProductsContext);
   //FILTERS
 
@@ -29,13 +40,15 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
           return ~name.indexOf(searchTextUppercase);        
         })
       }
+      let searchBarFilteredIds = filteredArr.map(item => item.id);
+      console.log("searchBarFilteredIds", searchBarFilteredIds)
       return filteredArr;
     } 
     setProductsCardList(formFilterSearchbarProducts(searchText))
    } , [searchText, productsGeneralObj] )
   //END filter for searchbar
 
-   //filter for checkboxes and price range
+   //collect info for filters values
    function formFiltersInfo(productsArray) {
     //PriceRangeFilter info
     let minMaxPrice = {
@@ -64,8 +77,9 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
 
     return {categoriesMap:categoriesMap, minMaxPrice: minMaxPrice};
   }
-  let filtersInfo = formFiltersInfo(productsGeneralObj);
-
+  let filtersInfo = useMemo(()=>formFiltersInfo(productsGeneralObj),[productsGeneralObj]);
+  //END collect info for filters values
+  //collect filter data from checkboxes and price range
   function collectCheckboxFilterData (inputName) {
     let selectedCheckboxes = document.querySelectorAll(`input[name='${inputName}']`);
     let conditionsArr =[];
@@ -74,8 +88,8 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
     }
     return conditionsArr;
   };
-  function onSubmitFilter(e){
-    e.preventDefault();
+
+  function onSubmitFilter(){
     
     let chosenCategoriesArr = collectCheckboxFilterData(`categoryFilterCheckbox`);
     let chosenRatingArr = collectCheckboxFilterData(`ratingCheckBox`);
@@ -101,15 +115,32 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
     });
     setProductsCardList(filteredProductsArr);
   };
-   //END filter for checkboxes and price range
+
+   //END collect filter data from checkboxes and price range
   //END FILTERS
    
   //Products render func
+  function formFilteredProductsList (checkboxFilterIdsArr, searchbarFilterIdsArr, productsGeneralObj){
+    let smallerArr, biggerArr;
+    if (checkboxFilterIdsArr.length > searchbarFilterIdsArr.length) {
+      smallerArr = searchbarFilterIdsArr;
+      biggerArr = checkboxFilterIdsArr;
+    } else {
+      smallerArr = checkboxFilterIdsArr;
+      biggerArr = searchbarFilterIdsArr;
+    }
+    let filteredProductsIds = smallerArr.filter(item => {
+      if (biggerArr.includes(item)) return true;
+      return false;
+    });
+    return productsGeneralObj.filter(item => filteredProductsIds.includes(item.id))
+  }  
+
   function isInCart (idsMap, item) {
     if (idsMap.has(item.id)) {return true;}
     return false;
   }
-
+ 
   function showProductCards(productsList){
   if (productsList.length===0) {return (<p>There's no products</p>);}
       if (isGridLayout) {
@@ -127,6 +158,7 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
           );
       }
   }
+
 const products = useMemo(()=>(showProductCards(productsCardsList)), [productsCardsList]);
 //END Products render func
   

@@ -76,7 +76,9 @@ margin-top:30px;
 export const FilterForm = ({filtersInfo, onSubmitFunction}) => {
     
     return (
-        <FilterFormStyled onSubmit={ (e) => (onSubmitFunction(e))}>
+        <FilterFormStyled onSubmit={ e =>  {
+            e.preventDefault();
+            onSubmitFunction()} }>
             <CategoryFilter categoriesMap={filtersInfo.categoriesMap}/>
             <RatingFilter/>
             <PriceFilter minmax={filtersInfo.minMaxPrice}/>
