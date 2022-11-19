@@ -38,13 +38,13 @@ max-height:${props => props.top? (90 - props.top) : 50}%;
 overflow-y: scroll;
 overflow:auto;
 scrollbar-width: thin;
-scrollbar-color: blue orange;
+scrollbar-color: ${props=> props.theme.secondaryColor} #D1D1D1;
 ::-webkit-scrollbar {
     width:10px;
     background: #D1D1D1;
     border-radius:12px;
 }
-::-moz-scrollbar {
+scrollbar {
     width:10px;
     background: #D1D1D1;
     border-radius:12px;
@@ -54,7 +54,7 @@ scrollbar-color: blue orange;
     border-radius: 20px; 
     border: 2px solid #D1D1D1; 
 }
-::-moz-scrollbar-thumb {
+scrollbar-thumb {
     background-color: ${props=> props.theme.secondaryColor}; 
     border-radius: 20px; 
     border: 2px solid #D1D1D1; 
