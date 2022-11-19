@@ -40,25 +40,17 @@ overflow:auto;
 scrollbar-width: thin;
 scrollbar-color: ${props=> props.theme.secondaryColor} #D1D1D1;
 ::-webkit-scrollbar {
-    width:10px;
     background: #D1D1D1;
+    width:10px;
     border-radius:12px;
 }
-scrollbar {
-    width:10px;
-    background: #D1D1D1;
-    border-radius:12px;
-}
+
 ::-webkit-scrollbar-thumb {
     background-color: ${props=> props.theme.secondaryColor}; 
     border-radius: 20px; 
     border: 2px solid #D1D1D1; 
 }
-scrollbar-thumb {
-    background-color: ${props=> props.theme.secondaryColor}; 
-    border-radius: 20px; 
-    border: 2px solid #D1D1D1; 
-}
+
 `;
 const HeaderBox = styled.header`
 display:flex;
