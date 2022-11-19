@@ -13,14 +13,14 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
   console.log("ProductsSection render")
   let [productsCardsList, setProductsCardList] = useState(productsGeneralObj); 
   let [filteredIds, setFilteredIds] = useState(new Set(productsGeneralObj.map(item=>item.id)));
-  
-  function compareFilteredIds(filteredIdsSet, filteredIdsToCompareArr) {
-    let comparedArr = filteredIdsToCompareArr.map(item => {
-      if (filteredIdsSet.has(item)) {
-        return item;
-      }
-    });
-    return comparedArr;
+
+  function formComparedFilteredIdsSet(filteredIdsSet, filteredIdsToCompareArr) {
+    filteredIdsSet.forEach(item => {
+      if (filteredIdsToCompareArr.includes(item)) {return}
+      filteredIdsSet.delete(item);
+    })
+    console.log("compared set", filteredIdsSet)
+    return new Set(filteredIdsSet);
   }
   
   let {cartProductsIds} = useContext(ShoppingCartProductsContext);
@@ -42,6 +42,7 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
       }
       let searchBarFilteredIds = filteredArr.map(item => item.id);
       console.log("searchBarFilteredIds", searchBarFilteredIds)
+      formComparedFilteredIdsSet(filteredIds, searchBarFilteredIds);
       return filteredArr;
     } 
     setProductsCardList(formFilterSearchbarProducts(searchText))
@@ -80,15 +81,6 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
   let filtersInfo = useMemo(()=>formFiltersInfo(productsGeneralObj),[productsGeneralObj]);
   //END collect info for filters values
   //collect filter data from checkboxes and price range
-  function collectCheckboxFilterData (inputName) {
-    let selectedCheckboxes = document.querySelectorAll(`input[name='${inputName}']`);
-    let conditionsArr =[];
-    for (let item of selectedCheckboxes) {
-        if (item.checked===true) {conditionsArr.push(item.value)}            
-    }
-    return conditionsArr;
-  };
-
   function onSubmitFilter(){
     
     let chosenCategoriesArr = collectCheckboxFilterData(`categoryFilterCheckbox`);
@@ -98,6 +90,7 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
     let maxPrice = document.querySelector("input[name='maxPriceNumberInput']").value;
 
     function filterFunc (obj, searchingProp, chosenCategoriesArr){
+      console.log("chosenCategoriesArr",chosenCategoriesArr)
       if (chosenCategoriesArr.length===0) {return true;}
       return chosenCategoriesArr.includes(String(obj[searchingProp]));               
     }
@@ -115,6 +108,16 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
     });
     setProductsCardList(filteredProductsArr);
   };
+  function collectCheckboxFilterData (inputName) {
+    let selectedCheckboxes = document.querySelectorAll(`input[name='${inputName}']`);
+    let conditionsArr =[];
+    for (let item of selectedCheckboxes) {
+        if (item.checked===true) {conditionsArr.push(item.value)}            
+    }
+    return conditionsArr;
+  };
+
+  
 
    //END collect filter data from checkboxes and price range
   //END FILTERS

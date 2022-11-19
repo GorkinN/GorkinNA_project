@@ -44,7 +44,17 @@ scrollbar-color: blue orange;
     background: #D1D1D1;
     border-radius:12px;
 }
+::-moz-scrollbar {
+    width:10px;
+    background: #D1D1D1;
+    border-radius:12px;
+}
 ::-webkit-scrollbar-thumb {
+    background-color: ${props=> props.theme.secondaryColor}; 
+    border-radius: 20px; 
+    border: 2px solid #D1D1D1; 
+}
+::-moz-scrollbar-thumb {
     background-color: ${props=> props.theme.secondaryColor}; 
     border-radius: 20px; 
     border: 2px solid #D1D1D1; 
