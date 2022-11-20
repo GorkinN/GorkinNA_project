@@ -73,12 +73,11 @@ margin-top:30px;
 }
 `;
 
-export const FilterForm = ({filtersInfo, onSubmitFunction}) => {
+export const FilterForm = ({filtersInfo, onChangeFunction}) => {
     
     return (
-        <FilterFormStyled onSubmit={ e =>  {
-            e.preventDefault();
-            onSubmitFunction()} }>
+        <FilterFormStyled onChange={ () =>  {
+            onChangeFunction()} }>
             <CategoryFilter categoriesMap={filtersInfo.categoriesMap}/>
             <RatingFilter/>
             <PriceFilter minmax={filtersInfo.minMaxPrice}/>

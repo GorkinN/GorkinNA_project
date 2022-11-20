@@ -81,7 +81,7 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
   let filtersInfo = useMemo(()=>formFiltersInfo(productsGeneralObj),[productsGeneralObj]);
   //END collect info for filters values
   //collect filter data from checkboxes and price range
-  function onSubmitFilter(){
+  function onChangeFilter(){
     
     let chosenCategoriesArr = collectCheckboxFilterData(`categoryFilterCheckbox`);
     let chosenRatingArr = collectCheckboxFilterData(`ratingCheckBox`);
@@ -171,7 +171,7 @@ const products = useMemo(()=>(showProductCards(productsCardsList)), [productsCar
             <FilterForm 
             filtersInfo={filtersInfo} 
             productsGeneralObj={productsGeneralObj}
-            onSubmitFunction={onSubmitFilter}
+            onChangeFunction={onChangeFilter}
             />
           }
           rigth={products}>
