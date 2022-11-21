@@ -1,4 +1,2 @@
-fix scrollbar in shoping cart for firefox browser
 fix filter state
-make onChange to apply filters
 add debounce/throttling for filters
