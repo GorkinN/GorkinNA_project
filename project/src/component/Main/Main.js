@@ -53,7 +53,7 @@ const Main = () => {
         {id:2,name:"Beef",description:"Tasty Beef",priceUSD:20.00,salePercent:12,measure:"kg",category:"Meat",rating:2,freshness:"Rotten",farm:"Amitville",deliveryArea:"Brasil",isBestSelling:false,picture:`./img/2.webp`},
         {id:3,name:"Pork",description:"Tasty Pork",priceUSD:7.60,salePercent:15,measure:"kg",category:"Meat",rating:3,freshness:"Fresh",farm:"Black Rock",deliveryArea:"Germany",isBestSelling:true,picture:`./img/3.webp`},
         {id:4,name:"Venison",description:"Tasty Venison",priceUSD:40.00,salePercent:17,measure:"kg",category:"Meat",rating:4,freshness:"Test youself",farm:"Elwyn forest",deliveryArea:"Asia",isBestSelling:false,picture:`./img/4.webp`},
-        {id:5,name:"Chicken",description:"Tasty Chicken",priceUSD:5.23,salePercent:20,measure:"kg",category:"Meat",rating:5,freshness:"Extra fresh",farm:"Duskwood",deliveryArea:"Russia",isBestSelling:true,picture:`./img/5.jpg`},
+        {id:5,name:"Chicken",description:"Tasty Chicken",priceUSD:5.23,salePercent:20,measure:"kg",category:"Meat",rating:5,freshness:"Extra fresh",farm:"Duskwood",deliveryArea:"Russia",isBestSelling:true,picture:`./img/5.webp`},
     ];
     
     let [isGridLayout, setLayout] = useState(true);
