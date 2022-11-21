@@ -35,10 +35,10 @@ export const RatingBox = ({
     let starsArr = [];
     for (let i=0; i<5; i++) {
         if (i<ratingNum) {
-            starsArr.push(<RateStar src={filledStar} alt="rating star" key={i}/>);
+            starsArr.push(<RateStar src={filledStar} alt="rating star" width="18px" height="18px" key={i}/>);
             continue;
         }
-        starsArr.push(<RateStar src={emptyStar} alt="rating star" key={i}/>);              
+        starsArr.push(<RateStar src={emptyStar} alt="rating star" width="18px" height="18px" key={i}/>);              
     }
     return (
         <RatingContainer>
