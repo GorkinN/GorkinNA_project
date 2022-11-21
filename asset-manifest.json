@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/GorkinNA_project/static/css/main.ca1f62f3.css",
-    "main.js": "/GorkinNA_project/static/js/main.f4c98e66.js",
+    "main.js": "/GorkinNA_project/static/js/main.e70c2a67.js",
     "static/media/article_big.jpg": "/GorkinNA_project/static/media/article_big.1508688149903cc6a713.jpg",
     "static/media/open-sans-v26-latin-regular.svg": "/GorkinNA_project/static/media/open-sans-v26-latin-regular.a9aff17ee65c2d3dd7a9.svg",
     "static/media/poppins-v15-latin-500.svg": "/GorkinNA_project/static/media/poppins-v15-latin-500.138d54dda216e46d9830.svg",
@@ -31,15 +31,14 @@
     "static/media/listLayoutIcon.svg": "/GorkinNA_project/static/media/listLayoutIcon.9954ebeb6bf01eb1afa869dad57f92e5.svg",
     "static/media/gridLayoutIcon.svg": "/GorkinNA_project/static/media/gridLayoutIcon.087d24cbb603eba6b5c504e123c90366.svg",
     "static/media/search-lense.svg": "/GorkinNA_project/static/media/search-lense.fc1aaebbe521b7adbfaf.svg",
-    "static/media/user-account.svg": "/GorkinNA_project/static/media/user-account.bdf7a6a507738ec9ec39fa6e90151565.svg",
     "static/media/arrow-black.svg": "/GorkinNA_project/static/media/arrow-black.c87e478a419ea00b9af3156ec23abaf2.svg",
     "static/media/arrow-green.svg": "/GorkinNA_project/static/media/arrow-green.0537ade0685e4778a7a6cc2cec3bd61f.svg",
     "static/media/open-list.svg": "/GorkinNA_project/static/media/open-list.7b808e52d2e3cac5f31f.svg",
     "main.ca1f62f3.css.map": "/GorkinNA_project/static/css/main.ca1f62f3.css.map",
-    "main.f4c98e66.js.map": "/GorkinNA_project/static/js/main.f4c98e66.js.map"
+    "main.e70c2a67.js.map": "/GorkinNA_project/static/js/main.e70c2a67.js.map"
   },
   "entrypoints": [
     "static/css/main.ca1f62f3.css",
-    "static/js/main.f4c98e66.js"
+    "static/js/main.e70c2a67.js"
   ]
 }
