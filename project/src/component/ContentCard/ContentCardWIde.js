@@ -113,7 +113,7 @@ export const ContentCardWide = ({product, isInCart}) => {
     return (
         <CardWide  id={product.id}>
             <CardPictureContainerWide>
-                <CardPicture src={`${picture || prodPicDefault}`} alt="product picture"/>
+                <CardPicture src={`${picture || prodPicDefault}`} alt={title} loading='lazy'/>
                 <CardSale>
                     {saleText}
                 </CardSale>

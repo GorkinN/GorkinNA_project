@@ -80,7 +80,7 @@ export const ContentCard = ({product, isInCart}) => {
         <Card id={product.id}>
             
             <CardPictureContainer>
-                <CardPicture src={`${picture || prodPicDefault}`} alt="product picture"/>
+                <CardPicture src={`${picture || prodPicDefault}`} alt={title} loading='lazy'/>
                 <CardSale>
                     {saleText}
                 </CardSale>
