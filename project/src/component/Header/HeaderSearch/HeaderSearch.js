@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import { Currency } from '../../Currency/Currency';
 import "./HeaderSearch.css";
 import logoImg from "../../../img/LogoFreshnesecom.png";
-import UserAccImg from "../../../img/icons/user-account.svg";
+// import UserAccImg from "../../../img/icons/user-account.svg";
 import ShoppingCartImg from "../../../img/icons/shopping-cart.png";
 import { ShoppingCartContext } from '../../Context/ShoppingCartContext';
 import { ShoppingCartProductsContext } from '../../Context/ShoppingCartContext';
@@ -17,7 +17,7 @@ const HeaderSearch = () => {
     return (
 <div className="header__search _container">
                 <div className="header__search-logo logo">
-                    <img src={logoImg} alt="logo"/>
+                    <img src={logoImg} width="177px" height="18px" alt="logo"/>
                 </div>
                 <div className="header__search-field search-field">
                     <div className="search-field__search search">
@@ -49,6 +49,8 @@ const HeaderSearch = () => {
                                 <img 
                                 className="shoppingCartOpenButton"
                                 src={ShoppingCartImg} 
+                                width="24px"
+                                height="24px"
                                 alt="shopping cart"/>
                             </button>
                         </div>
