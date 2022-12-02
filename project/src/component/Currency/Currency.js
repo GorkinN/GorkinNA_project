@@ -22,7 +22,8 @@ export const Currency = () => {
     }, [])
   
     if (error) {
-      return <div>Ошибка: {error.message}</div>;
+      console.error("Ошибка: ", error.message)
+      return null;
     } else if (!isLoaded) {
       return <p className="currency-text">Загрузка...</p>;
     } else {

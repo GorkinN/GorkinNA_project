@@ -38,8 +38,6 @@ background:${props => props.theme.secondaryColor};
         filter: brightness(90%);
         transition: 0.1s ease-in-out;
     }
-
-    
     &:active {
         filter:saturate(180%);
     }
@@ -76,24 +74,21 @@ margin-top:30px;
 export const FilterForm = ({filtersInfo, onChangeFunction}) => {
     
     return (
-        <FilterFormStyled onChange={ () =>  {
-            onChangeFunction()} }>
+        <FilterFormStyled 
+        onChange={ () => onChangeFunction()}
+        onReset={()=>{
+            setTimeout(onChangeFunction, 0);
+        }}>
             <CategoryFilter categoriesMap={filtersInfo.categoriesMap}/>
             <RatingFilter/>
             <PriceFilter minmax={filtersInfo.minMaxPrice}/>
 
             <ButtonBox>
-                <InputButtonGreen 
-                type="submit" 
-                name="applyFilter" 
-                value="Apply" 
-                id="applyFilter" 
-                 />
-                
                 <InputButtonGray 
                 type="reset" 
                 name="resetFilter" 
-                value="Reset"/>
+                value="Reset"
+                />
             </ButtonBox>
             
         </FilterFormStyled>

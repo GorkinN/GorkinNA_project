@@ -112,6 +112,9 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
       if (isFitsFilters) {return true;} 
        return false;
     });
+    let sideFilterSet = new Set();
+    filteredProductsArr.forEach(item => sideFilterSet.add(item.id))
+    console.log("sideFilterSet:",sideFilterSet)
     return filteredProductsArr;
   }
 
