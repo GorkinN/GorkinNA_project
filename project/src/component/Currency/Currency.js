@@ -25,7 +25,7 @@ export const Currency = () => {
       console.error("Ошибка: ", error.message)
       return null;
     } else if (!isLoaded) {
-      return <p className="currency-text">Загрузка...</p>;
+      return <p className="currency-text">Loading</p>;
     } else {
       return (
         <p className="currency-text">1 USD = {Math.ceil(curUSD*100)/100} RUB</p>
