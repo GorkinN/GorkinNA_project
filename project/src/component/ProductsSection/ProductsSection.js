@@ -12,16 +12,8 @@ import { ListLayout } from './ListLayout';
 export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
   console.log("ProductsSection render")
   let [productsCardsList, setProductsCardList] = useState(productsGeneralObj); 
-  let [filteredIds, setFilteredIds] = useState(new Set(productsGeneralObj.map(item=>item.id)));
-
-  function formComparedFilteredIdsSet(filteredIdsSet, filteredIdsToCompareArr) {
-    filteredIdsSet.forEach(item => {
-      if (filteredIdsToCompareArr.includes(item)) {return}
-      filteredIdsSet.delete(item);
-    })
-    console.log("compared set", filteredIdsSet)
-    return new Set(filteredIdsSet);
-  }
+  let [filteredIdsSearchbar, setFilteredIdsSearchbar] = useState(new Set(productsGeneralObj.map(item=>item.id)));
+  let [filteredIdsSideFilter, setFilteredIdsSideFilter] = useState(new Set(productsGeneralObj.map(item=>item.id)));
   
   let {cartProductsIds} = useContext(ShoppingCartProductsContext);
   //FILTERS
@@ -40,9 +32,8 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
           return ~name.indexOf(searchTextUppercase);        
         })
       }
-      let searchBarFilteredIds = filteredArr.map(item => item.id);
-      console.log("searchBarFilteredIds", searchBarFilteredIds)
-      formComparedFilteredIdsSet(filteredIds, searchBarFilteredIds);
+      let searchBarFilteredIdsSet = new Set (filteredArr.map(item => item.id));
+      setFilteredIdsSearchbar(searchBarFilteredIdsSet);
       return filteredArr;
     } 
     setProductsCardList(formFilterSearchbarProducts(searchText))
@@ -112,9 +103,8 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
       if (isFitsFilters) {return true;} 
        return false;
     });
-    let sideFilterSet = new Set();
-    filteredProductsArr.forEach(item => sideFilterSet.add(item.id))
-    console.log("sideFilterSet:",sideFilterSet)
+    let sideFilterSet = new Set(filteredProductsArr.map(item => item.id));
+    setFilteredIdsSideFilter(sideFilterSet);
     return filteredProductsArr;
   }
 
@@ -125,28 +115,30 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
   //END FILTERS
    
   //Products render func
-  function formFilteredProductsList (checkboxFilterIdsArr, searchbarFilterIdsArr, productsGeneralObj){
-    let smallerArr, biggerArr;
-    if (checkboxFilterIdsArr.length > searchbarFilterIdsArr.length) {
-      smallerArr = searchbarFilterIdsArr;
-      biggerArr = checkboxFilterIdsArr;
-    } else {
-      smallerArr = checkboxFilterIdsArr;
-      biggerArr = searchbarFilterIdsArr;
-    }
-    let filteredProductsIds = smallerArr.filter(item => {
-      if (biggerArr.includes(item)) return true;
-      return false;
-    });
-    return productsGeneralObj.filter(item => filteredProductsIds.includes(item.id))
+  function formFilteredProductsList (){
+    let filteredIdsSet = formComparedFilteredIdsSet(filteredIdsSearchbar, filteredIdsSideFilter);
+    if (filteredIdsSet.size === 0) return []; 
+    return productsGeneralObj.filter(item => filteredIdsSet.has(item.id))
   }  
+
+  function formComparedFilteredIdsSet(filteredIdsSetSearchbar, filteredIdsSetSidefilter) {
+    if (filteredIdsSetSearchbar.size === 0 || filteredIdsSetSidefilter.size===0) return new Set();
+    let resultSet = new Set();
+    for (let id of filteredIdsSetSearchbar) {
+      if (filteredIdsSetSidefilter.has(id)) {
+        resultSet.add(id);
+      }            
+    }
+    return new Set(resultSet);
+  }
 
   function isInCart (idsMap, item) {
     if (idsMap.has(item.id)) {return true;}
     return false;
   }
  
-  function showProductCards(productsList){
+  function showProductCards(){
+  let productsList = formFilteredProductsList() 
   if (productsList.length===0) {return (<p>There's no products</p>);}
       if (isGridLayout) {
         return (
@@ -164,7 +156,7 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
       }
   }
 
-const products = useMemo(()=>(showProductCards(productsCardsList)), [productsCardsList]);
+const products = useMemo(()=>(showProductCards()), [productsCardsList]);
 //END Products render func
   
     return (
