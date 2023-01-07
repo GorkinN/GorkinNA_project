@@ -82,6 +82,14 @@ border:1px solid #D1D1D1;
 border-radius:12px;
 background: #f9f9f9;
 width:110px;
+tab-index:1;
+
+::-webkit-outer-spin-button,
+::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+::-moz-appearance: textfield;
 `;
 const NumberInputLabel = styled.label`
 font-family: 'Poppins';
@@ -140,11 +148,15 @@ font-weight: 600;
 font-size: 18px;
 line-height: 22px;
 color: ${props =>props.theme.baseColor};
+overflow:hidden;
+text-overflow:ellipsis;
+max-width:10rem;
 @media (max-width:${props => props.theme.smallPhone}) {
     width:80%;
 }
 `;
 export const ContentCardShoppingCart = ({product}) => {
+    console.log("sh cart render")
     let {
         salePercent:sale = 50, 
         name: title = "Product Title",
@@ -160,7 +172,7 @@ export const ContentCardShoppingCart = ({product}) => {
 
     let [quantity, setQuantity] = useState(cartProductsIds.get(product.id));
     function changeQuantity (event){
-        if (event.target.value<1) {event.target.value=1}
+        if (event.target.value<0) {event.target.value=1}
 
         setQuantity(event.target.value);
         setCartProductsIds((prevState)=>{
@@ -168,7 +180,6 @@ export const ContentCardShoppingCart = ({product}) => {
             let newMap = new Map(prevState)
             return new Map(newMap);
         });
-
     }
 
     return (
@@ -209,7 +220,7 @@ export const ContentCardShoppingCart = ({product}) => {
                             id={product.id*1111} 
                             defaultValue={cartProductsIds.get(+product.id)} 
                             min={1}
-                            onChange={(e)=>(changeQuantity(e))}
+                            onChange={(e)=>changeQuantity(e)}
                         />
                     </NumberInputLabel>
                     <TotalValue>
