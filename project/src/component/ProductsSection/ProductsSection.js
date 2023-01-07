@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import {useState, useContext, useLayoutEffect, useMemo} from 'react';
 import {SectionLayout} from "../SectionLayout/SectionLayout";
 import { ContentCard } from '../ContentCard/ContentCard.js';
-import { ContentCardWide } from '../ContentCard/ContentCardWide';
+import ContentCardWide from '../ContentCard/ContentCardWide';
 import { FilterForm } from '../FilterForm/FilterForm';
 import { SearchbarContext } from '../Context/SearchbarContext';
 import { ShoppingCartProductsContext } from '../Context/ShoppingCartContext';
@@ -14,8 +14,8 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
   let [productsCardsList, setProductsCardList] = useState(productsGeneralObj); 
   let [filteredIdsSearchbar, setFilteredIdsSearchbar] = useState(new Set(productsGeneralObj.map(item=>item.id)));
   let [filteredIdsSideFilter, setFilteredIdsSideFilter] = useState(new Set(productsGeneralObj.map(item=>item.id)));
-  
   let {cartProductsIds} = useContext(ShoppingCartProductsContext);
+  const ContentCardWide = React.lazy(()=> import('../ContentCard/ContentCardWide'));
   //FILTERS
 
   //filter for searchbar
@@ -149,9 +149,12 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
       }
       else {
         return (
-          <ListLayout>
-            { productsList.map((item)=>(<ContentCardWide product={item} key={item.id}  isInCart={isInCart(cartProductsIds, item)}/>)) }
-          </ListLayout>
+          <Suspense fallback={<p>Loading...</p>}>
+            <ListLayout>
+              { productsList.map((item)=>(<ContentCardWide product={item} key={item.id}  isInCart={isInCart(cartProductsIds, item)}/>)) }
+            </ListLayout>
+          </Suspense>
+          
           );
       }
   }

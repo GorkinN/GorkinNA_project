@@ -27,7 +27,7 @@ const Main = () => {
 
     //going to fetch productsGeneralObj
     let productsGeneralObj = [
-        {id:6,name:"Tomato",description:"Tasty Tomato",priceUSD:1.45,salePercent:21,measure:"kg",category:"Vegetables",rating:1,freshness:"Rotten",farm:"Albuquerque",deliveryArea:"Any",isBestSelling:false,picture:`./img/6.webp`},
+        {id:6,name:"Tomato",description:"Tasty Tomato",priceUSD:1.45,salePercent:21,measure:"kg",category:"Vegetables",rating:1,freshness:"Rotten",farm:"Albuquerque11111111111",deliveryArea:"Any",isBestSelling:false,picture:`./img/6.webp`},
         {id:7,name:"Carrot",description:"Tasty Carrot",priceUSD:1.68,salePercent:22,measure:"kg",category:"Vegetables",rating:2,freshness:"Fresh",farm:"Antananarivu",deliveryArea:"Europe",isBestSelling:true,picture:`./img/7.webp`},
         {id:8,name:"Cucumber",description:"Tasty Cucumber",priceUSD:2.32,salePercent:10,measure:"kg",category:"Vegetables",rating:3,freshness:"Test youself",farm:"Osaka",deliveryArea:"Brasil",isBestSelling:false,picture:`./img/8.webp`},
         {id:9,name:"Cabbage",description:"Tasty Cabbage",priceUSD:0.32,salePercent:12,measure:"kg",category:"Vegetables",rating:4,freshness:"Extra fresh",farm:"Hogwarts",deliveryArea:"Germany",isBestSelling:true,picture:`./img/9.webp`},
@@ -67,11 +67,10 @@ const Main = () => {
     return (
         <main className="main" onClick={(event)=>addToShoppingCart(event)}>
             {isShoppingCartVisible && 
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<p>Loading...</p>}>
                 <ShoppingCart productsGeneralObj={productsGeneralObj}/>
             </Suspense>
-                
-                }
+            }
             <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>
             <ProductsSection 
             
