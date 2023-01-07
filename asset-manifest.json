@@ -1,7 +1,9 @@
 {
   "files": {
-    "main.css": "/GorkinNA_project/static/css/main.ca1f62f3.css",
-    "main.js": "/GorkinNA_project/static/js/main.47e6688f.js",
+    "main.css": "/GorkinNA_project/static/css/main.c4bab785.css",
+    "main.js": "/GorkinNA_project/static/js/main.0cf317ad.js",
+    "static/css/288.7835789d.chunk.css": "/GorkinNA_project/static/css/288.7835789d.chunk.css",
+    "static/js/288.e37d0e64.chunk.js": "/GorkinNA_project/static/js/288.e37d0e64.chunk.js",
     "static/media/article_big.jpg": "/GorkinNA_project/static/media/article_big.1508688149903cc6a713.jpg",
     "static/media/open-sans-v26-latin-regular.svg": "/GorkinNA_project/static/media/open-sans-v26-latin-regular.a9aff17ee65c2d3dd7a9.svg",
     "static/media/poppins-v15-latin-500.svg": "/GorkinNA_project/static/media/poppins-v15-latin-500.138d54dda216e46d9830.svg",
@@ -34,11 +36,13 @@
     "static/media/arrow-black.svg": "/GorkinNA_project/static/media/arrow-black.c87e478a419ea00b9af3156ec23abaf2.svg",
     "static/media/arrow-green.svg": "/GorkinNA_project/static/media/arrow-green.0537ade0685e4778a7a6cc2cec3bd61f.svg",
     "static/media/open-list.svg": "/GorkinNA_project/static/media/open-list.7b808e52d2e3cac5f31f.svg",
-    "main.ca1f62f3.css.map": "/GorkinNA_project/static/css/main.ca1f62f3.css.map",
-    "main.47e6688f.js.map": "/GorkinNA_project/static/js/main.47e6688f.js.map"
+    "main.c4bab785.css.map": "/GorkinNA_project/static/css/main.c4bab785.css.map",
+    "main.0cf317ad.js.map": "/GorkinNA_project/static/js/main.0cf317ad.js.map",
+    "288.7835789d.chunk.css.map": "/GorkinNA_project/static/css/288.7835789d.chunk.css.map",
+    "288.e37d0e64.chunk.js.map": "/GorkinNA_project/static/js/288.e37d0e64.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ca1f62f3.css",
-    "static/js/main.47e6688f.js"
+    "static/css/main.c4bab785.css",
+    "static/js/main.0cf317ad.js"
   ]
 }
