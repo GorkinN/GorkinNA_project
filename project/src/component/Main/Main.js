@@ -1,16 +1,17 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import {useState, useContext} from 'react';
 import { ProductsSection } from '../ProductsSection/ProductsSection';
 import { LayoutButtons } from '../common/LayoutButtons/LayoutButtons';
 import "./main.css";
 
-import { ShoppingCart } from '../ShoppingCart/ShoppingCart';
+//import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import { ShoppingCartContext } from '../Context/ShoppingCartContext';
 import { ShoppingCartProductsContext } from '../Context/ShoppingCartContext';
 
 const Main = () => {
     console.log("main render")
     //shopping cart START
+    const ShoppingCart = lazy(()=>import('../ShoppingCart/ShoppingCart'))
     let {isShoppingCartVisible} = useContext(ShoppingCartContext);
     let {setCartProductsIds} = useContext(ShoppingCartProductsContext);
 
@@ -66,9 +67,11 @@ const Main = () => {
     return (
         <main className="main" onClick={(event)=>addToShoppingCart(event)}>
             {isShoppingCartVisible && 
-                <ShoppingCart 
-                productsGeneralObj={productsGeneralObj}
-                />}
+            <Suspense fallback={<div>Loading...</div>}>
+                <ShoppingCart productsGeneralObj={productsGeneralObj}/>
+            </Suspense>
+                
+                }
             <LayoutButtons isGrid={isGridLayout} onClick={(event)=>(layoutControl(event))}/>
             <ProductsSection 
             

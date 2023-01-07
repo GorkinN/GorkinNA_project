@@ -32,7 +32,7 @@ align-self:flex-start;
 padding:10px 30px;
 `;
 
-export const ShoppingCart = ({productsGeneralObj}) => {
+ const ShoppingCart = ({productsGeneralObj}) => {
     let {setShoppingCartVisibility} = useContext(ShoppingCartContext);
     let {cartProductsIds, setCartProductsIds} = useContext(ShoppingCartProductsContext);
     
@@ -89,7 +89,7 @@ export const ShoppingCart = ({productsGeneralObj}) => {
             Total: {totalSum} USD
         </TotalSum>
 
-        <BuyCartButton productid={0} onClick={()=>(console.log("JSON:", JSON.stringify(cartProductsIds, mapReplacer)))}>
+        <BuyCartButton productid={0} onClick={()=>(alert("JSON:", JSON.stringify(cartProductsIds, mapReplacer)))}>
             Buy products
         </BuyCartButton>
         </>}
@@ -98,3 +98,5 @@ export const ShoppingCart = ({productsGeneralObj}) => {
         </ModalWrapper>
     );
 }
+
+export default ShoppingCart;
