@@ -11,6 +11,7 @@
     url('./poppins-v15-latin-500.woff') format('woff'), /* Modern Browsers */
     url('./poppins-v15-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
     url('./poppins-v15-latin-500.svg#Poppins') format('svg'); /* Legacy iOS */
+    font-display: swap;
 }
 
 /* poppins-600 - latin */
@@ -25,6 +26,7 @@
     url('./poppins-v15-latin-600.woff') format('woff'), /* Modern Browsers */
     url('./poppins-v15-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
     url('./poppins-v15-latin-600.svg#Poppins') format('svg'); /* Legacy iOS */
+    font-display: swap;
 }
 
 /* poppins-700 - latin */
@@ -39,4 +41,5 @@
     url('./poppins-v15-latin-700.woff') format('woff'), /* Modern Browsers */
     url('./poppins-v15-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
     url('./poppins-v15-latin-700.svg#Poppins') format('svg'); /* Legacy iOS */
+    font-display: swap;
 }
