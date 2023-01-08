@@ -67,7 +67,7 @@ const Main = () => {
     return (
         <main className="main" onClick={(event)=>addToShoppingCart(event)}>
             {isShoppingCartVisible && 
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense fallback={<p style={{position:'absolute'}}>Loading...</p>}>
                 <ShoppingCart productsGeneralObj={productsGeneralObj}/>
             </Suspense>
             }

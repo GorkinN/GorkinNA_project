@@ -149,7 +149,7 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
       }
       else {
         return (
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<div style={{height:'1vh'}}>Loading...</div>}>
             <ListLayout>
               { productsList.map((item)=>(<ContentCardWide product={item} key={item.id}  isInCart={isInCart(cartProductsIds, item)}/>)) }
             </ListLayout>

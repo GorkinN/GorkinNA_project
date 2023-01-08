@@ -155,6 +155,33 @@ max-width:10rem;
     width:80%;
 }
 `;
+const QuantityInput = ({id, defaultValue, min, setQuantity, productId})=>{
+    console.log('render QuantityInput')
+    let {setCartProductsIds} = useContext(ShoppingCartProductsContext);
+
+    function changeQuantity (event){
+        if (event.target.value<0) {event.target.value=1}
+        setQuantity(event.target.value);
+        setCartProductsIds((prevState)=>{
+            prevState.set(+productId, +event.target.value);
+            let newMap = new Map(prevState)
+            return new Map(newMap);
+        });
+        event.target.focus();
+    }
+    return (
+    <NumberInput 
+        key={`quantityInputKey=${productId}`}
+        type="number" 
+        name="quantityInput" 
+        id={`NumberInput - ${id}`}
+        defaultValue={defaultValue}
+        min={min}
+        onChange={(e)=>changeQuantity(e)}
+    />)
+}
+//defaultValue={idMap.get(+productId)} 
+
 export const ContentCardShoppingCart = ({product}) => {
     console.log("sh cart render")
     let {
@@ -168,10 +195,11 @@ export const ContentCardShoppingCart = ({product}) => {
     let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
 
-    let {cartProductsIds, setCartProductsIds} =useContext(ShoppingCartProductsContext);
-
+    let {cartProductsIds} = useContext(ShoppingCartProductsContext);
     let [quantity, setQuantity] = useState(cartProductsIds.get(product.id));
+/*
     function changeQuantity (event){
+        console.log('changeQuantity')
         if (event.target.value<0) {event.target.value=1}
 
         setQuantity(event.target.value);
@@ -181,9 +209,9 @@ export const ContentCardShoppingCart = ({product}) => {
             return new Map(newMap);
         });
     }
-
+*/
     return (
-        <ShoppingCartCard  id={product.id}>
+        <ShoppingCartCard id={product.id}>
             <CardPictureContainerWide>
                 <CardPicture src={`${picture || prodPicDefault}`} alt="product picture"/>
                 <CardSale>
@@ -214,15 +242,15 @@ export const ContentCardShoppingCart = ({product}) => {
                     
                     <NumberInputLabel htmlFor="quantityInput">
                         Set quantity
-                        <NumberInput 
-                            type="number" 
-                            name="quantityInput" 
-                            id={product.id*1111} 
-                            defaultValue={cartProductsIds.get(+product.id)} 
-                            min={1}
-                            onChange={(e)=>changeQuantity(e)}
+                        <QuantityInput
+                        id={product.id} 
+                        defaultValue={cartProductsIds.get(+product.id)} 
+                        min={1}
+                        setQuantity={setQuantity} 
+                        productId={product.id}
                         />
                     </NumberInputLabel>
+                    
                     <TotalValue>
                         Total: {Math.ceil(quantity*price*100)/100} USD
                     </TotalValue>
@@ -240,3 +268,13 @@ export const ContentCardShoppingCart = ({product}) => {
         </ShoppingCartCard>
     );
 }
+/*  
+    <NumberInput 
+    type="number" 
+    name="quantityInput" 
+    id={product.id*1111} 
+    defaultValue={cartProductsIds.get(+product.id)} 
+    min={1}
+    onChange={(e)=>changeQuantity(e)}
+    />
+*/
