@@ -68,35 +68,32 @@ margin:5px 0;
     margin-left:15px;
 }
 `;
-const NumberInput = styled.input`
-position:relative;
-display:block;
-font-family: 'Open Sans';
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-color: black;
-text-indent:21px;
-padding:10px 0px;
-border:1px solid #D1D1D1;
-border-radius:12px;
-background: #f9f9f9;
-width:110px;
-tab-index:1;
-
-::-webkit-outer-spin-button,
-::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+const CounterButton=styled.button`
+background:none;
+border:none;
+padding:5px 5px;
+font-size:1.5rem;
+margin:0 auto;
+width:3rem;
+box-shadow:0 0 2px gray;
+border-radius:50%;
+transition: 0.1s ease-in-out;
+:hover {
+    box-shadow:0 0 4px ${props => props.theme.secondaryColor};
 }
-::-moz-appearance: textfield;
+:active {
+    box-shadow:inset 0 0 4px ${props => props.theme.secondaryColor};
+}
 `;
-const NumberInputLabel = styled.label`
+const NumberInputLabel = styled.div`
+display:flex;
+flex-direction:column;
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 600;
 font-size: 17px;
 line-height: 26px;
+max-width:8rem;
 color: #151515;
 @media (max-width:${props => props.theme.laptop}) {
     :nth-last-child(1) {
@@ -147,6 +144,7 @@ font-style: normal;
 font-weight: 600;
 font-size: 18px;
 line-height: 22px;
+min-width:9rem;
 color: ${props =>props.theme.baseColor};
 overflow:hidden;
 text-overflow:ellipsis;
@@ -155,35 +153,10 @@ max-width:10rem;
     width:80%;
 }
 `;
-const QuantityInput = ({id, defaultValue, min, setQuantity, productId})=>{
-    console.log('render QuantityInput')
-    let {setCartProductsIds} = useContext(ShoppingCartProductsContext);
 
-    function changeQuantity (event){
-        if (event.target.value<0) {event.target.value=1}
-        setQuantity(event.target.value);
-        setCartProductsIds((prevState)=>{
-            prevState.set(+productId, +event.target.value);
-            let newMap = new Map(prevState)
-            return new Map(newMap);
-        });
-        event.target.focus();
-    }
-    return (
-    <NumberInput 
-        key={`quantityInputKey=${productId}`}
-        type="number" 
-        name="quantityInput" 
-        id={`NumberInput - ${id}`}
-        defaultValue={defaultValue}
-        min={min}
-        onChange={(e)=>changeQuantity(e)}
-    />)
-}
-//defaultValue={idMap.get(+productId)} 
 
 export const ContentCardShoppingCart = ({product}) => {
-    console.log("sh cart render")
+    console.log("sh cart render:", product.id)
     let {
         salePercent:sale = 50, 
         name: title = "Product Title",
@@ -195,7 +168,7 @@ export const ContentCardShoppingCart = ({product}) => {
     let prevPrice = sale>0 ? Math.ceil(price/(1 - sale/100)*100)/100 : "";
     let priceText = price===0 ? `FREE` : `${price} USD`;
 
-    let {cartProductsIds} = useContext(ShoppingCartProductsContext);
+    let {cartProductsIds, setCartProductsIds} = useContext(ShoppingCartProductsContext);
     let [quantity, setQuantity] = useState(cartProductsIds.get(product.id));
 /*
     function changeQuantity (event){
@@ -211,7 +184,7 @@ export const ContentCardShoppingCart = ({product}) => {
     }
 */
     return (
-        <ShoppingCartCard id={product.id}>
+        <ShoppingCartCard id={product.id} key={`ShoppingCartCardKey=${product.id}`}>
             <CardPictureContainerWide>
                 <CardPicture src={`${picture || prodPicDefault}`} alt="product picture"/>
                 <CardSale>
@@ -240,15 +213,41 @@ export const ContentCardShoppingCart = ({product}) => {
                         </CardPriceOff>
                     </CardPriceBox>
                     
-                    <NumberInputLabel htmlFor="quantityInput">
+                    <NumberInputLabel>
                         Set quantity
-                        <QuantityInput
-                        id={product.id} 
-                        defaultValue={cartProductsIds.get(+product.id)} 
-                        min={1}
-                        setQuantity={setQuantity} 
-                        productId={product.id}
-                        />
+                        <div style={{display:'flex', flexDirection:'column', flexGrow:'1', justifyContent:'center', alignContent:'center', padding:'5px'}}>
+                        <CounterButton
+                        onClick={(e)=>{
+                            setQuantity(prev => prev+1);
+                            setCartProductsIds((prevState)=>{
+                                let newVal = +prevState.get(+product.id) + 1;
+                                prevState.set(+product.id, +newVal);
+                                let newMap = new Map(prevState)
+                                return new Map(newMap);
+                            });
+                        }}>+</CounterButton>
+
+                        <p style={{textAlign:'center', fontSize:`1.3rem`, padding:'5px 5px'}}>{quantity}</p>
+
+                        <CounterButton 
+                        onClick={()=>{
+                            setQuantity((prev) => {
+                                let newVal = +prev-1;
+                                console.log("!!prev: ",prev)
+                                console.log("!!newVal: ",newVal)
+                                console.log("!!prev-1<=0: ",(+prev-1)<=0)
+                                if (newVal<=0) {newVal=1}
+                                return newVal;
+                            });
+                            setCartProductsIds((prevState)=>{
+                                let newVal = +prevState.get(+product.id) - 1;
+                                newVal = (newVal<=0) ? 1 : newVal;
+                                prevState.set(+product.id, +newVal);
+                                let newMap = new Map(prevState)
+                                return new Map(newMap);
+                            });
+                            }}>-</CounterButton>
+                        </div>
                     </NumberInputLabel>
                     
                     <TotalValue>
@@ -268,13 +267,3 @@ export const ContentCardShoppingCart = ({product}) => {
         </ShoppingCartCard>
     );
 }
-/*  
-    <NumberInput 
-    type="number" 
-    name="quantityInput" 
-    id={product.id*1111} 
-    defaultValue={cartProductsIds.get(+product.id)} 
-    min={1}
-    onChange={(e)=>changeQuantity(e)}
-    />
-*/

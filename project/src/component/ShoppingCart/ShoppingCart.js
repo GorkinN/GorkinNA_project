@@ -45,6 +45,8 @@ padding:10px 30px;
         if (productsArray.length===0) {return <ProductListItem>Shopping cart is empty</ProductListItem>}
         return ( productsArray.map(product => (<ContentCardShoppingCart key={`shCartKey:${product.id}`} product={product}/>)) );
     }  
+    const productsInCart = showShoppingCartProducts(productsArray);
+    console.log('productsInCart', productsInCart)
 
     function removeFromShoppingCart(event) {
         if (event.target.name==="delete-item")    {
@@ -80,7 +82,7 @@ padding:10px 30px;
         customOnCloseModal={()=>(setShoppingCartVisibility((prev)=>(!prev)))}
         top={2}>
                 <ProductsList onClick={(event=>(removeFromShoppingCart(event)))}>
-                    {showShoppingCartProducts(productsArray)}
+                    {productsInCart}
                 </ProductsList>
 
         {cartProductsIds.size === 0? null : 
@@ -96,8 +98,6 @@ padding:10px 30px;
                     Buy products
                 </BuyCartButton>
             </>}
-       
-
         </ModalWrapper>
     );
 }
