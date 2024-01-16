@@ -15,7 +15,7 @@ export const ProductsSection = ({isGridLayout, productsGeneralObj}) => {
   let [filteredIdsSearchbar, setFilteredIdsSearchbar] = useState(new Set(productsGeneralObj.map(item=>item.id)));
   let [filteredIdsSideFilter, setFilteredIdsSideFilter] = useState(new Set(productsGeneralObj.map(item=>item.id)));
   let {cartProductsIds} = useContext(ShoppingCartProductsContext);
-  const ContentCardWide = React.lazy(()=> import('../ContentCard/ContentCardWide'));
+  const ContentCardWide = React.lazy(()=> import('../ContentCard/ContentCardWide.js'));
   //FILTERS
 
   //filter for searchbar
