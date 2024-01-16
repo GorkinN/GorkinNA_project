@@ -45,7 +45,10 @@ const HeaderSearch = () => {
                             <button 
                                 
                                 id="shopping-cart-open-button" 
-                                onClick={()=>{setShoppingCartVisibility(prev => !prev)}}>
+                                onClick={()=>{
+                                    document.body.style.overflow='hidden';
+                                    setShoppingCartVisibility(prev => !prev)
+                                    }}>
                                 <img 
                                 className="shoppingCartOpenButton"
                                 src={ShoppingCartImg} 

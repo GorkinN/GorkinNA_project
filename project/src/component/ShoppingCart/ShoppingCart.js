@@ -32,19 +32,21 @@ align-self:flex-start;
 padding:10px 30px;
 `;
 
-export const ShoppingCart = ({productsGeneralObj}) => {
+ const ShoppingCart = ({productsGeneralObj}) => {
     let {setShoppingCartVisibility} = useContext(ShoppingCartContext);
     let {cartProductsIds, setCartProductsIds} = useContext(ShoppingCartProductsContext);
     
     function formShoopingCartProductsArr (productsGeneralObj, setOfIds) {
         return productsGeneralObj.filter((item)=>(setOfIds.has(item.id)));
     }
-    let productsArray = formShoopingCartProductsArr(productsGeneralObj, cartProductsIds);
+    const productsArray = formShoopingCartProductsArr(productsGeneralObj, cartProductsIds);
 
     function showShoppingCartProducts (productsArray) {
         if (productsArray.length===0) {return <ProductListItem>Shopping cart is empty</ProductListItem>}
-        return ( productsArray.map(product => (<ContentCardShoppingCart key={product.id} product={product}/>)) );
+        return ( productsArray.map(product => (<ContentCardShoppingCart key={`shCartKey:${product.id}`} product={product}/>)) );
     }  
+    const productsInCart = showShoppingCartProducts(productsArray);
+    console.log('productsInCart', productsInCart)
 
     function removeFromShoppingCart(event) {
         if (event.target.name==="delete-item")    {
@@ -80,21 +82,24 @@ export const ShoppingCart = ({productsGeneralObj}) => {
         customOnCloseModal={()=>(setShoppingCartVisibility((prev)=>(!prev)))}
         top={2}>
                 <ProductsList onClick={(event=>(removeFromShoppingCart(event)))}>
-                    {showShoppingCartProducts(productsArray)}
+                    {productsInCart}
                 </ProductsList>
 
         {cartProductsIds.size === 0? null : 
-        <>
-        <TotalSum>
-            Total: {totalSum} USD
-        </TotalSum>
+            <>
+                <TotalSum>
+                    Total: {totalSum} USD
+                </TotalSum>
 
-        <BuyCartButton productid={0} onClick={()=>(console.log("JSON:", JSON.stringify(cartProductsIds, mapReplacer)))}>
-            Buy products
-        </BuyCartButton>
-        </>}
-       
-
+                <BuyCartButton productid={0} onClick={()=>{
+                    let productsToBuy = JSON.stringify(cartProductsIds, mapReplacer);
+                    alert(`JSON:, ${productsToBuy}`);
+                    }}>
+                    Buy products
+                </BuyCartButton>
+            </>}
         </ModalWrapper>
     );
 }
+
+export default ShoppingCart;

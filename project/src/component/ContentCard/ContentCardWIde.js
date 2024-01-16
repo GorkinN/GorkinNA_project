@@ -17,6 +17,8 @@ border: 1px solid #D1D1D1;
 border-radius: 12px;
 @media (max-width:${props=> props.theme.tablet}) {
     margin-bottom:16px;
+    padding-top:10px;
+    padding-bottom:10px;
 }
 @media (max-width:${props=> props.theme.smallPhone}) {
     flex-direction:column;
@@ -34,6 +36,11 @@ flex-wrap:wrap;
 flex-grow:1;
 align-items:flex-start;
 justify-content:space-between;
+padding-left:10px;
+overflow:clip;
+@media (max-width:${props=> props.theme.phone}) {
+    justify-content:flex-start;
+}
 @media (max-width:${props=> props.theme.smallPhone}) {
     padding:10px;
 }
@@ -44,6 +51,11 @@ height:280px;
 margin-bottom:0;
 padding:0;
 box-shadow: none;
+@media (max-width:${props=> props.theme.tablet}) {
+    height:auto;
+    max-width:300px;
+    margin-bottom:10px;
+}
 @media (max-width:${props=> props.theme.smallPhone}) {
     height:auto;
     max-width:none;
@@ -53,9 +65,9 @@ box-shadow: none;
 const CardInfo = styled.div`
 display:flex;
 flex-direction:column;
-margin-left:32px;
+margin-left:0;
+max-width:200px;
 @media (max-width:${props=> props.theme.smallPhone}) {
-    margin-left:0;
     margin-bottom:10px;
 }
 `;
@@ -70,21 +82,25 @@ const BuyingBox=styled.div`
 display:flex;
 flex-direction:column;
 margin-left:auto;
-@media (max-width:${props=> props.theme.smallPhone}) {
+@media (max-width:${props=> props.theme.phone}) {
     flex-direction:row;
     margin-left:0;
+    margin-top:10px;
     flex-grow:1;
-    justify-content:space-between;
 }
 `;
 const CardPriceBox=styled.div`
 margin-bottom:20px;
+
 @media (max-width:${props=> props.theme.smallPhone}) {
     margin:0;
 }
+@media (max-width:${props=> props.theme.phone}) {
+    margin:0 10px;
+}
 `;
 
-export const ContentCardWide = ({product, isInCart}) => {
+const ContentCardWide = ({product, isInCart}) => {
     let {
         salePercent:sale = 50, 
         name: title = "Product Title",
@@ -183,3 +199,4 @@ export const ContentCardWide = ({product, isInCart}) => {
 }
 
 
+export default ContentCardWide;

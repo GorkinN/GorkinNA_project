@@ -8,7 +8,7 @@ position:fixed;
 top:50%;
 left:50%;
 transform:translate(-50%, -50%);
-z-index:9999;
+z-index:99;
 width:100%;
 height:100%;
 background-color:rgba(80, 80, 80, 0.5);
@@ -18,7 +18,7 @@ position:fixed;
 top:${props => props.top? props.top : 50}%;
 left:${props => props.left? props.left : 50}%;
 transform:translate(-50%, 0);
-z-index:9998;
+z-index:100;
 display:flex;
 flex-direction:column;
 padding:20px;
@@ -92,6 +92,7 @@ export const ModalWrapper = ({children, title, customOnCloseModal, top, left}) =
     let [isVisible, setVisibility] = useState(true);
     function hideModal (e) {
         if (e.target.dataset.isvisible==="closeModal") {
+            document.body.style.overflow='scroll';
             setVisibility(false);
         // eslint-disable-next-line
             if (customOnCloseModal != undefined) {customOnCloseModal()}
